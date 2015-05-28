@@ -1,0 +1,178 @@
+@Loops.doc 
+"Loops in AO are ultimately expressed using fixpoint combinators. A loop will repeatedly copy and apply a block (which represents the body of the loop) until a terminating condition is observed. In practice, explicit loops should be avoided whenever possible, except when modeling collections types (streams, lists, etc.). Ultimately, AO should have the flavor of collection-oriented programming languages - i.e. very few loops exposed to programmers - despite the lack of built-in collection types.
+ 
+ Compared to the recursive functions or built-in loops of more conventional programming languages, using fixpoint combinators is very awkward. Convenient loops are simply a low priority for AO's design. Instead, AO favors developing a few common collection types with collection-oriented words (which covers many use-cases for loops), plus incremental application models such that the outer loop is implicit.
+ 
+ Explicit loops in AO are required to terminate. Due to the halting problem, termination cannot always be proven or disproven statically. However, a non-terminating loop is always a bug, and developers are expected to treat one thusly.
+~[v'c]
+
+@Math.doc 
+"Awelon Bytecode (ABC) has a built in number type for exact rational numbers, and a small set of primitive operators (`+*-/Q` for add, multiply, negate, reciprocal, divmod) for manipulating these numbers. This is suitable for basic arithmetic. In some cases, a runtime may use inexact number representations, guided by annotation... but exact math is the default.
+ 
+ Awelon Object (AO) language provides convenient representation of numbers - e.g. decimal, hexadecimal, fractional. In addition, it is envisioned (though not yet practiced) that AO should make heavy use of units information - e.g. distinguishing 4 kilograms from 4 litres, i.e. as an alternative to conventional typing disciplines. Units are relatively easy to express in concatenative languages, e.g. the word `kilograms` might take a number off the stack and wrap it with the appropriate unit structure. 
+ 
+ On the assumption that most AO math functions shall support operators, the 'primitive' math operations are named with prefix `.`, as in `.add` and `.mul`. In addition, there is a class of pure math functions that operate on pairs or single values, meant for use with process models and stream processing, which have the form `add\N` and `mul\N`, where N is the arity.
+ 
+ Sadly, concatenative languages are not very nice for expressing sophisticated algebraic formula. The stack shuffling, duplication, and data plumbing can interfere greatly with comprehension compared to a more declarative approach. To address this we can feasibly leverage embedded DSLs and partial evaluation. Compare:
+ 
+         drop dup dup .mul swap .abs rot3 dup .mul swap .sub .add
+         drop [.square] [.abs] bi .neg [.square] dip .add
+         "x y z → y^2 + x^2 - |y|" doTheMath
+ 
+ These three lines essentially express the same behavior (assuming suitable implementations of each word), but the latter is decidedly more declarative and comprehensible. Unfortunately, it's still stuck in a nasty string. Long term, embedded DSLs should be able to leverage [embedded literal objects](http://awelonblue.wordpress.com/2014/07/22/embedded-literal-objects/) to achieve rich, compositional structure with various maths.
+~[v'c]
+@abc:C [C][]
+@abc:L [L][]
+@abc:LF [
+][]
+@abc:R [R][]
+@abc:SP [ ][]
+@abc:V [V][]
+@abc:W [W][]
+@abc:Z [Z][]
+@abc:add [+][]
+@abc:affine [f][]
+@abc:apply [$][]
+@abc:assert [K][]
+@abc:c [c][]
+@abc:compare [>][]
+@abc:compose [o][]
+@abc:condAp [?][]
+@abc:copy [^][]
+@abc:d0 [0][]
+@abc:d1 [1][]
+@abc:d2 [2][]
+@abc:d3 [3][]
+@abc:d4 [4][]
+@abc:d5 [5][]
+@abc:d6 [6][]
+@abc:d7 [7][]
+@abc:d8 [8][]
+@abc:d9 [9][]
+@abc:distrib [D][]
+@abc:divMod [Q][]
+@abc:drop [%][]
+@abc:factor [F][]
+@abc:intro0 [#][]
+@abc:l [l][]
+@abc:merge [M][]
+@abc:mul [*][]
+@abc:negate [-][]
+@abc:quote ['][]
+@abc:r [r][]
+@abc:recip [/][]
+@abc:relevant [k][]
+@abc:v [v][]
+@abc:w [w][]
+@abc:z [z][]
+@anno:assoc [{&associative}][]
+@anno:assoc.doc "Assert that arguments to an arity-2 function are associative.
+~[v'c]
+@anno:beqv [{&equivalent}][]
+@anno:beqv.doc "Assert two blocks are behaviorally equivalent.
+~[v'c]
+@anno:commu [{&commutative}][]
+@anno:commu.doc "Assert that arguments to an arity-2 function are commutative.
+~[v'c]
+@anno:eqv [{&≡}][]
+@anno:eqv.doc "Assert two values (of any type) are structurally equivalent.
+ This is very useful for automatic tests and safety analysis.
+~[v'c]
+@bar [vrwlc "hello world
+~] vrwlc
+@baz "Hello, World!
+~[v'c]
+@drop [r%][]
+@drop2 [{%drop} {%drop}][]
+@drop3 [{%drop} {%drop2}][]
+@drop4 [{%drop2} {%drop2}][]
+@drop5 [{%drop2} {%drop3}][]
+@drop6 [{%drop3} {%drop3}][]
+@drop7 [{%drop3} {%drop4}][]
+@drop8 [{%drop4} {%drop4}][]
+@drop9 [{%drop4} {%drop5}][]
+@nip [rw {%drop} wl][]
+@dropd [{%nip}][]
+@dup [r^zlwl][]
+@dupd [rw {%dup} wl][]
+@dupdd [rw {%dupd} wl][]
+@elim1 [rvrwlcc][]
+@elim1d [rw {%elim1} wl][]
+@foo vrwlcc
+@id [][]
+@intro1 [vvrwlcl][]
+@intro1d [rw {%intro1} wl][]
+@nip2 [rw {%drop2} wl][]
+@nip3 [rw {%drop3} wl][]
+@nip4 [rw {%drop4} wl][]
+@swap [rwrwzwlwl][]
+@over [{%dupd} {%swap}][]
+@pick [rw {%over} wl {%swap}][]
+@pick1st [{%dup}][]
+@pick2nd [rw {%pick1st} wl {%swap}][]
+@pick3rd [rw {%pick2nd} wl {%swap}][]
+@pick4th [rw {%pick3rd} wl {%swap}][]
+@pick5th [rw {%pick4th} wl {%swap}][]
+@pick6th [rw {%pick5th} wl {%swap}][]
+@pick7th [rw {%pick6th} wl {%swap}][]
+@prim:fixpoint [[[^'ow^'zowvr$c]^'ow^'zowvr$c]w'o][]
+@prim:fixpoint.direct [[^'o]o^'o][]
+@prim:fixpoint.direct.doc 
+"This is the simplest and most direct fixpoint combinator I've found for Awelon Bytecode. But, while it does the job, it has a major weakness: it doubles the function to which it is applied (i.e. so the logic is included twice). Thus, it is suitable only for relatively small functions and non-hierarchical structure. Further, this might not even offer any performance benefits once we account for recognizing common ABC subprograms.
+~[v'c]
+@prim:fixpoint.doc 
+"A minimal fixpoint combinator.
+     ([([a→b]*a)→b]*e)→([a→b]*e);
+~[v'c]
+@prim:fixpoint.sto [[^'ow^'zowvr$c]^'ow'o][]
+@prim:fixpoint.sto.doc "This 'sto' version of fixpoint stands for 'static transport overhead'. The goal with static transport overhead is to have a very predictable, constant space cost fixpoint functions even for a naive interpretation. This is useful when we serialize fixpoint objects, or especially begin to work with hierarchical structures.
+ 
+  Fpr @prim:fixpoint, I will use the expanded form to better match the bytecode that will commonly be seen on the wire. This may help in context optimization based on recognizing common subprograms.
+~[v'c]
+@repeat.doc 
+"a [a -- a] n -- a; repeat block `n` times
+~[v'c]
+@swapd [rw {%swap} wl][]
+@rot [{%swapd}{%swap}][]
+@roll [rw {%rot} wl {%swap}][]
+@roll2 [{%swap}][]
+@roll2d [{%swapd}][]
+@roll3 [{%rot}][]
+@rotd [rw {%rot} wl][]
+@roll3d [{%rotd}][]
+@roll4 [{%roll}][]
+@rolld [rw {%roll} wl][]
+@roll4d [{%rolld}][]
+@roll5 [rw {%roll4} wl {%swap}][]
+@roll5d [rw {%roll5} wl][]
+@roll6 [rw {%roll5} wl {%swap}][]
+@roll6d [rw {%roll6} wl][]
+@roll7 [rw {%roll6} wl {%swap}][]
+@roll7d [rw {%roll7} wl][]
+@roll8 [rw {%roll7} wl {%swap}][]
+@roll8d [rw {%roll8} wl][]
+@roll9 [rw {%roll8} wl {%swap}][]
+@roll9d [rw {%roll9} wl][]
+@spin [{%swap}{%swapd}{%swap}][]
+@tuck [{%dup} {%swapd}][]
+@unit [{%intro1}][]
+@unrot [{%swap}{%swapd}][]
+@unroll [{%swap} rw {%unrot} wl][]
+@unroll2 [{%swap}][]
+@unroll2d [{%swapd}][]
+@unroll3 [{%unrot}][]
+@unrotd [rw {%unrot} wl][]
+@unroll3d [{%unrotd}][]
+@unroll4 [{%unroll}][]
+@unrolld [rw {%unroll} wl][]
+@unroll4d [{%unrolld}][]
+@unroll5 [{%swap} rw {%unroll4} wl][]
+@unroll5d [rw {%unroll5} wl][]
+@unroll6 [{%swap} rw {%unroll5} wl][]
+@unroll6d [rw {%unroll6} wl][]
+@unroll7 [{%swap} rw {%unroll6} wl][]
+@unroll7d [rw {%unroll7} wl][]
+@unroll8 [{%swap} rw {%unroll7} wl][]
+@unroll8d [rw {%unroll8} wl][]
+@unroll9 [{%swap} rw {%unroll8} wl][]
+@unroll9d [rw {%unroll9} wl][]
