@@ -1,26 +1,3 @@
-@Loops.doc 
-"Loops in AO are ultimately expressed using fixpoint combinators. A loop will repeatedly copy and apply a block (which represents the body of the loop) until a terminating condition is observed. In practice, explicit loops should be avoided whenever possible, except when modeling collections types (streams, lists, etc.). Ultimately, AO should have the flavor of collection-oriented programming languages - i.e. very few loops exposed to programmers - despite the lack of built-in collection types.
- 
- Compared to the recursive functions or built-in loops of more conventional programming languages, using fixpoint combinators is very awkward. Convenient loops are simply a low priority for AO's design. Instead, AO favors developing a few common collection types with collection-oriented words (which covers many use-cases for loops), plus incremental application models such that the outer loop is implicit.
- 
- Explicit loops in AO are required to terminate. Due to the halting problem, termination cannot always be proven or disproven statically. However, a non-terminating loop is always a bug, and developers are expected to treat one thusly.
-~[v'c]
-
-@Math.doc 
-"Awelon Bytecode (ABC) has a built in number type for exact rational numbers, and a small set of primitive operators (`+*-/Q` for add, multiply, negate, reciprocal, divmod) for manipulating these numbers. This is suitable for basic arithmetic. In some cases, a runtime may use inexact number representations, guided by annotation... but exact math is the default.
- 
- Awelon Object (AO) language provides convenient representation of numbers - e.g. decimal, hexadecimal, fractional. In addition, it is envisioned (though not yet practiced) that AO should make heavy use of units information - e.g. distinguishing 4 kilograms from 4 litres, i.e. as an alternative to conventional typing disciplines. Units are relatively easy to express in concatenative languages, e.g. the word `kilograms` might take a number off the stack and wrap it with the appropriate unit structure. 
- 
- On the assumption that most AO math functions shall support operators, the 'primitive' math operations are named with prefix `.`, as in `.add` and `.mul`. In addition, there is a class of pure math functions that operate on pairs or single values, meant for use with process models and stream processing, which have the form `add\N` and `mul\N`, where N is the arity.
- 
- Sadly, concatenative languages are not very nice for expressing sophisticated algebraic formula. The stack shuffling, duplication, and data plumbing can interfere greatly with comprehension compared to a more declarative approach. To address this we can feasibly leverage embedded DSLs and partial evaluation. Compare:
- 
-         drop dup dup .mul swap .abs rot3 dup .mul swap .sub .add
-         drop [.square] [.abs] bi .neg [.square] dip .add
-         "x y z → y^2 + x^2 - |y|" doTheMath
- 
- These three lines essentially express the same behavior (assuming suitable implementations of each word), but the latter is decidedly more declarative and comprehensible. Unfortunately, it's still stuck in a nasty string. Long term, embedded DSLs should be able to leverage [embedded literal objects](http://awelonblue.wordpress.com/2014/07/22/embedded-literal-objects/) to achieve rich, compositional structure with various maths.
-~[v'c]
 @abc:C [C][]
 @abc:L [L][]
 @abc:LF [
@@ -60,11 +37,13 @@
 @abc:negate [-][]
 @abc:quote ['][]
 @abc:r [r][]
-@abc:recip [/][]
 @abc:relevant [k][]
 @abc:v [v][]
 @abc:w [w][]
 @abc:z [z][]
+@ao:p [rwrzwll][]
+@ao:add [{%ao:p} rr+l][]
+@add [{%ao:add}][]
 @anno:assoc [{&associative}][]
 @anno:assoc.doc "Assert that arguments to an arity-2 function are associative.
 ~[v'c]
@@ -78,35 +57,80 @@
 @anno:eqv.doc "Assert two values (of any type) are structurally equivalent.
  This is very useful for automatic tests and safety analysis.
 ~[v'c]
-@bar [vrwlc "hello world
-~] vrwlc
-@baz "Hello, World!
+@ao:dp [rw {%ao:p} wl][]
+@ao:drop [r%][]
+@ao:drop2 [{%ao:drop} {%ao:drop}][]
+@ao:drop3 [{%ao:drop} {%ao:drop2}][]
+@ao:drop4 [{%ao:drop2} {%ao:drop2}][]
+@ao:drop5 [{%ao:drop2} {%ao:drop3}][]
+@ao:drop6 [{%ao:drop3} {%ao:drop3}][]
+@ao:drop7 [{%ao:drop3} {%ao:drop4}][]
+@ao:drop8 [{%ao:drop4} {%ao:drop4}][]
+@ao:drop9 [{%ao:drop4} {%ao:drop5}][]
+@ao:nip [rw {%ao:drop} wl][]
+@ao:dropd [{%ao:nip}][]
+@ao:w [rrwll][]
+@ao:dw [{&ns:ao:}rw{%ao:w}wl][]
+@ao:x [rrwzlwl][]
+@ao:dx [{&ns:ao:}rw{%ao:x}wl][]
+@ao:literal [l][]
+@ao:mul [{&ns:ao:}{%ao:p}rr*l][]
+@ao:pw [{&ns:ao:}{%ao:p}{%ao:w}][]
+@ao:wx [{&ns:ao:}{%ao:w}{%ao:x}][]
+@c_ [vrwlcwlc][]
+@math:divMod [{%ao:p} rrQll {%ao:wx}][]
+@divMod [{%math:divMod}][]
+@doc:ao:w [{&ns:ao:}"(x*y) -- (y*x)
+~{%ao:literal}][]
+@doc:meta:Loops 
+"Loops in AO are ultimately expressed using fixpoint combinators. A loop will repeatedly copy and apply a block (which represents the body of the loop) until a terminating condition is observed. In practice, explicit loops should be avoided whenever possible, except when modeling collections types (streams, lists, etc.). Ultimately, AO should have the flavor of collection-oriented programming languages - i.e. very few loops exposed to programmers - despite the lack of built-in collection types.
+ 
+ Compared to the recursive functions or built-in loops of more conventional programming languages, using fixpoint combinators is very awkward. Convenient loops are simply a low priority for AO's design. Instead, AO favors developing a few common collection types with collection-oriented words (which covers many use-cases for loops), plus incremental application models such that the outer loop is implicit.
+ 
+ Explicit loops in AO are required to terminate. Due to the halting problem, termination cannot always be proven or disproven statically. However, a non-terminating loop is always a bug, and developers are expected to treat one thusly.
 ~[v'c]
-@drop [r%][]
-@drop2 [{%drop} {%drop}][]
-@drop3 [{%drop} {%drop2}][]
-@drop4 [{%drop2} {%drop2}][]
-@drop5 [{%drop2} {%drop3}][]
-@drop6 [{%drop3} {%drop3}][]
-@drop7 [{%drop3} {%drop4}][]
-@drop8 [{%drop4} {%drop4}][]
-@drop9 [{%drop4} {%drop5}][]
-@nip [rw {%drop} wl][]
-@dropd [{%nip}][]
-@dup [r^zlwl][]
+
+@doc:meta:Math "Awelon Bytecode (ABC) has a built in number type for exact rational numbers, and a small set of primitive operators (`+*-/Q` for add, multiply, negate, reciprocal, divmod) for manipulating these numbers. This is suitable for basic arithmetic. In some cases, a runtime may use inexact number representations, guided by annotation... but exact math is the default.
+ 
+ Awelon Object (AO) language provides convenient representation of numbers - e.g. decimal, hexadecimal, fractional. In addition, it is envisioned (though not yet practiced) that AO should make heavy use of units information - e.g. distinguishing 4 kilograms from 4 litres, i.e. as an alternative to conventional typing disciplines. Units are relatively easy to express in concatenative languages, e.g. the word `kilograms` might take a number off the stack and wrap it with the appropriate unit structure. 
+ 
+ On the assumption that most AO math functions shall support operators, the 'primitive' math operations are named with prefix `.`, as in `.add` and `.mul`. In addition, there is a class of pure math functions that operate on pairs or single values, meant for use with process models and stream processing, which have the form `add\N` and `mul\N`, where N is the arity.
+ 
+ Sadly, concatenative languages are not very nice for expressing sophisticated algebraic formula. The stack shuffling, duplication, and data plumbing can interfere greatly with comprehension compared to a more declarative approach. To address this we can feasibly leverage embedded DSLs and partial evaluation. Compare:
+ 
+         drop dup dup .mul swap .abs rot3 dup .mul swap .sub .add
+         drop [.square] [.abs] bi .neg [.square] dip .add
+         "x y z → y^2 + x^2 - |y|" doTheMath
+ 
+ These three lines essentially express the same behavior (assuming suitable implementations of each word), but the latter is decidedly more declarative and comprehensible. Unfortunately, it's still stuck in a nasty string. Long term, embedded DSLs should be able to leverage [embedded literal objects](http://awelonblue.wordpress.com/2014/07/22/embedded-literal-objects/) to achieve rich, compositional structure with various maths.
+~[v'c]
+@stack:dup [r^zlwl][]
+@dup [{%stack:dup}][]
 @dupd [rw {%dup} wl][]
 @dupdd [rw {%dupd} wl][]
 @elim1 [rvrwlcc][]
 @elim1d [rw {%elim1} wl][]
-@foo vrwlcc
 @id [][]
 @intro1 [vvrwlcl][]
 @intro1d [rw {%intro1} wl][]
-@nip2 [rw {%drop2} wl][]
-@nip3 [rw {%drop3} wl][]
-@nip4 [rw {%drop4} wl][]
+@l [rrwrzwlll][]
+@l.doc "(x*(y*z)) -- ((x*y)*z)
+~
+@l_ [rwrzwll][]
+@math:negate [r-l][]
+@math:quot [{%ao:p} rrQ%l][]
+@math:rem [{%ao:p} rrQw%l][]
+@math:add 
+@math:subtract [{%math:negate}{%math:add}][]
+@negate [{%math:negate}][]
+@nip2 [rw {%ao:drop2} wl][]
+@nip3 [rw {%ao:drop3} wl][]
+@nip4 [rw {%ao:drop4} wl][]
 @swap [rwrwzwlwl][]
 @over [{%dupd} {%swap}][]
+@p.doc 
+"y x -- (x*y)
+~
 @pick [rw {%over} wl {%swap}][]
 @pick1st [{%dup}][]
 @pick2nd [rw {%pick1st} wl {%swap}][]
@@ -129,6 +153,21 @@
  
   Fpr @prim:fixpoint, I will use the expanded form to better match the bytecode that will commonly be seen on the wire. This may help in context optimization based on recognizing common subprograms.
 ~[v'c]
+@prim:fst [vrw%c][]
+@prim:fst.doc 
+"(x*y)→x
+~
+@prim:snd [vr%c][]
+@prim:snd.doc 
+"(x*y)→y
+~
+@prim:swap [vrwlc][]
+@prim:swap.doc 
+"(x*y)→(y*x)
+~
+@r [rrrwzlwll][]
+@r.doc "((x*y)*z) -- (x*(y*z))
+~
 @repeat.doc 
 "a [a -- a] n -- a; repeat block `n` times
 ~[v'c]
@@ -154,6 +193,25 @@
 @roll9 [rw {%roll8} wl {%swap}][]
 @roll9d [rw {%roll9} wl][]
 @spin [{%swap}{%swapd}{%swap}][]
+@stack:fst [rrw%l][]
+@stack:l [rrwrzwlll][]
+@stack:l.doc "(x*(y*z)) -- ((x*y)*z)
+~
+@stack:p.doc 
+"y x -- (x*y)
+~
+@stack:r [rrrwzlwll][]
+@stack:r.doc "((x*y)*z) -- (x*(y*z))
+~
+@stack:snd [rr%l][]
+@stack:w [rrwll][]
+@stack:w.doc "(x*y) -- (y*x)
+~
+@stack:x [rrwzlwl][]
+@stack:x.doc 
+"(x*y) -- y x
+~
+@subtract [{%math:subtract}][]
 @tuck [{%dup} {%swapd}][]
 @unit [{%intro1}][]
 @unrot [{%swap}{%swapd}][]
@@ -176,3 +234,12 @@
 @unroll8d [rw {%unroll8} wl][]
 @unroll9 [{%swap} rw {%unroll8} wl][]
 @unroll9d [rw {%unroll9} wl][]
+@v_ [vrwvrwlc][]
+@v_.doc 
+"(a*e)→((a*1)*e)
+~[v'c]
+@w_ [rwrwzwlwl][]
+@x.doc 
+"(x*y) -- y x
+~
+@z_ [rw {%w_} wl][]
