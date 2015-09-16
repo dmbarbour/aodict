@@ -69,10 +69,10 @@
 @fmap.s.onElem [rz$vrwrw'owlc][]
 @fmap.s.step [lwvvrwlcw$wD[{%fmap.s.onElem}]{%block}r?VRW[%]{%block}r?WLCc][]
 @.fmap.s [[{%fmap.s.step}]{%block}rw'o{%.firstfixfirst}w'o][]
-@next.fromStateSplitNext.r [rrr%z$rz'olc][]
-@split.fromStateSplitNext.r [rrrw%z$rzw^zw'owzw'olc][]
-@step.fromStateSplitNext.r [llvrD[{%next.fromStateSplitNext.r}]{%block}r?VRW[{%split.fromStateSplitNext.r}]{%block}r?WLCMc][]
-@.fromStateSplitNext.r [{%pw}[{%step.fromStateSplitNext.r}]{%block}{%.bind}{%.fixfirst}{%.bind}][]
+@.fromStateSplitNext.r.next [rrr%z$rz'olc][]
+@fromStateSplitNext.r.split [rrrw%z$rzw^zw'owzw'olc][]
+@.fromStateSplitNext.r.step [llvrD[{%.fromStateSplitNext.r.next}]{%block}r?VRW[{%fromStateSplitNext.r.split}]{%block}r?WLCMc][]
+@.fromStateSplitNext.r [{%pw}[{%.fromStateSplitNext.r.step}]{%block}{%.bind}{%.fixfirst}{%.bind}][]
 @.fst [vrw%c][]
 @.gt [{%p}rr>l][]
 @.mirror [VRWLC][]
@@ -101,8 +101,8 @@
 @.quot [{%p}rrQ%l][]
 @.rem [{%p}rrQw%l][]
 @.square [{%dup}{%.mul}][]
-@step.state.p0 [wvrwr$rz'olc][]
-@.state.p0 [[{%step.state.p0}]{%block}{%.bind}{%.fixfirst}{%.bind}][]
+@.state.p0.step [wvrwr$rz'olc][]
+@.state.p0 [[{%.state.p0.step}]{%block}{%.bind}{%.fixfirst}{%.bind}][]
 @.sub [{%.neg}{%.add}][]
 @.tri [{%tuck}{%.apply}{%.rw}{%.bi}{%.wl}][]
 @rot [{%swapd}{%swap}][]
@@ -174,18 +174,6 @@
  * Alias method
  * Vose's algorithm
 ~{%literal}][]
-@drop [r%][]
-@drop2 [{%drop}{%drop}][]
-@discard2 [{%hsw}{%drop2}{%hsw}][]
-@a-b.compareStreams [{%drop2}{%discard2}{%intro1}{%inR}{%inR}][]
-@dx [{%.rw}{%x}{%.wl}][]
-@inline [rvr$c][]
-@discard [{%put}{%drop}][]
-@nip2 [{%.rw}{%drop2}{%.wl}][]
-@eitherBind [{%.prebind_l}{%.rw}{%.prebind_l}{%.wl}{%.eitherBind}][]
-@merge [rMl][]
-@if [{%eitherBind}{%merge}{%inline}][]
-@ab.compareStreams [{%dx}{%x}{%swapd}{%pw}{%put}{%.apply}[{%drop}{%put}{%inline}]{%block}[{%inR}{%discard}{%nip2}]{%block}{%if}][]
 @abc:C [C][]
 @abc:L [L][]
 @abc:R [R][]
@@ -235,52 +223,15 @@
 @abs.arity1 [v{%inner..abs}c][]
 @roll [{%.rw}{%rot}{%.wl}{%swap}][]
 @dip [rwrzvrwr$wlcl][]
+@inline [rvr$c][]
 @action.eachUntil.l [{%wx}{%roll}{%pw}{%rot}{%dip}{%wx}{%inline}][]
-@copy [{%dup}{%take}][]
-@neq [rwrzw>[vr>c]{%block}r?Rl][]
-@neq1 [{%neq}r[{%.snd}]{%block}r?VRWR[{%.fst}]{%block}r?W[{%.snd}]{%block}r?WLWLCl][]
-@eq1 [{%neq1}{%not}][]
-@eq1m [{%eq1}[vMc]{%block}{%.left}][]
-@neq1m [{%eq1m}{%not}][]
-@wrapfn [{%swapd}{%compose}{%compose}][]
-@wrapCons.mapReverseAppend.l [[{%dip}]{%block}{%bind}[{%swap}]{%block}[{%swap}{%cons.l}]{%block}{%wrapfn}][]
-@dpw [{%.rw}{%pw}{%.wl}][]
-@each.l.action [{%wx}wlwl{%dpw}{%dip}{%wx}{%inline}][]
-@elim1 [rvrwlcc][]
-@each.l.fini [{%elim1}wl{%drop}wl{%drop}][]
-@each.l.step [wzw[{%each.l.action}]{%block}[{%each.l.fini}]{%block}{%if}][]
-@each.l [[{%each.l.step}]{%block}{%.bind}{%.fixfirst}{%inline}][]
-@mapReverseAppend.l [{%wrapCons.mapReverseAppend.l}{%each.l}][]
-@mapReverse.l [{%empty.l}{%unrot}{%mapReverseAppend.l}][]
-@dwx [{%.rw}{%wx}{%.wl}][]
-@pushrv.partition.l [[{%dx}{%cons.l}{%p}]{%block}[{%dwx}{%cons.l}{%pw}]{%block}{%if}][]
-@compressArgs [{%dpw}[{%wx}]{%block}{%composel}][]
-@apply1to1.stackHand.env [rwrzvrwvvrrvrrz$wlcllccwlcl][]
-@apply1to1.std.env [{%apply1to1.stackHand.env}][]
-@apply [{%apply1to1.std.env}][]
-@apply1to1 [{%apply}][]
-@apply2to1 [{%compressArgs}{%apply1to1}][]
-@apply3to1 [{%compressArgs}{%apply2to1}][]
-@fold.l [[{%each.l}]{%block}{%apply3to1}][]
-@partitionAppendReverse.l [{%unrot}{%pw}{%swap}[{%pushrv.partition.l}]{%block}{%fold.l}{%wx}][]
-@partitionReverse.l [{%empty.l}{%empty.l}{%rot}{%partitionAppendReverse.l}][]
-@partitionWith.l [{%mapReverse.l}{%partitionReverse.l}][]
-@nip [{%.rw}{%drop}{%.wl}][]
-@dropd [{%nip}][]
-@filterWith.l [{%partitionWith.l}{%dropd}][]
-@remove.l [[{%neq1m}]{%block}{%bind}{%filterWith.l}][]
-@action.nub.l [{%x}{%copy}{%remove.l}{%swap}{%apply}{%put}{%cons.l}][]
-@dupd [{%.rw}{%dup}{%.wl}][]
-@keep [{%dupd}{%dip}][]
-@wrapObserver.b [[{%keep}]{%block}{%bind}[{%distrib}[c]{%block}{%.left}[c]{%block}{%.right}]{%block}{%compose}][]
-@partitionBy.l [{%wrapObserver.b}{%partitionWith.l}][]
-@action.nubBy.l [{%x}{%copy}{%rot}{%bind}{%partitionBy.l}{%drop}{%swap}{%apply}{%put}{%cons.l}][]
 @dec [r#1-+l][]
 @dip2 [rwrwrzlzvrwr$wlcrzlwl][]
 @action.repeat [{%dec}{%unrot}{%dip2}{%inline}][]
 @add.arity2 [vr+c][]
 @unseal.stats [r{.stats}l][]
 @inc [r#1+l][]
+@copy [{%dup}{%take}][]
 @paste [{%hsw}{%copy}{%hsw}][]
 @seal.stats [r{:stats}l][]
 @add.stats [{%take}{%unseal.stats}{%x}{%inc}{%swap}{%x}{%paste}{%.add}{%swap}{%put}{%dup}{%.mul}{%.add}{%pw}{%pw}{%seal.stats}][]
@@ -288,6 +239,8 @@
 @affine [rfl][]
 @alignToFrac [{%dup}rw{%.quot}wl{%.mul}][]
 @and.b [{%distrib}rVRW[c]{%block}r?WLCL[v%]{%block}r?l][]
+@dx [{%.rw}{%x}{%.wl}][]
+@dupd [{%.rw}{%dup}{%.wl}][]
 @dp [{%.rw}{%p}{%.wl}][]
 @bindKVCmp.AATree [{%dx}{%dupd}{%.bind}{%dp}][]
 @node.insertKV.AATree [{%dx}{%dx}{%dup}{%.apply}{%dp}{%dp}{&TODO}][]
@@ -295,9 +248,14 @@
 @hfix.v3 [{%put}r[l{%take}]{%block}rol{%.fixfirst}{%take}][]
 @hfix [{%hfix.v3}][]
 @hap [{%put}{%inline}][]
+@drop [r%][]
+@discard [{%put}{%drop}][]
 @empty.AATree [{%intro1}{%inR}][]
 @singleton.AATree [{%empty.AATree}{%empty.AATree}{%inR}{%pw}{%pw}{%inL}][]
 @leaf.insertKV.AATree [{%discard}{%put}{%singleton.AATree}{%swap}{%inR}][]
+@eitherBind [{%.prebind_l}{%.rw}{%.prebind_l}{%.wl}{%.eitherBind}][]
+@merge [rMl][]
+@if [{%eitherBind}{%merge}{%inline}][]
 @tree.insertKV.AATree [[{%hap}]{%block}[{%leaf.insertKV.AATree}]{%block}{%if}][]
 @apEnv.insertKV.AATree [{%bindKVCmp.AATree}[{%node.insertKV.AATree}]{%block}{%bind}{%taked}{%take}{%hfix}{%tree.insertKV.AATree}][]
 @apcar [{%dx}{%.apply}{%p}][]
@@ -305,6 +263,7 @@
 @apcaaar [{%dx}{%apcaar}{%p}][]
 @apcaaaar [{%dx}{%apcaaar}{%p}][]
 @apcaaaaar [{%dx}{%apcaaaar}{%p}][]
+@dwx [{%.rw}{%wx}{%.wl}][]
 @apcaaaadr [{%dwx}{%apcaaaar}{%pw}][]
 @apcaaadr [{%dwx}{%apcaaar}{%pw}][]
 @apcaaadar [{%dx}{%apcaaadr}{%p}][]
@@ -362,6 +321,20 @@
 @apcddddr [{%dwx}{%apcdddr}{%pw}][]
 @apcddddar [{%dx}{%apcddddr}{%p}][]
 @apcdddddr [{%dwx}{%apcddddr}{%pw}][]
+@dpw [{%.rw}{%pw}{%.wl}][]
+@each.l.action [{%wx}wlwl{%dpw}{%dip}{%wx}{%inline}][]
+@elim1 [rvrwlcc][]
+@each.l.fini [{%elim1}wl{%drop}wl{%drop}][]
+@each.l.step [wzw[{%each.l.action}]{%block}[{%each.l.fini}]{%block}{%if}][]
+@each.l [[{%each.l.step}]{%block}{%.bind}{%.fixfirst}{%inline}][]
+@compressArgs [{%dpw}[{%wx}]{%block}{%composel}][]
+@apply1to1.stackHand.env [rwrzvrwvvrrvrrz$wlcllccwlcl][]
+@apply1to1.std.env [{%apply1to1.stackHand.env}][]
+@apply [{%apply1to1.std.env}][]
+@apply1to1 [{%apply}][]
+@apply2to1 [{%compressArgs}{%apply1to1}][]
+@apply3to1 [{%compressArgs}{%apply2to1}][]
+@fold.l [[{%each.l}]{%block}{%apply3to1}][]
 @reverseAppend.l [[{%cons.l}]{%block}{%fold.l}][]
 @reverse.l [{%empty.l}{%swap}{%reverseAppend.l}][]
 @append.l [{%swap}{%reverse.l}{%reverseAppend.l}][]
@@ -513,6 +486,7 @@
 @t.assertBalanced.AATree [{%take}[{%put}{%inline}{%inLd}{%inc}]{%block}[{%discard}{%inR}#{%integer}]{%block}{%if}][]
 @inRd [{%.rw}{%inR}{%.wl}][]
 @rt.assertBalanced.AATree [{%take}[{%put}{%inline}{%inLd}]{%block}[{%put}{%t.assertBalanced.AATree}{%inRd}]{%block}{%if}][]
+@neq [rwrzw>[vr>c]{%block}r?Rl][]
 @eq [{%neq}{%not}][]
 @assertEQ.n [{%eq}{%assert}{%x}][]
 @assertEQ1.n [{%assertEQ.n}{%drop}][]
@@ -614,12 +588,34 @@
  
  AO is designed to serve as a relatively generic compositional layer, to enable integration or translation of domain-specific models. AO's words are themselves software components. AO's compositional properties - especially causal commutativity, spatial idempotence, substructural types, and capability security - are very useful in this role. AO is also designed to mitigate common weaknesses of deeply layered abstractions by aggressive use of partial evaluation, dependent type analysis, and program search.
 ~{%literal}][]
-@step.nub.l [{%swap}[{%action.nub.l}]{%block}[{%nip}{%inR}]{%block}{%if}][]
-@nub.l [[{%step.nub.l}]{%block}{%fixpoint}{%apply}][]
+@neq1 [{%neq}r[{%.snd}]{%block}r?VRWR[{%.fst}]{%block}r?W[{%.snd}]{%block}r?WLWLCl][]
+@eq1 [{%neq1}{%not}][]
+@eq1m [{%eq1}[vMc]{%block}{%.left}][]
+@neq1m [{%eq1m}{%not}][]
+@wrapfn [{%swapd}{%compose}{%compose}][]
+@wrapCons.mapReverseAppend.l [[{%dip}]{%block}{%bind}[{%swap}]{%block}[{%swap}{%cons.l}]{%block}{%wrapfn}][]
+@mapReverseAppend.l [{%wrapCons.mapReverseAppend.l}{%each.l}][]
+@mapReverse.l [{%empty.l}{%unrot}{%mapReverseAppend.l}][]
+@pushrv.partition.l [[{%dx}{%cons.l}{%p}]{%block}[{%dwx}{%cons.l}{%pw}]{%block}{%if}][]
+@partitionAppendReverse.l [{%unrot}{%pw}{%swap}[{%pushrv.partition.l}]{%block}{%fold.l}{%wx}][]
+@partitionReverse.l [{%empty.l}{%empty.l}{%rot}{%partitionAppendReverse.l}][]
+@partitionWith.l [{%mapReverse.l}{%partitionReverse.l}][]
+@nip [{%.rw}{%drop}{%.wl}][]
+@dropd [{%nip}][]
+@filterWith.l [{%partitionWith.l}{%dropd}][]
+@remove.l [[{%neq1m}]{%block}{%bind}{%filterWith.l}][]
+@nub.l.action [{%x}{%copy}{%remove.l}{%swap}{%apply}{%put}{%cons.l}][]
+@nub.l.step [{%swap}[{%nub.l.action}]{%block}[{%nip}{%inR}]{%block}{%if}][]
+@nub.l [[{%nub.l.step}]{%block}{%fixpoint}{%apply}][]
 @ltb [{%.ltb}][]
+@keep [{%dupd}{%dip}][]
+@wrapObserver.b [[{%keep}]{%block}{%bind}[{%distrib}[c]{%block}{%.left}[c]{%block}{%.right}]{%block}{%compose}][]
+@partitionBy.l [{%wrapObserver.b}{%partitionWith.l}][]
 @bi* [[{%dip}]{%block}{%dip}{%inline}][]
 @bidup [{%dup}{%bi*}][]
 @nonEmpty.sortBy.l [{%x}{%copy}{%rot}{%bind}{%partitionBy.l}{%swap}{%rot}{%bidup}{%put}{%cons.l}{%append.l}][]
+@drop2 [{%drop}{%drop}][]
+@nip2 [{%.rw}{%drop2}{%.wl}][]
 @step.sortBy.l [{%rot}[{%nonEmpty.sortBy.l}]{%block}[{%nip2}{%inR}]{%block}{%if}][]
 @sortBy.l [[{%step.sortBy.l}]{%block}{%bind}{%fixpoint}{%apply}][]
 @bench.docmanip1 [{%doc.CompositionIsFirstPrinciple}{%nub.l}[{%ltb}]{%block}{%sortBy.l}][]
@@ -669,6 +665,7 @@
 @bitListToText [[{%bitToChar}]{%block}{%map.l}][]
 @bitListToWord [#{%integer}{%swap}[{%pushBit.bitListToWord}]{%block}{%each.l}][]
 @take2 [{%take}{%take}][]
+@discard2 [{%hsw}{%drop2}{%hsw}][]
 @forCount.s.stopOnCount [{%discard2}][]
 @put2 [{%put}{%put}][]
 @forCount.s.onElem [{%wx}{%put}{%dec}{%put2}{%dip3}{%inline}][]
@@ -679,11 +676,11 @@
 @forCount.s [{%assertNatural}{%swap}[{%forCount.s.step}]{%block}{%bind}{%fixpoint}{%inline}][]
 @inner.take.s [{%empty.l}{%unrot}[{%cons.l}]{%block}{%swap}{%forCount.s}][]
 @take.s [{%inner.take.s}{%drop}{%swap}{%reverse.l}][]
-@step.taking.s [{%take.s}[{%inL}{%p}{%inL}]{%block}[{%inR}{%dropd}]{%block}{%if}][]
-@step.fromState.s [z$wD[vrwrwz'owlc]{%block}r?VRW[%]{%block}r?WLCc][]
-@fromState.s [[{%step.fromState.s}]{%block}{%.bind}{%.fixfirst}{%.bind}][]
+@taking.s.step [{%take.s}[{%inL}{%p}{%inL}]{%block}[{%inR}{%dropd}]{%block}{%if}][]
+@fromState.s.step [z$wD[vrwrwz'owlc]{%block}r?VRW[%]{%block}r?WLCc][]
+@fromState.s [[{%fromState.s.step}]{%block}{%.bind}{%.fixfirst}{%.bind}][]
 @fromStateE.s [{%applyWrap}{%fromState.s}][]
-@taking.s [{%assertNatural+}[{%step.taking.s}]{%block}{%bind}{%fromStateE.s}][]
+@taking.s [{%assertNatural+}[{%taking.s.step}]{%block}{%bind}{%fromStateE.s}][]
 @fmap.s [[{%fmap.s.step}]{%block}{%.bind}{%.fixfirst}{%.bind}][]
 @fmapE.s [{%applyWrap}{%fmap.s}][]
 @map.s [{%fmapE.s}][]
@@ -819,10 +816,11 @@
 @cddddar [{%x}{%cddddr}{%dp}][]
 @cdddddr [{%wx}{%cddddr}{%dpw}][]
 @cmd.test [zwl{%.apply}{%x}rwz][]
-@command.io [zwl{%.apply}{%x}rwz][]
-@step.fromList.s [D[vrwrwz'owlc]{%block}r?VRW[%]{%block}r?WLCc][]
-@fromList.s [[{%step.fromList.s}]{%block}{%.fixfirst}{%.bind}][]
-@compareStreams.a [{%put}[{%ab.compareStreams}]{%block}[{%a-b.compareStreams}]{%block}{%if}][]
+@fromList.s.step [D[vrwrwz'owlc]{%block}r?VRW[%]{%block}r?WLCc][]
+@fromList.s [[{%fromList.s.step}]{%block}{%.fixfirst}{%.bind}][]
+@compareStreams.ab [{%dx}{%x}{%swapd}{%pw}{%put}{%.apply}[{%drop}{%put}{%inline}]{%block}[{%inR}{%discard}{%nip2}]{%block}{%if}][]
+@compareStreams.a~b [{%drop2}{%discard2}{%intro1}{%inR}{%inR}][]
+@compareStreams.a [{%put}[{%compareStreams.ab}]{%block}[{%compareStreams.a~b}]{%block}{%if}][]
 @compareStreams.b~a [{%drop2}{%discard2}{%intro1}{%inL}{%inR}][]
 @compareStreams.~ab [{%drop2}{%discard2}{%intro1}{%inL}][]
 @compareStreams.~a [{%put}[{%compareStreams.b~a}]{%block}[{%compareStreams.~ab}]{%block}{%if}][]
@@ -899,8 +897,6 @@
 @decimal6 [#1000000{%integer}{%.inv}{%roundToFrac}][]
 @delay.p0.step [vrwrwz'olc][]
 @delay.p0 [[{%delay.p0.step}]{%block}{%.fixfirst}{%.bind}][]
-@destroy.io ["destroy
-~{%literal}{%p}{%command.io}{%elim1}][]
 @dig1 [{%roll2}][]
 @roll2d [{%swapd}][]
 @dig1d [{%roll2d}][]
@@ -3320,8 +3316,6 @@
 @dup7.alt [{%.rw}{%dup6.alt}{%.wl}{%dup}{%unroll7d}][]
 @dup8 [{%pw}{%pw}{%pw}{%pw}{%pw}{%pw}{%pw}{%dup}{%dwx}{%dwx}{%dwx}{%dwx}{%dwx}{%dwx}{%dwx}{%wx}{%wx}{%wx}{%wx}{%wx}{%wx}{%wx}][]
 @dupdd [{%.rw}{%dupd}{%.wl}][]
-@duplicate.io ["duplicate
-~{%literal}{%p}{%command.io}{%wx}][]
 @dupsnd [{%wx}{%dup}{%dpw}][]
 @dw [{%.rw}{%w}{%.wl}][]
 @wc [rrwrwzwlwll][]
@@ -3639,8 +3633,8 @@
 ~{%literal}{%p}{%cmd.test}{%drop}][]
 @exitrb.z.rbt [{%exit.z.rbt}][]
 @exp10 [][]
-@step.factorial.fixpoint [{%take}#2{%integer}{%lt}[{%snd}{%dup}{%dec}{%put}{%apply}{%.mul}]{%block}[{%fst}{%discard}]{%block}{%if}][]
-@factorial.fixpoint [{%assertNatural}[{%step.factorial.fixpoint}]{%block}{%fixpoint}{%apply}][]
+@factorial.fixpoint.step [{%take}#2{%integer}{%lt}[{%snd}{%dup}{%dec}{%put}{%apply}{%.mul}]{%block}[{%fst}{%discard}]{%block}{%if}][]
+@factorial.fixpoint [{%assertNatural}[{%factorial.fixpoint.step}]{%block}{%fixpoint}{%apply}][]
 @false [{%false.b}][]
 @fibonacci [#1{%integer}#{%integer}[{%dup}{%swapd}{%.add}]{%block}{%roll}{%repeat}{%dropd}][]
 @filterBy.l [{%partitionBy.l}{%dropd}][]
@@ -3705,8 +3699,6 @@
 @toList.arity1.s [vv{%toList.s}cc][]
 @fromStream.arity1.l [{%toList.arity1.s}][]
 @fullSwapEnv [rvrwlcl][]
-@getOSEnv.io ["getOSEnv
-~{%literal}{%p}{%command.io}][]
 @grow.gt.n2.insertKV.t23 [{%pw}{%pw}][]
 @grow.gtk2.n3.insertKV.t23 [{%fromN2.t23}{%pw}{%dpw}{%dpw}{%fromN2d.t23}{%pw}][]
 @grow.lt.n2.insertKV.t23 [{%l}{%x}{%dp}{%p}{%r}][]
@@ -3879,8 +3871,6 @@
 @left.removeKV.bst [{%wx}{%x}{%hap}{%dp}{%dpw}][]
 @toS.lefts.s [[{%singleton.s}]{%block}[{%drop}{%empty.s}]{%block}{%if}][]
 @lefts.s [[{%toS.lefts.s}]{%block}{%map.s}{%flatten.s}][]
-@listDirectory.io ["listDirectory
-~{%literal}{%p}{%command.io}][]
 @lt1 [{%.lt1}][]
 @lte1 [{%.lte1}][]
 @lteb [{%.lteb}][]
@@ -3943,8 +3933,9 @@
 @wrapKeyObserver.b [{%quote}[{%dupfst}{%swap}]{%block}{%composel}[{%dip}{%distrib}[c]{%block}{%.left}[c]{%block}{%.right}]{%block}{%compose}][]
 @partitionByKey.l [{%wrapKeyObserver.b}{%partitionWith.l}][]
 @nonEmpty.sortByKey.l [{%x}{%dupfst}{%swapd}{%put}{%bind}{%partitionByKey.l}{%swap}{%put}{%bidup}{%rot}{%cons.l}{%append.l}][]
-@step.nubBy.l [{%rot}[{%action.nubBy.l}]{%block}[{%nip2}{%inR}]{%block}{%if}][]
-@nubBy.l [[{%step.nubBy.l}]{%block}{%bind}{%fixpoint}{%apply}][]
+@nubBy.l.action [{%x}{%copy}{%rot}{%bind}{%partitionBy.l}{%drop}{%swap}{%apply}{%put}{%cons.l}][]
+@nubBy.l.step [{%rot}[{%nubBy.l.action}]{%block}[{%nip2}{%inR}]{%block}{%if}][]
+@nubBy.l [[{%nubBy.l.step}]{%block}{%bind}{%fixpoint}{%apply}][]
 @true.b [{%intro1}{%inR}][]
 @null.l [{%false.b}{%true.b}{%condSwap}{%drop}][]
 @pushBit.wordToBitList [r#2{%integer}rQ#{%integer}r>l{%toBoolean}rzwrzwlVlwl][]
@@ -3992,17 +3983,13 @@
 @putback.s [{%cons.s}][]
 @quot.arity2 [vrwQ%c][]
 @r.size.AATree [[{%n.size.AATree}]{%block}{%fixpoint}{%t.size.AATree}][]
-@randomBytes.io ["randomBytes
-~{%literal}{%p}{%command.io}][]
+@randomBytes.io 
 @rand8.io [#1{%integer}{%randomBytes.io}{%assert}{%wx}{%drop}][]
 @ratio [][]
 @rawCompareToCompareOnStack [[{%dpw}{%.apply}]{%block}{%bind}][]
-@readTextFile.io ["readTextFile
-~{%literal}{%p}{%command.io}][]
+@readTextFile.io 
 @textToBlock.io [{%drop}{%false.b}][]
 @readABCFile.io [{%readTextFile.io}[{%inL}]{%block}[{%textToBlock.io}]{%block}{%if}][]
-@readBinaryFile.io ["readBinaryFile
-~{%literal}{%p}{%command.io}][]
 @rem.arity2 [vrwQw%c][]
 @tree.removeKV.bst [{%take2}{%unseal.bst}[{%leaf.removeKV.bst}]{%block}[{%node.removeKV.bst}]{%block}{%if}][]
 @removeKV.bst [{%.bind}[{%tree.removeKV.bst}]{%block}{%bind}{%fixpoint}{%inline}][]
@@ -4423,8 +4410,7 @@
 @tri3dup [{%dup}{%dup}{%tri3*}][]
 @tridup [{%dup}{%dup}{%tri*}][]
 @true [{%true.b}][]
-@tryCap.io [{%intro1}"newTryCap
-~{%literal}{%p}{%command.io}][]
+@tryCap.io 
 @tryAp.io [{%p}{%tryCap.io}{%.apply}][]
 @tryWrap.io [{%tryCap.io}{%.bind}][]
 @unit [{%intro1}][]
@@ -4444,13 +4430,106 @@
 @whend [[]{%block}{%swap}{%ifd}][]
 @whenk [[{%drop}]{%block}{%swap}{%ifk}][]
 @while1 [{%over}{%dip2}{%while}][]
+@wikilon.css ["body {
+  background: linear-gradient(#2e3436, #171A1B);
+  background-attachment: fixed;
+  color: #ecf0eb;
+ }
+ h1,h2,h3,h4,h5,h6,th {
+  color: #d3d7cf;
+ }
+ a {
+  color: #97c4f0;
+  text-decoration: none;
+ }
+ a:hover, a:focus {
+  text-decoration: underline;
+ }
+ strong, b {
+  color: #d3d7cf;
+  font-weight: bold;
+ }
+ a.refDictWord, .dictWord {
+  color: #efd0a7;
+ }
+ a.refDictWordPrefix, .dictWordPrefix {
+  color: #c17d11;
+ }
+ textarea {
+  color: #ecf0eb;
+  background-color: #2e3436;
+  padding: 3px;
+  overflow: auto;
+  resize: both;
+  border: 1px solid #888a85;
+ }
+ input[type="text"] {
+  color: #ecf0eb;
+  background-color: #2e3436;
+  padding: 3px;
+  border: 1px solid #888a85;
+ }
+ input[name="quota"] {
+  text-align: right;
+  color: #888a85;
+ }
+ input[name="editOrigin"] {
+  color: #ce5c00;
+ }
+ input[type="submit"] {
+  background-color: #888a85;
+  color: #ecf0eb;
+  font-weight: bold;
+  text-shadow: 0px 0px 2px black;
+  padding: 1px;
+ }
+ pre {
+  color: #ecf0eb;
+  background-color: #2e3436;
+  padding: 3px;
+  border: 1px solid #888a85;
+  max-width: 640px;
+  min-height: 16px;
+  white-space: pre-wrap;
+ }
+ body.docs {
+  margin: 0 auto;
+  width: 640px;
+ }
+ div.docs {
+  width: 640px;
+ }
+ span.parseError {
+  background-color: #820000;
+ }
+ span.diffHead {
+  background-color: #2a5703;
+ }
+ span.diffEdit {
+  background-color: #371740;
+ }
+ span.diffOrig {
+ }
+ span.diffConflict {
+  background-color: #8c3700;
+ }
+ span.diffConflictSep {
+  color: #f57900;
+  font-weight: bolder;
+ }
+ span.versionHash {
+  color: #8f5902;
+  font-size: x-small;
+  font-family: "Lucida Console", Monaco, monospace;
+ }
+ .todo {
+  color: #555753;
+ }
+~][]
 @wordStreamToBitStream [[{%wordToBitList}{%fromList.s}]{%block}{%bind}{%map.s}{%flatten.s}][]
 @wrapS.stackHand.env [vvrrwvrvrwlc][]
-@writeTextFile.io [{%p}"writeTextFile
-~{%literal}{%p}{%command.io}][]
+@writeTextFile.io 
 @writeABCFile.io [{%take}{%blockToText.io}{%put}{%writeTextFile.io}][]
-@writeBinaryFile.io [{%p}"writeBinaryFile
-~{%literal}{%p}{%command.io}][]
 @x.pushBit.wordToBitList [#2{%integer}{%.divMod}{%take}#{%integer}{%.gtb}{%cons.l}{%put}][]
 @zip.s.onAB [{%dx}{%x}{%swapd}{%pw}{%dpw}{%p}{%inL}][]
 @zip.s.done [{%drop2}{%intro1}{%inR}][]
