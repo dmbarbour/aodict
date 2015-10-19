@@ -1101,20 +1101,25 @@
 ~{%literal}
 @doc.ABC16toN16 "convert an ABC base16 character to an integer in 0..15
 ~{%literal}
-@doc.BinaryData "Raw binary data can represent sensor inputs, controller outputs, compressed audio or visual information, cipher texts, cryptographic signatures, and more. Embedding binaries in Awelon Bytecode (ABC) is convenient, e.g. allowing partial evaluation and secure distribution through ABC's resource model. Awelon project uses a simple strategy for efficient storage and transmission of embedded binary data:
+@doc.BinaryData "Raw binary data can represent sensor inputs, controller outputs, compressed audio or visual information, cipher texts, cryptographic signatures, and more. Embedding binaries in Awelon Bytecode (ABC) is convenient, e.g. allowing partial evaluation and secure distribution through ABC's resource model. Awelon project favors a simple strategy for efficient storage and transmission of embedded binary data:
  
- 1. encode binary data in a base16 alphabet
- 2. special compression pass for base16 data
+        "bdfghjkmnpqstxyzbdfghjkmnpqstxyzbdfghjkmnpqstxyzbdfghjkmnpqstxyz
+         bdfghjkmnpqstxyzbdfghjkmnpqstxyzbdfghjkmnpqstxyzbdfghjkmnpqstxyz
+         bdfghjkmnpqstxyzbdfghjkmnpqstxyzbdfghjkmnpqstxyzbdfghjkmnpqstxyz
+         bdfghjkmnpqstxyzbdfghjkmnpqstxyzbdfghjkmnpqstxyzbdfghjkmnpqstxyz
+        ~
  
- The compression format is very simple: header byte 0xF8, length byte L (0..253), followed by L+3 bytes of data. This will be decompressed into (L+3)*2 base16 characters. If the symbol 0xF8 appeared normally, we could escape that as 0xF8 0xFE. However, 0xF8 won't ever be encountered if compressing UTF-8 or ABC. This results in 0.8% overhead for compressing large embedded binaries, and breaks even with base64 encodings at just 6 bytes. The base16 compression is followed by a more conventional compression, but the total worst-case expansion will be under 2.4% for large binaries.
+ That is, we encode binaries in a base16 alphabet as exactly 32 bytes (64 characters) per line of text. This pattern may be recognized by a specialized compression pass for streaming and storage of bytecode. The compression and embedding overhead becomes negligible for larger binaries. The compression scheme suggested here is to leverage a byte, such as 0xF8, that does not naturally appear in UTF-8 (and hence does not appear in ABC):
  
- The base16 alphabet for ABC is not the standard `0-9a-f`. Instead we use:
+        0xF8 (LineCount-1) binaryContent
  
-     bdfghjkmnpqstxyz            i.e. `a-z` minus `aeiou` and `vrwlc`
+ This would encode up to 256 lines of 32 bytes, or 8kB, following the header, implying the final `\n` character such that the text wrapper is just `"binary~`. In context of text, the total embedding overhead is 3 bytes per 8kB (including the preceding `"` or SP for each chunk) plus one `~` to terminate the text. So the overhead is less than 0.4% for 1kB chunks, and less than 0.04% for 32kB chunks (which is near the maximum I'd recommend). 
  
- This alphabet avoids interference with other Awelon bytecodes or natural language text. Any large string of ABC's base16 characters is most likely intended for binary processing. There is also very little risk of spelling offensive words. The compression pass is case sensitive; lower case only.
+ For binaries embedded in tokens (e.g. cryptographic keys, secure hashes for resource identities, etc.) we might similarly use `0xF9 (32 binary bytes)` to compress binary content. The overhead is under 3%, which is at least better than we could expect from base32 or base64 encodings. And chunks of 32 bytes (256 bits) is a reasonable block size for a lot of keys and secure hashes.
  
- Note: This encoding only affects storage and bandwidth costs. For processing purposes, ABC must still work with strings or streams of base16 characters. Processing of base16 strings may eventually (in the very long term) be accelerated by a few ABCD functions.
+ The base16 alphabet favored here is `bdfghjkmnpqstxyz`, or a-z minus `aeiou` vowels and `vrwlc` data plumbing. This alphabet avoids spelling anything meaningful (e.g. no 'deadbeef' or 'cafebabe') and remains visually distinct from normal English text and Awelon Bytecode. Favoring 64 characters per line is also aimed at preserving ABC's property of being moderately legible.
+ 
+ Compression of binary data is external to ABC semantics. This strictly impacts storage or streaming in contexts where the pass is recognized and enabled. Internally, these are plain old text values. However, it is feasible to accelerate functions oriented around binary processing and conversions, e.g. leveraging ABCD extensions or annotations. In the long term, ABC can achieve competitive performance for binary processing.
 ~{%literal}
 @doc.BinariesInABC {%doc.BinaryData}
 @doc.BinarySearchTree "This is a simple implementation of a binary search tree. Representation:
