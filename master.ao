@@ -693,8 +693,6 @@
 @n.blackHeight.rbt {%wx}{%wx}{%x}{%hap}{%dp}{%dpw}{%dpw}{%take}{%n.color.rbt}[{%hsw}{%inc}{%hsw}]{%block}[]{%block}{%if_}{%put}
 @t.blackHeight.rbt {%unseal.rbt}[{%discard}{%inL}#{%integer}]{%block}[{%n.blackHeight.rbt}{%inRd}]{%block}{%if}{%seald.rbt}
 @blackHeight.rbt [{%t.blackHeight.rbt}]{%block}{%take}{%hfix}{%hap}
-@blockToText.io {%drop}"TODO! blockToText.io
-~{%literal}
 @decd rw{%dec}wl
 @body.repeatUntil {%dip2}{%decd}{%inline}
 @not.b rVRWLCl
@@ -965,39 +963,39 @@
 ~{%literal}
 @doc..assertUnit "1→1; assert singular value is unit
 ~{%literal}
-@doc..bapply ["[x→x'] -- ((x*s)*e)→((x'*s)*e)]
+@doc..bapply "[x→x'] -- [((x*s)*e)→((x'*s)*e)]
 ~{%literal}
-@doc..bfirst ["[x→x'] -- (x*y)→(x'*y)]
+@doc..bfirst "[x→x'] -- [(x*y)→(x'*y)]
 ~{%literal}
 @doc..bi "a a (a→b) -- b b
 ~{%literal}
-@doc..bidup ["a a a→b] -- b b; raw 'bidup'
+@doc..bidup "a a [a→b] -- b b; raw 'bidup'
 ~{%literal}
-@doc..bind ["x [(x*y)→z] -- y→z]; bind argument into pair
+@doc..bind "x [(x*y)→z] -- [y→z]; bind argument into pair
 ~{%literal}
-@doc..bind2nd ["y [(x*y)→z] -- x→z]; bind second argument in pair
+@doc..bind2nd "y [(x*y)→z] -- [x→z]; bind second argument in pair
 ~{%literal}
-@doc..bleft ["[x→x'] -- (x+y)→(x'+y)]
+@doc..bleft "[x→x'] -- [(x+y)→(x'+y)]
 ~{%literal}
-@doc..both ["(a*b) [a→a'] b→b'] -- (a'*b')
+@doc..both "(a*b) [a→a'] [b→b'] -- (a'*b')
 ~{%literal}
-@doc..bright ["[y→y'] -- (x+y)→(x+y')]
+@doc..bright "[y→y'] -- [(x+y)→(x+y')]
 ~{%literal}
-@doc..bsecond ["[y→y'] -- (x*y)→(x*y')]
+@doc..bsecond "[y→y'] -- [(x*y)→(x*y')]
 ~{%literal}
-@doc..curry ["[(x*y)→z] -- x→[y→z]]; curry pair argument
+@doc..curry "[(x*y)→z] -- [x→[y→z]]; curry pair argument
 ~{%literal}
-@doc..divMod ["N(a) N(b) -- N(r) N(q) where a=q*b+r and r in (b,0] or 0,b)
+@doc..divMod "N(a) N(b) -- N(r) N(q) where a=q*b+r and r in (b,0] or [0,b)
 ~{%literal}
-@doc..either ["(a + b) [a→a'] b→b'] -- (a' + b')
+@doc..either "(a + b) [a→a'] [b→b'] -- (a' + b')
 ~{%literal}
-@doc..eitherBind ["(a+b) [(a*e)→e'] (b*e)→e'] -- ([e→e']+[e→e'])
+@doc..eitherBind "(a+b) [(a*e)→e'] [(b*e)→e'] -- ([e→e']+[e→e'])
 ~{%literal}
-@doc..first ["(a*b) a→a'] -- (a'*b)
+@doc..first "(a*b) [a→a'] -- (a'*b)
 ~{%literal}
 @doc..firstfixfirst "([([a→b]*a)→b]*e)→([a→b]*e); a minimal fixpoint
 ~{%literal}
-@doc..fixfirst ["[([a→b]*a)→b] -- a→b]; fixpoint first argument in pair
+@doc..fixfirst "[([a→b]*a)→b] -- [a→b]; fixpoint first argument in pair
 ~{%literal}
 @doc..fmap.s "([a → b] * (a`S * e))→(b`S * e); map stream primitive
 ~{%literal}
@@ -1025,7 +1023,7 @@
 ~{%literal}
 @doc..inR "a→(0+a); primitive inR
 ~{%literal}
-@doc..left ["(a + b) a→a'] -- (a' + b); apply block on left condition
+@doc..left "(a + b) [a→a'] -- (a' + b); apply block on left condition
 ~{%literal}
 @doc..lt "a b -- ((b*a) + (a*b)); a < b?; for numbers a,b
 ~{%literal}
@@ -1047,17 +1045,17 @@
 ~{%literal}
 @doc..pmap.s "([a↣b]*(a`S*e))→(b`S*e); fold process over stream in primitive environment
 ~{%literal}
-@doc..prebind_l ["[((a*s)*e)→e'] -- (a*(s*e))→e']
+@doc..prebind_l "[((a*s)*e)→e'] -- [(a*(s*e))→e']
 ~{%literal}
 @doc..quot "just the quotient from .divMod
 ~{%literal}
 @doc..rem "just the remainder from .divMod
 ~{%literal}
-@doc..right ["(a + b) b→b'] -- (a + b'); apply block on right condition
+@doc..right "(a + b) [b→b'] -- (a + b'); apply block on right condition
 ~{%literal}
 @doc..rw "((a*s)*e)→(s*(a*e)); simpler version of 'take' if we don't need environment other than stack
 ~{%literal}
-@doc..second ["(a*b) b→b'] -- (a*b')
+@doc..second "(a*b) [b→b'] -- (a*b')
 ~{%literal}
 @doc..snd "(x*y)→y
 ~{%literal}
@@ -1075,7 +1073,7 @@
 ~{%literal}
 @doc..tri "a a a (a→b) -- b b b
 ~{%literal}
-@doc..tridup ["a a a a→b] -- b b b; raw 'tridup'
+@doc..tridup "a a a [a→b] -- b b b; raw 'tridup'
 ~{%literal}
 @doc..wl "(s*(a*e))→((a*s)*e); simpler version of 'put' if we don't need environment other than stack
 ~{%literal}
@@ -1410,14 +1408,6 @@
  
  These concerns should eventually be addressed by subsequent models, such as ElasticProcesses. However, KISS principle applies. Despite these limitations, the simple process model can be useful. The simple process model proposed here will be developed under suffix `.p0`, and may easily coexist with more sophisticated models. More sophisticated models include elastic processes  and [machines](https://dl.dropboxusercontent.com/u/4588997/Machines.pdf). I think it may be useful to model machine composition.
 ~{%literal}
-@doc.Quotable "Most values in AO are quotable. 
- 
- There are some unusual exceptions. For example, distributed values (e.g. a pair of which one value is computed at the GPU and another on the CPU) are not quotable. All values entering a quote must be observable at a common location and time, which is then inherited by the quotation.
- 
- A quotation is simply a block that reproduces a value. This typically will have special support from the implementation, but will be serialized to code when necessary for display or networking.
- 
- If a block with affine or relevant properties is quoted, the quote will inherit these properties. 
-~{%literal}
 @doc.R.abc "(((a+b)+c)*e)→((a+(b+c))*e); associate sum right
 ~{%literal}
 @doc.RandomNumberGeneration "A pseudo-random number generator (PRNG) provides a deterministic stream of seemingly random numbers derived from an initial seed. The basic 'uniform' PRNG is like rolling a fair die, producing discrete values in a fixed range without bias. Nice qualities for a PRNG are bounded space requirements, a very large cycle (such that applications never cycle in practice), and efficient performance. There are also applications for 'secure' PRNGs, whose state or future outputs cannot be guessed from past outputs.
@@ -1486,15 +1476,18 @@
 ~{%literal}
 @doc.SpatialIdempotence "Spatial idempotence is an assumption in AO: if a subprogram is computed many times, it must each time return the same result and have no additional side-effects beyond computing it once. This assumption can be enforced through the effects model. However, it is often enforced by affine types to simply prevent expressing of an effect more than once. 
 ~{%literal}
-@doc.StandardEnvironment "AO has many similarities with stack-based programming languages, such as Forth, Factor, and Joy. However, the environment for AO is a value structured of pairs, numbers, and blocks of code, similar in nature to Lisp cons cells. Typically, the tacit argument to any word has the form:
+@doc.StandardEnvironment "AO has many similarities with stack-based programming languages, such as Forth, Factor, and Joy. However, the environment for AO is a value structured primarily of pairs. A stack can be modeled above pairs, but isn't the default. Further, in AO it is necessary to explicitly model the heap and other environmental structures if we want them.
+ 
+ A viable option is to pair the stack with an extended environment:
  
          (stack * environment)
  
- The stack here is used in a manner very similar to the Forth stack. Most relevantly, literals (text, numbers, blocks) all are pushed onto the stack.
+ Here the stack serves the normal role for Forth-like programming. The environment might then contain auxilliary stacks, a modeled filesystem or database, an inventory or user model, and other content. In a Claw view of AO code, texts, blocks, and numbers would be pushed to the stack (e.g. by words `literal`, `block`, and `integer`). This ensures the extended environment remains at a stable location, accessible to other words.
  
-         42 :: (s * e) →  ((Num(42)*s)*e)
+ The shape of the environment is not built into the AO language. Rather, shared conventions and de-facto standards will dominate, with words in the dictionary implicitly favoring a given environment. The Claw view of AO supports namespaces (e.g. via `#foo:`) to support secondary environment models.
  
- By pushing literals onto the stack, AO ensures the environment has a stable location. The environment then provides a useful place for secondary stacks, inventories, tools, and other values the developer might wish to keep on hand and accessible. The shape of the environment is NOT built into the AO language; rather, it is determined by shared conventions and de-facto standards in the AO dictionary.
+ I've experimented with multiple environment models, 
+ The stack-hand environment is  is convenient for a lot of use cases. It simply introduces one auxilliary stack, the 'hand'.
  
  At the moment, the most frequently used environment shape just adds one auxillary stack, which I call the "hand". This takes the following form:
  
@@ -1559,7 +1552,7 @@
  
  Words for this simple stream model use suffix `.s`
 ~{%literal}
-@doc.Transducer ["Transducers are a simple model for *eager* processing of collections, which abstracts the step function. For a full explanation, see the Strangeloop presentation 1](https://www.youtube.com/watch?v=6mTbuzafcII). Hickey's preliminary model for transducers:
+@doc.Transducer "Transducers are a simple model for *eager* processing of collections, which abstracts the step function. For a full explanation, see the [Strangeloop presentation 1](https://www.youtube.com/watch?v=6mTbuzafcII). Hickey's preliminary model for transducers:
  
           step       :: [(val * state) → state]
           transducer :: [step → step]
@@ -1677,34 +1670,6 @@
 ~{%literal}
 @doc.and.b "Bool Bool -- Bool; are both arguments true?
 ~{%literal}
-@doc.ao.utility "The `ao` command line executable provides a number of non-interactive utilities (cf. `ao help`). Among these options is to execute an AO command string (e.g. `ao exec "6 7 * 42 assertEQ"`) or to incrementally execute AO or ABC code received via standard input. For the interactive form, use `aoi`.
- 
- The program starts in the AO standard environment. The effects model is under development, but the current design aims to progress with Awelon project: the toplevel provides a few instantaneous actions, but mostly is used to install or update reactive demand programming behaviors in a manner similar to live programming (albeit, not entirely 'live'; the actual install is an imperative action). 
- 
- Some effects available through the powerblock:
- 
-     obtain random numbers (cryptographic entropy)
-     read and write files
-     read environment variables 
-     unsafely duplicate or destroy any value
- 
- For specifics, see words with suffix `.io`.
- 
- Under consideration:
- 
-     introspection of blocks
-     confine evaluation to trap errors
-     working with state resources (snapshots, resets, etc.)
-     logical clocks and temporal values
-     obtaining some useful 'child' powers
- 
- Additionally, the `ao` utility supports various few annotations:
- 
-     debug output (printing to stderr)
-     compilation of blocks (immediate, traced)     
- 
- The default mode for `ao` is interpretation of ABC. However, compilation of blocks will eventually allow effective performance for real applications. Sadly, the compilation model currently leaks memory (the runtime keeps the object code in memory). But it should be sufficient for a lot of relatively static applications, and should work well with staged programming. 
-~{%literal}
 @doc.ap.abc "([a→a']*(a*e))→(a'*e); apply
 ~{%literal}
 @doc.apcar "Apply a function to just a particular element of a structure.
@@ -1717,9 +1682,9 @@
 @doc.apcdr {%doc.apcar}
 @doc.append.l "a1`L a2`L -- (a1 before a2)`L; append two lists
 ~{%literal}
-@doc.apply ["x x -- y] -- y; apply in limited environment (just 'x' on stack)
+@doc.apply "x [x -- y] -- y; apply in limited environment (just 'x' on stack)
 ~{%literal}
-@doc.applyWrap ["[a -- b] -- a→b]; apply 1:1 stack function in `apply` environment
+@doc.applyWrap "[a -- b] -- [a→b]; apply 1:1 stack function in `apply` environment
 ~{%literal}
 @doc.assert "Awelon offers a primitive to assert that a condition is not false, i.e. that `(a + b)` is certainly not in `a`. (This isn't to say the condition is in `b`. The assertion itself might be dead code.) Since the condition after a successful assertion is not false, we eliminate the sum type and just continue with `b`.
  
@@ -1792,7 +1757,7 @@
  
  Similar to purity, safety can be difficult to validate statically, but is not especially difficult to enforce dynamically. Declaration of safety can also support optimizers. Safety allows optimizations such as dead code elimination and a restricted form of lazy evaluation (where laziness might be restricted to a particular transaction). This complements ABC's universal properties of causal commutativity and spatial idempotence.
 ~{%literal}
-@doc.assertSorted.t23 ["(k*v)'T23 (k*k)→Ord] -- (k*v)'T23; assert 2-3 tree is sorted
+@doc.assertSorted.t23 "(k*v)'T23 [(k*k)→Ord] -- (k*v)'T23; assert 2-3 tree is sorted
 ~{%literal}
 @doc.assertTextEQ1 "text text -- text; assert two texts are equal
 ~{%literal}
@@ -1831,19 +1796,19 @@
 ~{%literal}
 @doc.bidup "apply a single block to two different inputs
 ~{%literal}
-@doc.bind ["x [x -- z] -- -- z]; bind argument onto stack
+@doc.bind "x [x -- z] -- [-- z]; bind argument onto stack
 ~{%literal}
-@doc.bind2nd ["x [x y -- z] -- y -- z]
+@doc.bind2nd "x [x y -- z] -- [y -- z]
 ~{%literal}
-@doc.bind3rd ["w [w x y -- z] -- x y -- z]
+@doc.bind3rd "w [w x y -- z] -- [x y -- z]
 ~{%literal}
-@doc.bind4th ["v [v w x y -- z] -- w x y -- z]
+@doc.bind4th "v [v w x y -- z] -- [w x y -- z]
 ~{%literal}
-@doc.bindK.insertKV.bst ["(k*v) [(k*k)→Ord] -- (k*v) k→Ord]
+@doc.bindK.insertKV.bst "(k*v) [(k*k)→Ord] -- (k*v) [k→Ord]
 ~{%literal}
-@doc.bindK.insertKV.t23 ["(k*v) [(k*k)→Ord] -- (k*v) k→Ord]
+@doc.bindK.insertKV.t23 "(k*v) [(k*k)→Ord] -- (k*v) [k→Ord]
 ~{%literal}
-@doc.bindKVCmp.AATree ["(k*v) [(k*k)→Ord] -- (k*v) k→Ord]
+@doc.bindKVCmp.AATree "(k*v) [(k*k)→Ord] -- (k*v) [k→Ord]
 ~{%literal}
 @doc.bitListToText "(1+1)`L -- text; e.g. of form "01100001"
 ~{%literal}
@@ -1865,15 +1830,13 @@
 ~{%literal}
 @doc.blackHeight.rbt "e'RBT -- e'RBT Nat; count black nodes from root to leftmost leaf
 ~{%literal}
-@doc.block.abc ["A block is simply a finite sequence of ABC. A literal block may be represented in ABC using square brackets like so: `[vrwlc]`. This constructs a first-class function: [vrwlc] :: e → (a*b)→(b*a)] * e
+@doc.block.abc "A block is simply a finite sequence of ABC. A literal block may be represented in ABC using square brackets like so: `[vrwlc]`. This constructs a first-class function: [vrwlc] :: e → [(a*b)→(b*a)] * e
 ~{%literal}
-@doc.blockToText.io "block -- text; (io, asynch); serialize ABC block to text
+@doc.break.l "a`L [pred(a--PseudoBool)] -- a(rem)`L a`L; split prefix for which predicate does not hold
 ~{%literal}
-@doc.break.l ["a`L pred(a--PseudoBool)] -- a(rem)`L a`L; split prefix for which predicate does not hold
+@doc.breakP.l "a`L [a--(b+a)] -- a`L b`L; split longest sequence of `b` results (on left)
 ~{%literal}
-@doc.breakP.l ["a`L a--(b+a)] -- a`L b`L; split longest sequence of `b` results (on left)
-~{%literal}
-@doc.breakRevP.l ["a`L a--(b+a)] -- a`L b(rev)`L
+@doc.breakRevP.l "a`L [a--(b+a)] -- a`L b(rev)`L
 ~{%literal}
 @doc.buryM "The buryN combinators bury the top element from the stack, reversing the corresponding digN operation. This is perhaps a better name than 'unroll'.
 ~{%literal}
@@ -1896,23 +1859,21 @@
 ~{%literal}
 @doc.color.rbt "e'RBT -- e'RBT color; copy color of red-black tree
 ~{%literal}
-@doc.command.io "invoke linear powerblock with (command*arg) message on stack
-~{%literal}
 @doc.comp.abc "([x→y]*([y→z]*e))→([x→z]*e); compose blocks/functions
 ~{%literal}
-@doc.compareLists ["k`L k`L k`Compare] -- Ord; compare lists item by item
+@doc.compareLists "k`L k`L [k`Compare] -- Ord; compare lists item by item
 ~{%literal}
 @doc.compareNumbers "Num Num -- Ord
 ~{%literal}
-@doc.compareOnStackToRawCompare ["[k k -- Ord] -- (k*k)→Ord]
+@doc.compareOnStackToRawCompare "[k k -- Ord] -- [(k*k)→Ord]
 ~{%literal}
-@doc.compareProds ["(a1*b1) (a2*b2) [a`Compare] b`Compare] -- Ord
+@doc.compareProds "(a1*b1) (a2*b2) [a`Compare] [b`Compare] -- Ord
 ~{%literal}
-@doc.compareStreams ["k`S k`S k`Compare] -- Ord; compare streams item by item
+@doc.compareStreams "k`S k`S k`Compare] -- Ord; compare streams item by item
 ~{%literal}
-@doc.compareSums ["(a1+b1) (a2+b2) [a`Compare] b`Compare] -- Ord
+@doc.compareSums "(a1+b1) (a2+b2) [a`Compare] [b`Compare] -- Ord
 ~{%literal}
-@doc.compareTexts "text text -- Ord; compare texts lexicographycally by codepoint order
+@doc.compareTexts "text text -- Ord; compare texts lexicographically by codepoint order
 ~{%literal}
 @doc.compareUnits "1 1 -- Ord
 ~{%literal}
@@ -1921,13 +1882,13 @@
          {&compile} :: (block*e)→(block*e) 
          compile    :: block -- block (on AO stack)
  
- Static compilation is also useful, of course. Dynamic compilation can translate to static compilation via partial evaluation, or static per-word compilation may be available; see `doc.prefix.compile!` for more.
+ Static compilation is also useful, of course. Dynamic compilation can translate to static compilation via partial evaluation. Also see use of the `{&static}` annotation.
 ~{%literal}
-@doc.compose ["[x→y] [y→z] -- x→z]; compose functions
+@doc.compose "[x→y] [y→z] -- [x→z]; compose functions
 ~{%literal}
-@doc.compose.p0 ["[a ↣ b] [b ↣ c] -- a ↣ c]; compose two processes
+@doc.compose.p0 "[a ↣ b] [b ↣ c] -- [a ↣ c]; compose two processes
 ~{%literal}
-@doc.composel ["[y→z] [x→y] -- x→z]; compose on left
+@doc.composel "[y→z] [x→y] -- [x→z]; compose on left
 ~{%literal}
 @doc.condSelect "(a+b) x y -- a x OR b y; select one value, and merge the other
 ~{%literal}
@@ -1953,15 +1914,15 @@
 ~{%literal}
 @doc.copy.l "a`L N -- a(orig)`L a(first N)`L; copy first N elements of list
 ~{%literal}
-@doc.count.p0 ["-- a ↣ N]; (droppable a); as counter, but drop input
+@doc.count.p0 "-- [a ↣ N]; (droppable a); as counter, but drop input
 ~{%literal}
-@doc.countFrom.p0 ["N -- a ↣ N]; (droppable a); as counterFrom, but drop input
+@doc.countFrom.p0 "N -- [a ↣ N]; (droppable a); as counterFrom, but drop input
 ~{%literal}
-@doc.counter.p0 ["-- a ↣ (N*a)]; add index to output (starting from 1)
+@doc.counter.p0 "-- [a ↣ (N*a)]; add index to output (starting from 1)
 ~{%literal}
-@doc.counterFrom.p0 ["N -- a ↣ (N*a)]; add index with initial value
+@doc.counterFrom.p0 "N -- [a ↣ (N*a)]; add index with initial value
 ~{%literal}
-@doc.curry ["[x--z] -- x--[--z]]; curry stack argument
+@doc.curry "[x--z] -- [x--[--z]]; curry stack argument
 ~{%literal}
 @doc.d0.abc "(N(x)*e)→(N(10x+0)*e); digit
 ~{%literal}
@@ -1991,9 +1952,7 @@
 ~{%literal}
 @doc.decimal6 "round number to decimal with six places past decimal point
 ~{%literal}
-@doc.delay.p0 ["a -- a ↣ a]; delays input one step; initial output provided
-~{%literal}
-@doc.destroy.io "a -- ; (io) destroy will drop any input, including relevant blocks (unsafe)
+@doc.delay.p0 "a -- [a ↣ a]; delays input one step; initial output provided
 ~{%literal}
 @doc.digN "The digN combinators are perhaps a better name for roll, since it more clearly connotates that we're dragging some value upwards from the depths of the stack. digN will correspond to roll(N-1); we're accessing the Nth element under the top of the stack.
  
@@ -2001,7 +1960,7 @@
  
  The reverse operation is buryN. The 'digNd' combinators will dip below the top element on the stack.
 ~{%literal}
-@doc.dip ["..a b ..a -- ..a'] -- ..a' b; inline function, except hiding top element of stack
+@doc.dip "..a b [..a -- ..a'] -- ..a' b; inline function, except hiding top element of stack
 ~{%literal}
 @doc.discard "drop and destroy value in hand
 ~{%literal}
@@ -2052,11 +2011,9 @@
 ~{%literal}
 @doc.dupfst "(x*y) -- (x*y) x; see also 'car' (family of similar functions)
 ~{%literal}
-@doc.duplicate.io "a -- a a; (io) duplicate will copy any input, including affine blocks (unsafe)
-~{%literal}
 @doc.dupsnd "(x*y) -- (x*y) y; see also 'cdr' (family of similar functions)
 ~{%literal}
-@doc.each.l ["a`L a --] --; apply block to each element in list
+@doc.each.l "a`L [a --] --; apply block to each element in list
 ~{%literal}
 @doc.foreach.s "Sequentially process every element from a finite stream. The type is roughly:
  
@@ -2065,11 +2022,11 @@
  That is, we apply the same function with each element of the stream in the current AO environment. A non-terminating stream would cause divergence, and is an error, though it's ultimately up to the developer to avoid this error.
 ~{%literal}
 @doc.each.s {%doc.foreach.s}
-@doc.eachUntil.l ["a`L [a --] -- Bool] -- a(rem)`L; each with short circuit (on true)
+@doc.eachUntil.l "a`L [a --] [-- Bool] -- a(rem)`L; each with short circuit (on true)
 ~{%literal}
-@doc.eachWhile.l ["a`L [a --] -- Bool] -- a(rem)`L; each with short circuit (on false)
+@doc.eachWhile.l "a`L [a --] [-- Bool] -- a(rem)`L; each with short circuit (on false)
 ~{%literal}
-@doc.eitherBind ["(a+b) [..e a -- ..e'] ..e b -- ..e'] -- ([..e--..e']+[..e--..e'])
+@doc.eitherBind "(a+b) [..e a -- ..e'] [..e b -- ..e'] -- ([..e--..e']+[..e--..e'])
 ~{%literal}
 @doc.elemAt.l "a`L N -- (a+1); copyable a; N in 1..length; returns in right if list is too short
 ~{%literal}
@@ -2095,13 +2052,13 @@
 ~{%literal}
 @doc.emptyTextMap.m "-- (Text,v)`M; create a map keyed by text
 ~{%literal}
-@doc.enum ["a [a ix -- a] n m -- a; apply with ix in range n,m].
+@doc.enum "a [a ix -- a] n m -- a; apply with ix in range [n,m].
 ~{%literal}
 @doc.enum.s "-- num`S; enumerate from 1..infinity
 ~{%literal}
 @doc.enumFrom.s "start -- num`S; enumerate from start..infinity
 ~{%literal}
-@doc.enumx ["a [a ix -- a] n m -- a; apply with ix in range n,m).
+@doc.enumx "a [a ix -- a] n m -- a; apply with ix in range [n,m).
 ~{%literal}
 @doc.eq "a b -- ((LT(a*b) + GT(b*a)) + EQ(b*a)); for numbers a,b
 ~{%literal}
@@ -2125,15 +2082,15 @@
 ~{%literal}
 @doc.fibonacci "N -- fib(N); the 'hello world' of functional programming ;)
 ~{%literal}
-@doc.filterBy.l ["a`L a--Bool] -- a`L; Copyable&Droppable a
+@doc.filterBy.l "a`L [a--Bool] -- a`L; Copyable&Droppable a
 ~{%literal}
-@doc.filterBy.s ["a`S a -- Bool] -- c`S; Copyable & Droppable a
+@doc.filterBy.s "a`S [a -- Bool] -- c`S; Copyable & Droppable a
 ~{%literal}
-@doc.filterWith.l ["a`L a--(b+c)] -- c`L; Droppable b
+@doc.filterWith.l "a`L [a--(b+c)] -- c`L; Droppable b
 ~{%literal}
-@doc.filterWith.s ["a`S a -- (b+c)] -- c`S; Droppable b
+@doc.filterWith.s "a`S [a -- (b+c)] -- c`S; Droppable b
 ~{%literal}
-@doc.findKV.bst ["(k*v)`BST k (k*k)→Ord] -- (k*v)`BST ((k*v)+1); (copyable k,v)
+@doc.findKV.bst "(k*v)`BST k [(k*k)→Ord] -- (k*v)`BST ((k*v)+1); (copyable k,v)
 ~{%literal}
 @doc.findKV.rbt "Copy a `(k*v)` pair from a red-black binary search tree.
  
@@ -2141,7 +2098,7 @@
  
  If no such key exists, a value is returned in the right.
 ~{%literal}
-@doc.first.p0 ["[a ↣ a'] -- (a*b) ↣ (a'*b)]; process first argument
+@doc.first.p0 "[a ↣ a'] -- [(a*b) ↣ (a'*b)]; process first argument
 ~{%literal}
 @doc.fixpoint "This fixpoint combinator binds a function to receive itself (in fixpoint form) as an argument on the stack. Fixpoint enables expression of recursive behavior.
  
@@ -2166,19 +2123,19 @@
  Note: if this affects the key values, it is the developer's responsibility to
  preserve a sorted ordering.
 ~{%literal}
-@doc.fmap.bst ["x`BST x→y] -- y`BST
+@doc.fmap.bst "x`BST [x→y] -- y`BST
 ~{%literal}
-@doc.fmap.s ["a`S a → b] -- b`S; map a pure function over a stream
+@doc.fmap.s "a`S [a → b] -- b`S; map a pure function over a stream
 ~{%literal}
-@doc.fmap.t23 ["a'T23 a→b] -- b'T23; apply function to every element
+@doc.fmap.t23 "a'T23 [a→b] -- b'T23; apply function to every element
 ~{%literal}
-@doc.fmapE.s ["a`S a -- b] -- b`S; map function in basic `apply` environment
+@doc.fmapE.s "a`S [a -- b] -- b`S; map function in basic `apply` environment
 ~{%literal}
-@doc.fold.l ["x a`L x a -- x] -- x; process each element in constrained environment
+@doc.fold.l "x a`L [x a -- x] -- x; process each element in constrained environment
 ~{%literal}
-@doc.forCount.l ["a`L a --] count -- a`L count(rem); take and operate on list up to count times
+@doc.forCount.l "a`L [a--] count -- a`L count(rem); take and operate on list up to count times
 ~{%literal}
-@doc.forCount.s ["a`S a--] count -- a`S count(rem)
+@doc.forCount.s "a`S [a--] count -- a`S count(rem)
 ~{%literal}
 @doc.foreach.l {%doc.each.l}
 @doc.fromLeaf.rbt "unit -- elem'RBT
@@ -2189,9 +2146,9 @@
 ~{%literal}
 @doc.fromNode.rbt "(elem*(Color*(Tree*Tree))) -- elem'RBT
 ~{%literal}
-@doc.fromState.s ["s s → ((a*s)+1)] -- a`S; stream from state/stepper function
+@doc.fromState.s "s [s → ((a*s)+1)] -- a`S; stream from state/stepper function
 ~{%literal}
-@doc.fromStateE.s ["s s -- ((a*s)+1)] -- a`S; stream from state/stepper in apply environment
+@doc.fromStateE.s "s [s -- ((a*s)+1)] -- a`S; stream from state/stepper in apply environment
 ~{%literal}
 @doc.fromStateSplitNext.r "The simplest way to think about a PRNG is as a state with a pair of functional methods, split and next, which output an updated state.
  
@@ -2212,8 +2169,6 @@
 @doc.fullFactor "((a+b)+(a'+d)) -- (b+d) a
 ~{%literal}
 @doc.fullSwapEnv "E(dest) -- E(origin); swap current & reified environments (note: user model is also swapped).
-~{%literal}
-@doc.getOSEnv.io "text -- text; (io) read an OS environment variable
 ~{%literal}
 @doc.grow.gt.n2.insertKV.t23 "T1 kv1 (T2*(kv2*T3)) -- N3
 ~{%literal}
@@ -2251,11 +2206,11 @@
  
  The main weakness of 'if' behaviors is that they're difficult to extend or compose. They're effectively 'closed' syntactically. Developers are under pressure to push a lot of logic into those blocks. ABC is based on sum types (L+R) to better support composition of conditional behavior, but to leverage sum types requires alternative idioms (such as incremental processes or RDP). 
 ~{%literal}
-@doc.if_ ["..a (L+R) [..a -- ..b]   ..a -- ..b]   -- ..b      ; see @doc.if
+@doc.if_ "..a (L+R) [..a -- ..b]   [..a -- ..b]   -- ..b      ; see @doc.if
 ~{%literal}
-@doc.ifd ["..a (L+R) [..a -- ..b]   ..a -- ..b]   -- ..b (L+R); see @doc.if
+@doc.ifd "..a (L+R) [..a -- ..b]   [..a -- ..b]   -- ..b (L+R); see @doc.if
 ~{%literal}
-@doc.ifk ["..a (L+R) [..a L -- ..b] ..a R -- ..b] -- ..b (L+R); see @doc.if
+@doc.ifk "..a (L+R) [..a L -- ..b] [..a R -- ..b] -- ..b (L+R); see @doc.if
 ~{%literal}
 @doc.import.ao "default root import for `ao` executable. See @doc.ao.utility .
 ~{%literal}
@@ -2279,7 +2234,7 @@
 ~{%literal}
 @doc.inRR "a -- (0+(0+a)); in right-right
 ~{%literal}
-@doc.indexOf.l ["a`L a -- Bool] -- a`L (n+1); copyable a
+@doc.indexOf.l "a`L [a -- Bool] -- a`L (n+1); copyable a
 ~{%literal}
 @doc.insert.m "Insert an element into a map, replacing an existing element if necessary.
  
@@ -2354,7 +2309,7 @@
  
  Note that `{&lazy}` implies `{&safe}`. Annotations, including `{&lazy}`, are not permitted to affect observable behavior of programs, and safety is necessary to ensure that laziness doesn't impact observable behavior. See `assertSafe`.
 ~{%literal}
-@doc.left.p0 ["[a ↣ a'] -- (a+b) ↣ (a'+b)]; process left argument
+@doc.left.p0 "[a ↣ a'] -- [(a+b) ↣ (a'+b)]; process left argument
 ~{%literal}
 @doc.lefts.s "Filter a stream, keeping only the left elements.
  
@@ -2364,29 +2319,9 @@
 ~{%literal}
 @doc.length.l "a`L -- a`L length; return length of list
 ~{%literal}
-@doc.lift.p0 ["[a → b] -- a ↣ b]; function to process
+@doc.lift.p0 "[a → b] -- [a ↣ b]; function to process
 ~{%literal}
 @doc.linear "mark block on stack as linear (neither Copyable nor Droppable)
-~{%literal}
-@doc.linking.abc "ABC's separate compilation and linking model is designed for secure distributed programming and streaming code. An ABC resource is a finite ABC subprogram (much like a block) that can be inlined through ABC's invocation model, i.e. `{#resourceId}`. Such an invocation will typically cause the identified resource to be downloaded, decrypted, decompressed, cached, and compiled.
- 
- The resource identifier is constructed as follows:
- 
- * secure hash of the bytecode is used as encryption key
- * bytecode is deterministically compressed before encryption
- * secure hash of ciphertext is used as lookup and storage key
- * resourceId is concatenation of two secure hashes
- * resourceId is encoded in ABC's base16 ('a-z' minus 'aeiou' and 'vrwlc')
- 
- A resource may include more such resource ids. Through caching and compiling and reusing these resources, Awelon project systems can save a great deal of bandwidth and avoid a lot of rework. Secure hashes effectively enforce that dependencies form a directed acyclic graph. The update and maintenance problems are clearly separate concerns, handled in other program layers. Older resources may eventually be deprecated and fall out of use. 
- 
- ABC resources are not restricted to program logic. Arbitrary data or content, including binary data, may be embedded in ABC then distributed as a resource. Non-compressible binaries will see an expansion of less than 2.4%, which is tolerable for most use-cases. There are many advantages to embedding data: transparent procedural generation; support for richer data structures (e.g. streams); easy mashups, reuse, and caching of content; and potential to compile resources directly into an application. 
- 
- Resources may be downloaded from anywhere, validated using secure hashes, and cached indefinitely. ABC resources are highly compatible with content delivery networks, peer-to-peer distribution, and cloud storage. A runtime or resource may suggest a few locations to search for resources via annotations. For the most part, we can treat resource ids as a global dictionary.
- 
- See also: `prefix.compile!`, `prefix.secret!`, `doc.BinariesInABC`
-~{%literal}
-@doc.listDirectory.io "dirname -- list-of-names; (io,asynch)
 ~{%literal}
 @doc.lookupKV.AATree "Copy an element from the AA tree, after looking it up by key.
  
@@ -2394,12 +2329,12 @@
  
  The tree is not modified by this operation.
 ~{%literal}
-@doc.map.l ["a`L a -- b] -- b`L; apply block modifying each element in list
+@doc.map.l "a`L [a -- b] -- b`L; apply block modifying each element in list
 ~{%literal}
-@doc.map.p0 ["[a -- b] -- a ↣ b]; function (apply env) to process
+@doc.map.p0 "[a -- b] -- [a ↣ b]; function (apply env) to process
 ~{%literal}
 @doc.map.s {%doc.fmapE.s}
-@doc.mapP.l ["a`L a -- b] -- b`L; map elements in limited `apply` environment
+@doc.mapP.l "a`L [a -- b] -- b`L; map elements in limited `apply` environment
 ~{%literal}
 @doc.merge "(a + a') -- a; a and a' must be future compatible
 ~{%literal}
@@ -2407,19 +2342,19 @@
  
  In this case, a and a' must be "future compatible." This doesn't imply the exact same type, and typecheckers may need to track type a and a' together for some steps before fully merging them.
 ~{%literal}
-@doc.mkCompareLists ["[(a*a)→Ord] -- (a`L * a`L)→Ord]
+@doc.mkCompareLists "[(a*a)→Ord] -- [(a`L * a`L)→Ord]
 ~{%literal}
-@doc.mkCompareNums ["-- Num`Compare]; raw number comparisons
+@doc.mkCompareNums "-- [Num`Compare]; raw number comparisons
 ~{%literal}
-@doc.mkCompareProds ["[a`Compare] [b`Compare] -- (a*b)`Compare]
+@doc.mkCompareProds "[a`Compare] [b`Compare] -- [(a*b)`Compare]
 ~{%literal}
-@doc.mkCompareStreams ["[(a*a)→Ord] -- (a`S * a`S)→Ord]
+@doc.mkCompareStreams "[(a*a)→Ord] -- [(a`S * a`S)→Ord]
 ~{%literal}
-@doc.mkCompareSums ["[a`Compare] [b`Compare] -- (a+b)`Compare]
+@doc.mkCompareSums "[a`Compare] [b`Compare] -- [(a+b)`Compare]
 ~{%literal}
-@doc.mkCompareTexts ["-- (text*text)→Ord]
+@doc.mkCompareTexts "-- [(text*text)→Ord]
 ~{%literal}
-@doc.mkCompareUnits ["-- 1`Compare]; trivial, always equal
+@doc.mkCompareUnits "-- [1`Compare]; trivial, always equal
 ~{%literal}
 @doc.mul.abc "(N(a)*(N(b)*e))→(N(a*b)*e); multiply numbers
 ~{%literal}
@@ -2470,8 +2405,6 @@
 ~{%literal}
 @doc.nip2 "(Droppable x,y) ⇒ x y z -- z
 ~{%literal}
-@doc.node.insertKV.AATree ["((k*v)*(t*rt)) [k→Ord] \h node.insert] (k*v) -- node' ((k*v)+1)
-~{%literal}
 @doc.nodeLeft.z.rbt "(e*(c*(l*r))) -- (l * (L*(c*(e*r))) )
 ~{%literal}
 @doc.nodeRight.z.rbt "(e*(c*(l*r))) -- (r * (R*(c*(e*r))) )
@@ -2480,7 +2413,7 @@
 ~{%literal}
 @doc.nub.l "remove duplicate values from list
 ~{%literal}
-@doc.nubBy.l ["a`L eq(a a -- Bool)] -- a`L; value a, provide eq function
+@doc.nubBy.l "a`L [eq(a a -- Bool)] -- a`L; value a, provide eq function
 ~{%literal}
 @doc.null.l "a`L -- a`L Bool; test whether a list is empty without modifying it
 ~{%literal}
@@ -2499,7 +2432,7 @@
 ~{%literal}
 @doc.or.b "Bool Bool -- Bool; is at least one argument true?
 ~{%literal}
-@doc.ordCase ["Ord [onEQ] [onLT] onGT] -- onEQ (or onLT or onGT, depending on Ordinal
+@doc.ordCase "Ord [onEQ] [onLT] [onGT] -- onEQ (or onLT or onGT, depending on Ordinal
 ~{%literal}
 @doc.ordSelect "Ord onEQ onLT onGT -- onEQ (or onLT or onGT, depending on Ordinal)
 ~{%literal}
@@ -2523,19 +2456,19 @@
 ~{%literal}
 @doc.partitionAppendReverse.l "a0`L b0`L (as+bs)`L -- (as(reverse)+a0)`L (bs(reverse)+b0)`L
 ~{%literal}
-@doc.partitionBy.l ["a`L a--Bool] -- a`L a`L; Copyable a
+@doc.partitionBy.l "a`L a--Bool] -- a`L a`L; Copyable a
 ~{%literal}
-@doc.partitionByKey.l ["(k*v)`L k--Bool] -- (k*v)`L (k*v)`L; Copyable k
+@doc.partitionByKey.l "(k*v)`L k--Bool] -- (k*v)`L (k*v)`L; Copyable k
 ~{%literal}
 @doc.partitionElem.l "a`L a(m) -- a(≤m)`L a(>m)`L; Comparable a
 ~{%literal}
-@doc.partitionWith.l ["a`L a--(b+c)] -- b`L c`L
+@doc.partitionWith.l "a`L a--(b+c)] -- b`L c`L
 ~{%literal}
 @doc.paste "paste object from hand onto top of stack (copy/paste metaphor)
 ~{%literal}
 @doc.pick "(Copyable x) ⇒ x y z -- x y z x
 ~{%literal}
-@doc.pmap.s ["a`S a ↣ b] -- b`S; fold a process over a stream
+@doc.pmap.s "a`S a ↣ b] -- b`S; fold a process over a stream
 ~{%literal}
 @doc.popEnv "E(a*stack) -- a E(stack); pop element from reified environment.
 ~{%literal}
@@ -2546,26 +2479,6 @@
 @doc.prefix.bench "benchmarks; not part of the usual test suite
  
  note: these may cause trouble for partial evaluators (but they're also a nice validation that partial evaluators don't do too much work)
-~{%literal}
-@doc.prefix.compile! "If you define word `compile!foo` this can act as a directive that the AO system should separately compile the word `foo`. The definition of `compile!foo` should be left empty, at least for now. The `compile!` word may later provide opportunity for optimization directives.
- 
- This directive leverages ABC's separate compilation and linking model. An ABC subprogram may be saved and given a unique identifier. ABC uses its effects system to load and logically inline the subprogram - e.g. `{#resourceId}`. The `compile!foo` directive tells an AO compiler to replace the word with the equivalent resource identifier and save the bytecode at an appropriate location for linking. This doesn't require compilation, but provides an excellent opportunity for it. 
- 
- The actual encoding of ABC resources is more sophisticated than plain bytecode, including compression and encryption steps. Relevant pseudocode:
- 
-         makeResource(bytecode):
-             hashBC = secureHashBC(bytecode)
-             cipherText = encrypt(hashBC,compress(bytecode))
-             hashCT = secureHashCT(cipherText)
-             store(hashCT,cipherText)
-             resourceId = encode(append(hashCT,hashBC))
-             return {#resourceId}
- 
- The current proposal is that secureHashBC is SHA3-384 taking the last 256 bits, and secureHashCT is SHA3-384 taking the first 128 bits. (That is, SHA3-384 is used twice, keeping independent parts for 384 bits in the end.) The encryption will likely be AES-CTR (with a zero IV). Compression is still under development, but includes a specialized compression pass for embedded binary data.
- 
- The idea is that we should be able to distribute application resources through distrusted servers (cloud servers, content distribution networks, etc.), and also that we should be able to eliminate duplicates and maximize reuse via caching. There is a remaining vulnerability to 'confirmation' attacks, but developers can address this by indicating sensitive words with a `secret!foo` directive.
- 
- See also: `doc.prefix.secret!` `doc.BinariesInABC`
 ~{%literal}
 @doc.prefix.doc "AO does not have 'comments' in the usual sense. Instead, a word that starts with `doc.` can document some aspect of a dictionary - e.g. a word, project, or convention. This makes documentation a first-class, computable value, though most of the time it will simply be some text.
  
@@ -2580,19 +2493,6 @@
          ( -- [a→b] [a→b]). 
  
  That is, developers should simply add two blocks to the current stack (in no particular order) which should have equivalent behavior modulo typeful identity. Use of the 'eqv' prefix enables external tools to systematically discover, document, and validate these assertions. Further, they may later prove useful to optimizers and code rewriting.
-~{%literal}
-@doc.prefix.secret! ["ABC's separate compilation and linking model uses convergent encryption](http://en.wikipedia.org/wiki/Convergent_encryption), which is vulnerable to a class of 'confirmation' attacks, i.e. whereby an attacker might determine a ten digit bank account number by systematically encrypting all ten billion combinations and finding which is stored on the server. Confirmation attacks only work against low-entropy data, but a great deal of privacy-sensitive information is low entropy.
- 
- To resist confirmation attacks, we can mix in a 'convergence secret', e.g. some high entropy text, with the ABC resource. If we add a 192-bit secret, the cost of a confirmation attack would increase by a factor of roughly 2^192. For compression, a 192-bit convergence secret might be encoded in ABC's base 16 as:
- 
-     "bpgzmjkydmfyfdhdhptzmnbpdjkndjnsgdjyzpxbsypshqfk
-     ~{&secret}%
- 
- A convergence secret should be deterministic, stable across compiles, and cryptographically secure. A simple HMAC of an external secret together with the protected code would work well enough. The `secret!` prefix acts as a directive to the AO compiler. If the word `secret!foo` is defined, then a convergence secret should be generated for when including code for `foo` in a resource. The directives may be used in other ways, too, such as constraining exports.
- 
- In practice, most AO code will not be secret. But it might come up occasionally if using an AO dictionary more like an operating system or personal environment than a programming language.
- 
- See also: `doc.BinariesInABC`
 ~{%literal}
 @doc.prefix.test "Automated testing is an effective means to maintain software quality, avoid regressions, and achieve confidence in code. Test driven design can keep designs well grounded and incremental.  
  
@@ -2618,7 +2518,7 @@
 ~{%literal}
 @doc.quot.arity2 "(N(a)*N(b))→N(q); just quotient from divMod.arity2
 ~{%literal}
-@doc.quote ["(Quotable x) ⇒ x -- --x]
+@doc.quote "x -- [--x]
 ~{%literal}
 @doc.quote.abc "(a*e)→([s→(a*s)]*e); quote non-distributed value
 ~{%literal}
@@ -2628,19 +2528,11 @@
 ~{%literal}
 @doc.r_ "(((a*b)*c)*e)→((a*(b*c))*e); ~ `[%r]$`
 ~{%literal}
-@doc.randomBytes.io "count -- (list of octets); (io) secure random source
-~{%literal}
 @doc.rawCompareNumbers "(Num*Num)→Ord
 ~{%literal}
 @doc.rawCompareNumbers' "(Num(a)*Num(b))→((EQ(a*a))+(LT(a*b)+GT(b*a)))
 ~{%literal}
-@doc.rawCompareToCompareOnStack ["[(k*k)→Ord] -- k k -- Ord]
-~{%literal}
-@doc.readABCFile.io "filename -- (1(err) + block); (io,asynch)
-~{%literal}
-@doc.readBinaryFile.io "filename -- (1(err) + octets); (io,asynch)
-~{%literal}
-@doc.readTextFile.io "filename -- (1(err) + text); (io,asynch)
+@doc.rawCompareToCompareOnStack "[(k*k)→Ord] -- k k -- Ord]
 ~{%literal}
 @doc.reifyHand "hand becomes single object in fresh hand
 ~{%literal}
@@ -2694,11 +2586,11 @@
 ~{%literal}
 @doc.repN "[A] rep3 = A A A
 ~{%literal}
-@doc.repeat ["a a -- a] n -- a; repeat block `n` times
+@doc.repeat "a [a -- a] n -- a; repeat block `n` times
 ~{%literal}
-@doc.repeatUntil ["[action(--)] cond(--Bool)] N -- repeat N times or while some other condition
+@doc.repeatUntil "[action(--)] [cond(--Bool)] N -- repeat N times or while some other condition
 ~{%literal}
-@doc.repeatWhile ["[action(--)] cond(--Bool)] N -- repeat N times or until some other condition
+@doc.repeatWhile "[action(--)] [cond(--Bool)] N -- repeat N times or until some other condition
 ~{%literal}
 @doc.replaceTree.bst "After we remove an inner node from a tree, we're left with two children - a left child and a right child. We want to replace these two children with a singular, combined binary search tree. 
  
@@ -2717,7 +2609,7 @@
 ~{%literal}
 @doc.reverseAppend.l "a1`L a2`L -- (reverse a2 ++ a1)`L; auxillary
 ~{%literal}
-@doc.right.p0 ["[b ↣ b'] -- (a+b) ↣ (a+b')]; process right argument
+@doc.right.p0 "[b ↣ b'] -- [(a+b) ↣ (a+b')]; process right argument
 ~{%literal}
 @doc.rights.s "(a+b)`S -- b`S; see `doc.lefts.s`
 ~{%literal}
@@ -2749,17 +2641,17 @@
 ~{%literal}
 @doc.rt2t.AATree "(Node + Tree) -- Tree
 ~{%literal}
-@doc.run ["[A] run = A A]; equivalent to 'dup dip'
+@doc.run "[A] run = [A A]; equivalent to 'dup dip'
 ~{%literal}
-@doc.runN ["[A] run3 = A A A A]
+@doc.runN "[A] run3 = [A A A A]
 ~{%literal}
-@doc.scan.l ["s a`L s a -- s b] -- s b`L; simultaneous map & fold in limited env
+@doc.scan.l "s a`L [s a -- s b] -- s b`L; simultaneous map & fold in limited env
 ~{%literal}
 @doc.seal "a -- :a; anonymous discretionary seal; see doc.ValueSealing
 ~{%literal}
 @doc.seal.bst "for debugging only; will probably remove seal later
 ~{%literal}
-@doc.second.p0 ["[b ↣ b'] -- (a*b) ↣ (a*b')]; process second argument
+@doc.second.p0 "[b ↣ b'] -- [(a*b) ↣ (a*b')]; process second argument
 ~{%literal}
 @doc.seek.z.rbt "Search down the zipper until we reach a tree with the requested key. 
  
@@ -2795,17 +2687,17 @@
 ~{%literal}
 @doc.snd "(x*y) -- y
 ~{%literal}
-@doc.sortBy.l ["a`L lt(a a -- Bool)]; sort list of values given a less-than function (a a -- Bool)
+@doc.sortBy.l "a`L [lt(a a -- Bool)]; sort list of values given a less-than function (a a -- Bool)
 ~{%literal}
-@doc.sortByKey.l ["(k*v)`L lt(k k -- Bool)]; sort a list by keys
+@doc.sortByKey.l "(k*v)`L [lt(k k -- Bool)]; sort a list by keys
 ~{%literal}
-@doc.span.l ["a`L pred(a--PseudoBool)] -- a(rem)`L a`L; split prefix for which predicate holds
+@doc.span.l "a`L [pred(a--PseudoBool)] -- a(rem)`L a`L; split prefix for which predicate holds
 ~{%literal}
-@doc.spanP ["a`L a--(a+b)] -- a`L b`L; split longest sequence of `b` results (on right)
+@doc.spanP "a`L [a--(a+b)] -- a`L b`L; split longest sequence of `b` results (on right)
 ~{%literal}
-@doc.spanRevAppP.l ["b0`L a`L a--(a+b)] -- (b(rev)++b0)`L a`L
+@doc.spanRevAppP.l "b0`L a`L [a--(a+b)] -- (b(rev)++b0)`L a`L
 ~{%literal}
-@doc.spanRevP.l ["a`L a--(a+b)] -- a`L b(rev)`L
+@doc.spanRevP.l "a`L [a--(a+b)] -- a`L b(rev)`L
 ~{%literal}
 @doc.spin "x y z -- z y x
 ~{%literal}
@@ -2872,7 +2764,7 @@
  
  The standard PRNG is insecure, and lacks a strong theoretical argument for robustness of its 'split' behavior. But it should be suitable for most use cases. It is translated directly from Haskell's standard random number generator (System.Random), and produces the same numbers under the hood. This in turn was transliterated by Lennart Augustsson from Pierre L'Ecuyer's Portable Combined Generator (1988).
 ~{%literal}
-@doc.step.p0 ["a [a↣b] -- b a↣b]; run process one step
+@doc.step.p0 "a [a↣b] -- b [a↣b]; run process one step
 ~{%literal}
 @doc.stepLeft.z.rbt "e'Z.RBT -- e'Z.RBT; step to left child (if any)
 ~{%literal}
@@ -2964,8 +2856,6 @@
 ~{%literal}
 @doc.textBitsToList "textBits -- (1+1)`L; textBits is of form "01100001" (no other characters)
 ~{%literal}
-@doc.textToBlock.io "text -- (1+block); (io, asynch); parse text as ABC block
-~{%literal}
 @doc.toBoolean "(a+b) -- Bool; (droppable a, droppable b)
 ~{%literal}
 @doc.toBoolean.arity1e "(a+b)*e → (1+1)*e; droppable a, droppable b
@@ -2998,7 +2888,7 @@
 ~{%literal}
 @doc.toStreamR.bst "x`BST -- x`S; stream elements from right to left
 ~{%literal}
-@doc.tree.insertKV.bst ["(k*v) (k*v)`BST [insertKV] k→Ord] -- (k*v)`BST ((k*v)+1)
+@doc.tree.insertKV.bst "(k*v) (k*v)`BST [insertKV] [k→Ord] -- (k*v)`BST ((k*v)+1)
 ~{%literal}
 @doc.tree.insertKV.t23 "Documenting implementation details here... because this is relatively complex compared to most data structures.
  
@@ -3007,7 +2897,7 @@
  
  Here we're returning either a tree OR a 'grow' proposition (along with the replaced element in the hand). The type of grow is the same as N2, indicating a new proposed tree of height one greater than the original tree. I.e. if we insert to a leaf, we always get the grow proposition. An N2 node will always absorb a 'grow' proposition by changing to an N3 node. If we attempt to grow an N3 node, the result is a new grow proposition. We can trivially grow the root, resulting in a new two-three tree.
 ~{%literal}
-@doc.tri ["[p] [q] [r] tri = [p] keep q] keep r; apply 3 blocks to same 1 arg
+@doc.tri "[p] [q] [r] tri = [p] keep [q] keep r; apply 3 blocks to same 1 arg
 ~{%literal}
 @doc.tri* "apply 3 blocks each to 1 respective input
 ~{%literal}
@@ -3027,27 +2917,15 @@
 ~{%literal}
 @doc.trimBoolean "(x*1 + y*1) -- (x+y); may be useful after distrib
 ~{%literal}
-@doc.tryAp.io ["a a→b] -- ((E*a)+b); (io) attempt to apply, but isolate failure
- 
- Failures primarily include failed assertions and type errors. On failure, a sealed error message E is included with the original argument, and will typically be logged as well. The error message is intended for humans, and can only be unsealed by the powerblock.
- 
- The ability to isolate failure is considered a protected capability - in part for security reasons, but in larger part to simplify reasoning about static safety and partial failure of subprograms. By controlling this capability, a parent program can control which subprograms are allowed to partially fail and keep running. Developers are discouraged from using `try` except in special cases, such as when running runtime-generated untrusted code.
- 
- Developers can access the 'try' capability separately from applying it, by use of 'tryCap.io'.
-~{%literal}
-@doc.tryCap.io [" -- ([a→b]*a)→((E*a)+b)]; (io) obtain capability to confine error
-~{%literal}
-@doc.tryWrap.io "[a→b]--[a→((E*a)+b)]; (io) modify a function to trap error
-~{%literal}
 @doc.tuck "(Copyable y) ⇒ x y -- y x y
 ~{%literal}
-@doc.unless ["..a (L+R) ..a L -- ..a] -- ..a
+@doc.unless "..a (L+R) [..a L -- ..a] -- ..a
 ~{%literal}
-@doc.unless_ ["..a (L+R) ..a -- ..a] -- ..a
+@doc.unless_ "..a (L+R) [..a -- ..a] -- ..a
 ~{%literal}
-@doc.unlessd ["..a (L+R) ..a -- ..a] -- ..a (L+R)
+@doc.unlessd "..a (L+R) [..a -- ..a] -- ..a (L+R)
 ~{%literal}
-@doc.unlessk ["..a (L+R) ..a L -- ..a] -- ..a (L+R)
+@doc.unlessk "..a (L+R) [..a L -- ..a] -- ..a (L+R)
 ~{%literal}
 @doc.unquote "[--x] -- x
 ~{%literal}
@@ -3057,13 +2935,13 @@
 ~{%literal}
 @doc.unseal ":a -- a; unseal a value sealed by 'seal'; see doc.ValueSealing
 ~{%literal}
-@doc.until ["[action(--)] cond(--Bool)] --; repeat action until boolean condition
+@doc.until "[action(--)] [cond(--Bool)] --; repeat action until boolean condition
 ~{%literal}
-@doc.until1 ["[action(--)] cond(--Bool)] --; as untilCond, but act at least once
+@doc.until1 "[action(--)] [cond(--Bool)] --; as untilCond, but act at least once
 ~{%literal}
-@doc.until1Sum ["a a -- (a + b)] -- b
+@doc.until1Sum "a [a -- (a + b)] -- b
 ~{%literal}
-@doc.untilSum ["(a + b) a -- (a + b)] -- b
+@doc.untilSum "(a + b) [a -- (a + b)] -- b
 ~{%literal}
 @doc.unzip.l "(a*b)`L -- a`L b`L
 ~{%literal}
@@ -3071,7 +2949,7 @@
 ~{%literal}
 @doc.v_ "(a*e)→((a*1)*e); ~ `[%v]$`
 ~{%literal}
-@doc.validateTree.t23 ["(k*v)'T23 (k*k)→Ord] -- (k*v)'T23; assert balanced and sorted
+@doc.validateTree.t23 "(k*v)'T23 [(k*k)→Ord] -- (k*v)'T23; assert balanced and sorted
 ~{%literal}
 @doc.w "(x*y) -- (y*x)
 ~{%literal}
@@ -3091,21 +2969,21 @@
  This is much more composable than car and cdr, at least in an ad-hoc sense (we can extract a deep structure, then perform further extractions on it). It is not as composable as true lenses. It is also used as the basis for the `setcar!` series of functions.
 ~{%literal}
 @doc.wcdr {%doc.wcar}
-@doc.when ["..a (L+R) ..a R -- ..a] -- ..a
+@doc.when "..a (L+R) [..a R -- ..a] -- ..a
 ~{%literal}
-@doc.when_ ["..a (L+R) ..a -- ..a] -- ..a
+@doc.when_ "..a (L+R) [..a -- ..a] -- ..a
 ~{%literal}
-@doc.whend ["..a (L+R) ..a -- ..a] -- ..a
+@doc.whend "..a (L+R) [..a -- ..a] -- ..a
 ~{%literal}
-@doc.whenk ["..a (L+R) ..a R -- ..a] -- ..a (L+R)
+@doc.whenk "..a (L+R) [..a R -- ..a] -- ..a (L+R)
 ~{%literal}
-@doc.while ["[action(--)] cond(--Bool)] --; repeat action while boolean condition
+@doc.while "[action(--)] [cond(--Bool)] --; repeat action while boolean condition
 ~{%literal}
-@doc.while1 ["[action(--)] cond(--Bool)] --; as whileCond, but act at least once
+@doc.while1 "[action(--)] [cond(--Bool)] --; as whileCond, but act at least once
 ~{%literal}
-@doc.while1Sum ["b b -- (a + b)] -- a
+@doc.while1Sum "b [b -- (a + b)] -- a
 ~{%literal}
-@doc.whileSum ["(a + b) b -- (a + b)] -- a
+@doc.whileSum "(a + b) [b -- (a + b)] -- a
 ~{%literal}
 @doc.whitespace.abc "ABC permits whitespace to simplify formatting. Only SP (32) and LF (10) are permitted. These are understood as operators with type (∀a.a→a). Whitespace may also express paragraphs (see @doc.paragraph.abc).
  
@@ -3129,17 +3007,11 @@
 ~{%literal}
 @doc.wrap.z.rbt "e'RBT -- e'Z.RBT; wrap tree in zipper
 ~{%literal}
-@doc.wrapKeyObserver.b ["[k--Bool] -- (k*v)--((k*v)+(k*v))]; Copyable k
+@doc.wrapKeyObserver.b "[k--Bool] -- [(k*v)--((k*v)+(k*v))]; Copyable k
 ~{%literal}
-@doc.wrapObserver.b ["[a--Bool] -- a--(a+a)]; Copyable a
+@doc.wrapObserver.b "[a--Bool] -- [a--(a+a)]; Copyable a
 ~{%literal}
-@doc.wrapfn ["[x→y] [w→x] [y→z] -- w→z]; wrap a function
-~{%literal}
-@doc.writeABCFile.io "block filename -- (1(err) + 1(ok)); (io,asynch)
-~{%literal}
-@doc.writeBinaryFile.io "octets filename -- (1(err) + 1(ok)); (io,asynch)
-~{%literal}
-@doc.writeTextFile.io "text filename -- (1(err) + 1(ok)); (io,asynch)
+@doc.wrapfn "[x→y] [w→x] [y→z] -- [w→z]; wrap a function
 ~{%literal}
 @doc.x "(x*y) -- y x
 ~{%literal}
@@ -3983,13 +3855,8 @@
 @putback.s {%cons.s}
 @quot.arity2 vrwQ%c
 @r.size.AATree [{%n.size.AATree}]{%block}{%fixpoint}{%t.size.AATree}
-@randomBytes.io 
-@rand8.io #1{%integer}{%randomBytes.io}{%assert}{%wx}{%drop}
-@ratio 
+@ratio l
 @rawCompareToCompareOnStack [{%dpw}{%.apply}]{%block}{%bind}
-@readTextFile.io 
-@textToBlock.io {%drop}{%false.b}
-@readABCFile.io {%readTextFile.io}[{%inL}]{%block}[{%textToBlock.io}]{%block}{%if}
 @rem.arity2 vrwQw%c
 @tree.removeKV.bst {%take2}{%unseal.bst}[{%leaf.removeKV.bst}]{%block}[{%node.removeKV.bst}]{%block}{%if}
 @removeKV.bst {%.bind}[{%tree.removeKV.bst}]{%block}{%bind}{%fixpoint}{%inline}
@@ -4410,9 +4277,6 @@
 @tri3dup {%dup}{%dup}{%tri3*}
 @tridup {%dup}{%dup}{%tri*}
 @true {%true.b}
-@tryCap.io 
-@tryAp.io {%p}{%tryCap.io}{%.apply}
-@tryWrap.io {%tryCap.io}{%.bind}
 @unit {%intro1}
 @unless [{%drop}]{%block}{%if}
 @unlessd []{%block}{%ifd}
@@ -4528,8 +4392,6 @@
 ~
 @wordStreamToBitStream [{%wordToBitList}{%fromList.s}]{%block}{%bind}{%map.s}{%flatten.s}
 @wrapS.stackHand.env vvrrwvrvrwlc
-@writeTextFile.io 
-@writeABCFile.io {%take}{%blockToText.io}{%put}{%writeTextFile.io}
 @x.pushBit.wordToBitList #2{%integer}{%.divMod}{%take}#{%integer}{%.gtb}{%cons.l}{%put}
 @zip.s.onAB {%dx}{%x}{%swapd}{%pw}{%dpw}{%p}{%inL}
 @zip.s.done {%drop2}{%intro1}{%inR}
