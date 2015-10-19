@@ -1,8 +1,4 @@
-@integer l
-@literal l
-@block l
-@ratio l
-@decimal l
+@#.abc v#{%integer}c
 @p rwrzwll
 @.mul {%p}rr*l
 @* {%.mul}
@@ -22,26 +18,26 @@
 @inR rVVRWLCl
 @b-a.compareStreams {%drop2}{%discard2}{%intro1}{%inL}{%inR}
 @-ab.compareStreams {%drop2}{%discard2}{%intro1}{%inL}
-@.prebind_l r[l]ol
+@.prebind_l r[l]{%block}rol
 @.rw rw
 @.wl wl
 @w rrwll
 @pw {%p}{%w}
 @distrib {%p}rrDl
-@.eitherBind {%pw}{%distrib}r[rw%vrw'oc]?VRW[r%vrw'oc]?WLCl
+@.eitherBind {%pw}{%distrib}r[rw%vrw'oc]{%block}r?VRW[r%vrw'oc]{%block}r?WLCl
 @eitherBind {%.prebind_l}{%.rw}{%.prebind_l}{%.wl}{%.eitherBind}
 @merge rMl
 @inline rvr$c
 @if {%eitherBind}{%merge}{%inline}
 @-a.compareStreams {%put}[{%b-a.compareStreams}]{%block}[{%-ab.compareStreams}]{%block}{%if}
-@inner..abs #>[-vrw%c]?VRW[%]?WLCM
+@inner..abs #{%integer}r>[-vrw%c]{%block}r?VRW[%]{%block}r?WLCM
 @.abs r{%inner..abs}l
 @onElem.addend.s rw'ovrwrwz'owlVc
 @onFini.addend.s r%vr$c
-@step.addend.s lwvvrwlcw$wD[{%onElem.addend.s}]?VRW[{%onFini.addend.s}]?WLCMc
-@.firstfixfirst#v2 '[^'ow^'zowvr$c]^'owo
+@step.addend.s lwvvrwlcw$wD[{%onElem.addend.s}]{%block}r?VRW[{%onFini.addend.s}]{%block}r?WLCMc
+@.firstfixfirst#v2 '[^'ow^'zowvr$c]{%block}r^'owo
 @.firstfixfirst {%.firstfixfirst#v2}
-@.addend.s [{%step.addend.s}]{%.firstfixfirst}w'ow'o
+@.addend.s [{%step.addend.s}]{%block}r{%.firstfixfirst}w'ow'o
 @.app1 vvr$c
 @.app1e vvrrz$lc
 @.apply {%p}rr$l
@@ -50,28 +46,29 @@
 @.applyd {%swap}{%.apply}
 @.assertFirstUnit vrvrwlcrwlc
 @.assertUnit vvrwlcc
-@bind {%pw}rr'[l]wool
+@bind {%pw}rr'[l]{%block}rwool
 @.bapply [{%.apply}]{%block}{%bind}
-@.bfirst r'[$]wol
+@.bfirst r'[$]{%block}rwol
 @dup r^zlwl
 @swapd {%.rw}{%swap}{%.wl}
 @tuck {%dup}{%swapd}
 @.bi {%tuck}{%.apply}{%.rw}{%.apply}{%.wl}
-@.bidup {%dup}{%.rw}{%.apply}{%swap}{%.wl}{%.apply}{%swap}
+@.bi& {%dup}{%.rw}{%.apply}{%swap}{%.wl}{%.apply}{%swap}
 @.bind {%pw}rr'ol
 @.swap vrwlc
 @compose {%pw}rrol
 @composel {%swap}{%compose}
 @.bind2nd [{%.swap}]{%block}{%composel}{%.bind}
-@.bleft r'[v]o[?c]wol
+@.bleft r'[v]{%block}ro[?c]{%block}rwol
 @take {%hsw}{%put}{%hsw}
 @x rrwzlwl
 @.first {%take}{%x}{%put}{%.apply}{%p}
 @.second {%take}{%pw}{%put}{%.first}{%pw}
 @.both {%take}{%.first}{%put}{%.second}
-@.bright r'[vVRW]o[?WLCc]wol
-@.bsecond r'[vrw]o[$wlc]wol
+@.bright r'[vVRW]{%block}ro[?WLCc]{%block}rwol
+@.bsecond r'[vrw]{%block}ro[$wlc]{%block}rwol
 @.curry [{%.bind}]{%block}{%bind}
+@.inv r/l
 @.div {%.inv}{%.mul}
 @wx {%w}{%x}
 @.divMod {%p}rrQll{%wx}
@@ -81,32 +78,32 @@
 @notd {%swap}{%not}{%swap}
 @.right {%notd}{%.left}{%not}
 @.either {%unrot}{%.left}{%swap}{%.right}
-@.firstfixfirst#v1 [^'o]o^'o
+@.firstfixfirst#v1 [^'o]{%block}ro^'o
 @.fixfirst r{%.firstfixfirst}l
 @onElem.flatten.s wvrwrw'o{%.addend.s}vr$c
 @.inR vVVRWLCc
-@step.flatten.s wvvrwlcw$wD[{%onElem.flatten.s}]?VRW[%{%.inR}]?WLCMc
-@.flatten.s [{%step.flatten.s}]{%.firstfixfirst}w'o
+@step.flatten.s wvvrwlcw$wD[{%onElem.flatten.s}]{%block}r?VRW[%{%.inR}]{%block}r?WLCMc
+@.flatten.s [{%step.flatten.s}]{%block}r{%.firstfixfirst}w'o
 @onElem.fmap.s rz$vrwrw'owlc
-@step.fmap.s lwvvrwlcw$wD[{%onElem.fmap.s}]?VRW[%]?WLCc
-@.fmap.s [{%step.fmap.s}]w'o{%.firstfixfirst}w'o
+@step.fmap.s lwvvrwlcw$wD[{%onElem.fmap.s}]{%block}r?VRW[%]{%block}r?WLCc
+@.fmap.s [{%step.fmap.s}]{%block}rw'o{%.firstfixfirst}w'o
 @next.fromStateSplitNext.r rrr%z$rz'olc
 @split.fromStateSplitNext.r rrrw%z$rzw^zw'owzw'olc
-@step.fromStateSplitNext.r llvrD[{%next.fromStateSplitNext.r}]?VRW[{%split.fromStateSplitNext.r}]?WLCMc
+@step.fromStateSplitNext.r llvrD[{%next.fromStateSplitNext.r}]{%block}r?VRW[{%split.fromStateSplitNext.r}]{%block}r?WLCMc
 @.fromStateSplitNext.r {%pw}[{%step.fromStateSplitNext.r}]{%block}{%.bind}{%.fixfirst}{%.bind}
 @.fst vrw%c
 @.gt {%p}rr>l
 @.mirror VRWLC
 @.snd vr%c
-@.lte1 {%p}rr>[{%.fst}]?{%.mirror}[{%.snd}]?l
+@.lte1 {%p}rr>[{%.fst}]{%block}r?{%.mirror}[{%.snd}]{%block}r?l
 @.gt1 {%.lte1}{%not}
-@trimBoolean.arity1e Fw%
-@toBoolean.arity1e vvrwlcD{%trimBoolean.arity1e}
-@toBoolean r{%toBoolean.arity1e}l
+@trimBoolean\1e Fw%
+@toBoolean\1e vvrwlcD{%trimBoolean\1e}
+@toBoolean r{%toBoolean\1e}l
 @.gtb {%.gt}{%toBoolean}
 @.lt {%p}rrw>l
 @.gte {%.lt}{%not}
-@.gte1 {%p}rrw>[{%.snd}]?{%.mirror}[{%.fst}]?l
+@.gte1 {%p}rrw>[{%.snd}]{%block}r?{%.mirror}[{%.fst}]{%block}r?l
 @.gteb {%.gte}{%toBoolean}
 @.inL vVc
 @.lt1 {%.gte1}{%not}
@@ -114,9 +111,9 @@
 @.lte {%.gt}{%not}
 @.lteb {%.lte}{%toBoolean}
 @onElem.pmap.s rz$rz'ovrwrwz'owlc
-@step.pmap.s wlwvvrwlcw$wD[{%onElem.pmap.s}]?VRW[%]?WLCc
-@.pmap.s [{%step.pmap.s}]{%.firstfixfirst}w'ow'o
-@.postbind_pw r[{%pw}]wol
+@step.pmap.s wlwvvrwlcw$wD[{%onElem.pmap.s}]{%block}r?VRW[%]{%block}r?WLCc
+@.pmap.s [{%step.pmap.s}]{%block}r{%.firstfixfirst}w'ow'o
+@.postbind_pw r[{%pw}]{%block}rwol
 @.quot {%p}rrQ%l
 @.rem {%p}rrQw%l
 @.square {%dup}{%.mul}
@@ -124,21 +121,25 @@
 @.state.p0 [{%step.state.p0}]{%block}{%.bind}{%.fixfirst}{%.bind}
 @.tri {%tuck}{%.apply}{%.rw}{%.bi}{%.wl}
 @rot {%swapd}{%swap}
-@.tridup {%dup}{%.rw}{%.apply}{%rot}{%.wl}{%dup}{%.rw}{%.apply}{%rot}{%.wl}{%.apply}{%rot}
+@.tri& {%dup}{%.rw}{%.apply}{%rot}{%.wl}{%dup}{%.rw}{%.apply}{%rot}{%.wl}{%.apply}{%rot}
+@/ {%.div}
 @ll.compareSums {%pw}{%.wl}{%.apply}{%.wl}{%drop}
 @rl.compareSums {%drop2}{%.wl}{%drop}{%.wl}{%drop}{%intro1}{%inR}{%inR}
 @?l.compareSums {%.rw}[{%.wl}{%ll.compareSums}]{%block}[{%.wl}{%rl.compareSums}]{%block}{%if}
 @lr.compareSums {%drop2}{%.wl}{%drop}{%.wl}{%drop}{%intro1}{%inL}{%inR}
 @rr.compareSums {%pw}{%.wl}{%drop}{%.wl}{%.apply}
 @?r.compareSums {%.rw}[{%.wl}{%lr.compareSums}]{%block}[{%.wl}{%rr.compareSums}]{%block}{%if}
+@C.abc C
 @EQ {%intro1}{%inL}
 @inRR {%inR}{%inR}
 @GT {%intro1}{%inRR}
+@L.abc L
 @empty.l {%intro1}{%inR}
 @cons.l {%p}{%inL}
 @LF {%empty.l}#10{%integer}{%cons.l}
 @inRL {%inL}{%inR}
 @LT {%intro1}{%inRL}
+@R.abc R
 @TODO.AO "Much to do about AO
   * functions for association lists, maps, records, or similar
    *   maybe support for tables, too; relational algebra
@@ -208,20 +209,20 @@
 @a.compareStreams {%put}[{%ab.compareStreams}]{%block}[{%a-b.compareStreams}]{%block}{%if}
 @abcBase16Alphabet "bdfghjkmnpqstxyz
 ~{%literal}
-@abs.arity1 v{%inner..abs}c
+@abs\1 v{%inner..abs}c
 @dpw {%.rw}{%pw}{%.wl}
 @dip rwrzvrwr$wlcl
 @action.each.l {%wx}wlwl{%dpw}{%dip}{%wx}{%inline}
 @roll {%.rw}{%rot}{%.wl}{%swap}
 @action.eachUntil.l {%wx}{%roll}{%pw}{%rot}{%dip}{%wx}{%inline}
-@dec r#1-+l
+@dec r#1-{%integer}r+l
 @put2 {%put}{%put}
 @dip2 rwrwrzlzvrwr$wlcrzlwl
 @dip3 {%dpw}{%dip2}{%wx}
 @action.forCount.l {%dec}{%put}{%x}{%unrot}{%put2}{%dip3}{%inline}
 @copy {%dup}{%take}
-@neq rwrzw>[vr>c]?Rl
-@neq1 {%neq}r[{%.snd}]?VRWR[{%.fst}]?W[{%.snd}]?WLWLCl
+@neq rwrzw>[vr>c]{%block}r?Rl
+@neq1 {%neq}r[{%.snd}]{%block}r?VRWR[{%.fst}]{%block}r?W[{%.snd}]{%block}r?WLWLCl
 @eq1 {%neq1}{%not}
 @eq1m {%eq1}[vMc]{%block}{%.left}
 @neq1m {%eq1m}{%not}
@@ -259,22 +260,22 @@
 @action.repeat {%dec}{%unrot}{%dip2}{%inline}
 @add.abc +
 @unseal.stats r{.stats}l
-@inc r#1+l
+@inc r#1{%integer}r+l
 @paste {%hsw}{%copy}{%hsw}
 @seal.stats r{:stats}l
 @add.stats {%take}{%unseal.stats}{%x}{%inc}{%swap}{%x}{%paste}{%.add}{%swap}{%put}{%dup}{%.mul}{%.add}{%pw}{%pw}{%seal.stats}
-@add.arity2 vr+c
+@add\2 vr+c
 @addend.s [{%step.addend.s}]{%block}{%.fixfirst}{%.bind}{%.bind}
 @aff.abc f
 @affine rfl
 @alignToFrac {%dup}rw{%.quot}wl{%.mul}
-@and.b {%distrib}rVRW[c]?WLCL[v%]?l
+@and.b {%distrib}rVRW[c]{%block}r?WLCL[v%]{%block}r?l
 @ap.abc $
 @dp {%.rw}{%p}{%.wl}
 @bindKVCmp.AATree {%dx}{%dupd}{%.bind}{%dp}
-@node.insertKV.AATree {%dx}{%dx}{%dup}{%.apply}{%dp}{%dp}{&TODO}
+@node.insertKV.AATree {%dx}{%dx}{%dup}{%.apply}{%dp}{%dp}{&TODO: insert node then rebalance.}
 @taked {%swap}{%take}
-@hfix#v3 {%put}r[l{%take}]ol{%.fixfirst}{%take}
+@hfix#v3 {%put}r[l{%take}]{%block}rol{%.fixfirst}{%take}
 @hfix {%hfix#v3}
 @hap {%put}{%inline}
 @empty.AATree {%intro1}{%inR}
@@ -354,7 +355,7 @@
 @unwrap.stackHand.env lccc
 @unwrap.std.env {%unwrap.stackHand.env}
 @postApply {%unwrap.std.env}
-@applyWrap r[{%preApply}]o[{%postApply}]wol
+@applyWrap r[{%preApply}]{%block}ro[{%postApply}]{%block}rwol
 @apply.alt {%applyWrap}{%.apply}
 @apply0to0.stackHand.env rvvvrrvrrz$wlcllccc
 @apply0to0.std.env {%apply0to0.stackHand.env}
@@ -519,13 +520,13 @@
 @assertBlack.rbt {%t.color.rbt}{%assertInL}{%elim1}
 @red.assertBalanced.rbt {%wx}{%wx}{%x}{%assertBlack.rbt}{%hapc}{%rot}{%assertBlack.rbt}{%hap}{%swapd}{%assertEQ1.n}{%dpw}{%dpw}{%dpw}
 @fst rrw%l
-@condSelect_ {%p}{%distrib}r[rwl]?FMw%l{%fst}
+@condSelect_ {%p}{%distrib}r[rwl]{%block}r?FMw%l{%fst}
 @if_ {%condSelect_}{%inline}
 @n.assertBalanced.rbt {%n.color.rbt}[{%black.assertBalanced.rbt}]{%block}[{%red.assertBalanced.rbt}]{%block}{%if_}
 @t.assertBalanced.rbt {%unseal.rbt}[{%discard}{%inL}#{%integer}]{%block}[{%n.assertBalanced.rbt}{%inRd}]{%block}{%if}{%seald.rbt}
 @h.assertBalanced.rbt [{%t.assertBalanced.rbt}]{%block}{%take}{%hfix}{%hap}
 @assertBalanced.rbt {%h.assertBalanced.rbt}{%drop}
-@assertBoolean rVR[{%.assertUnit}]?W[{%.assertUnit}]?WLCl
+@assertBoolean rVR[{%.assertUnit}]{%block}r?W[{%.assertUnit}]{%block}r?WLCl
 @gte {%.gte}
 @assertGTE {%gte}{%assert}{%x}
 @assertGTEz #{%integer}{%assertGTE}{%drop}
@@ -601,8 +602,8 @@
 @nub.l [{%step.nub.l}]{%block}{%fixpoint}{%apply}
 @ltb {%.ltb}
 @bi* [{%dip}]{%block}{%dip}{%inline}
-@bidup {%dup}{%bi*}
-@nonEmpty.sortBy.l {%x}{%copy}{%rot}{%bind}{%partitionBy.l}{%swap}{%rot}{%bidup}{%put}{%cons.l}{%append.l}
+@bi& {%dup}{%bi*}
+@nonEmpty.sortBy.l {%x}{%copy}{%rot}{%bind}{%partitionBy.l}{%swap}{%rot}{%bi&}{%put}{%cons.l}{%append.l}
 @step.sortBy.l {%rot}[{%nonEmpty.sortBy.l}]{%block}[{%nip2}{%inR}]{%block}{%if}
 @sortBy.l [{%step.sortBy.l}]{%block}{%bind}{%fixpoint}{%apply}
 @bench.docmanip1 {%doc.CompositionIsFirstPrinciple}{%nub.l}[{%ltb}]{%block}{%sortBy.l}
@@ -637,7 +638,7 @@
 @bindK.insertKV.bst {%.rw}{%dupfst}{%.wl}{%.bind}
 @bindK.insertKV.rbt {%.rw}{%dupfst}{%.wl}{%.bind}
 @bindK.insertKV.t23 {%.rw}{%dupfst}{%.wl}{%.bind}
-@mul2 r#2*l
+@mul2 r#2{%integer}r*l
 @pushBit.bitListToWord [{%mul2}]{%block}[{%mul2}{%inc}]{%block}{%if_}
 @pushBit.bitListToWordK {%wx}{%.rw}{%pushBit.bitListToWord}{%.wl}
 @mul2d rw{%mul2}wl
@@ -661,7 +662,7 @@
 @inner.take.s {%empty.l}{%unrot}[{%cons.l}]{%block}{%swap}{%forCount.s}
 @take.s {%inner.take.s}{%drop}{%swap}{%reverse.l}
 @step.taking.s {%take.s}[{%inL}{%p}{%inL}]{%block}[{%inR}{%dropd}]{%block}{%if}
-@step.fromState.s z$wD[vrwrwz'owlc]?VRW[%]?WLCc
+@step.fromState.s z$wD[vrwrwz'owlc]{%block}r?VRW[%]{%block}r?WLCc
 @fromState.s [{%step.fromState.s}]{%block}{%.bind}{%.fixfirst}{%.bind}
 @fromStateE.s {%applyWrap}{%fromState.s}
 @taking.s {%assertNatural+}[{%step.taking.s}]{%block}{%bind}{%fromStateE.s}
@@ -677,6 +678,8 @@
 @n.blackHeight.rbt {%wx}{%wx}{%x}{%hap}{%dp}{%dpw}{%dpw}{%take}{%n.color.rbt}[{%hsw}{%inc}{%hsw}]{%block}[]{%block}{%if_}{%put}
 @t.blackHeight.rbt {%unseal.rbt}[{%discard}{%inL}#{%integer}]{%block}[{%n.blackHeight.rbt}{%inRd}]{%block}{%if}{%seald.rbt}
 @blackHeight.rbt [{%t.blackHeight.rbt}]{%block}{%take}{%hfix}{%hap}
+@blockToText.io {%drop}"TODO! blockToText.io
+~{%literal}
 @decd rw{%dec}wl
 @body.repeatUntil {%dip2}{%decd}{%inline}
 @not.b rVRWLCl
@@ -724,7 +727,7 @@
 @bury8 {%unroll9}
 @unroll9d {%.rw}{%unroll9}{%.wl}
 @bury8d {%unroll9d}
-@c$ [c]$
+@c$ [c]{%block}r$
 @c.abc c
 @c_ vrwlcwlc
 @v_ vrwvrwlc
@@ -799,16 +802,17 @@
 @cddddar {%x}{%cddddr}{%dp}
 @cdddddr {%wx}{%cddddr}{%dpw}
 @cmd.test zwl{%.apply}{%x}rwz
+@command.io zwl{%.apply}{%x}rwz
 @comp.abc o
-@step.fromList.s D[vrwrwz'owlc]?VRW[%]?WLCc
+@step.fromList.s D[vrwrwz'owlc]{%block}r?VRW[%]{%block}r?WLCc
 @fromList.s [{%step.fromList.s}]{%block}{%.fixfirst}{%.bind}
 @step.compareStreams {%swap}{%take2}{%intro1}{%.applyd}{%take}{%intro1}{%.applyd}[{%a.compareStreams}]{%block}[{%-a.compareStreams}]{%block}{%if}
 @compareStreams [{%step.compareStreams}]{%block}{%bind}{%fixpoint}{%inline}
 @compareLists {%take}{%fromList.s}{%take}{%fromList.s}{%put2}{%compareStreams}
-@rawCompareNumbers' vrw>[vr>c]?Rc
-@e.toOrd VRWRW[v%]?W[v%]?LW[v%]?LC
-@toOrd.arity1 v{%e.toOrd}c
-@rawCompareNumbers {%rawCompareNumbers'}{%toOrd.arity1}
+@rawCompareNumbers' vrw>[vr>c]{%block}r?Rc
+@e.toOrd VRWRW[v%]{%block}r?W[v%]{%block}r?LW[v%]{%block}r?LC
+@toOrd\1 v{%e.toOrd}c
+@rawCompareNumbers {%rawCompareNumbers'}{%toOrd\1}
 @compareNumbers {%pw}[{%rawCompareNumbers}]{%block}{%.apply}
 @compareOnStackToRawCompare [{%wx}]{%block}{%composel}{%applyWrap}
 @compareProds {%.rw}{%.rw}{%dx}{%x}{%swapd}{%pw}{%dpw}{%.wl}{%.apply}[{%drop}{%.wl}{%.apply}]{%block}[{%inR}{%.wl}{%drop}{%dropd}]{%block}{%if}
@@ -821,11 +825,11 @@
 @compose.p0 [{%step.compose.p0}]{%block}{%.fixfirst}{%.bind}{%.bind}
 @composel.p0 {%swap}{%compose.p0}
 @cond.eachUntil.l {%swap}{%dip3}{%roll}[{%action.eachUntil.l}]{%block}[{%nip2}{%inL}]{%block}{%if_}
-@condSelect {%p}{%distrib}r[rwl]?l{%merge}{%x}{%fst}
+@condSelect {%p}{%distrib}r[rwl]{%block}r?l{%merge}{%x}{%fst}
 @fullFactor rFMll{%x}
-@condSwap {%p}{%distrib}r[rwl]?l{%fullFactor}{%wx}
+@condSwap {%p}{%distrib}r[rwl]{%block}r?l{%fullFactor}{%wx}
 @condap.abc ?
-@cons.s {%p}{%inL}r'[c]wol
+@cons.s {%p}{%inL}r'[c]{%block}rwol
 @constant.s [v^lVc]{%block}{%fromState.s}
 @copy.abc ^
 @counter.splitReverseN.l {%swap}{%dup}#1{%integer}{%lt}{%swapd}
@@ -852,7 +856,7 @@
 @take7 {%take6}{%take}
 @copy7 {%dup7}{%take7}
 @incd rw{%inc}wl
-@state.p0 r[{%preApply}{%wx}]o[{%pw}{%postApply}]wol{%.state.p0}
+@state.p0 r[{%preApply}{%wx}]{%block}ro[{%pw}{%postApply}]{%block}rwol{%.state.p0}
 @countFrom.p0 [{%drop}{%dup}{%incd}]{%block}{%state.p0}
 @count.p0 #1{%integer}{%countFrom.p0}
 @counterFrom.p0 [rw{%dup}{%incd}wl{%pw}]{%block}{%state.p0}
@@ -861,7 +865,7 @@
 @curry2 [{%bind}{%curry}]{%block}{%bind}
 @curry3 [{%bind}{%curry2}]{%block}{%bind}
 @curry4 [{%bind}{%curry3}]{%block}{%bind}
-@digit.abc rw#10*+
+@digit.abc rw#10{%integer}r*+
 @d0.abc #{%integer}{%digit.abc}
 @d1.abc #1{%integer}{%digit.abc}
 @d2.abc #2{%integer}{%digit.abc}
@@ -872,15 +876,17 @@
 @d7.abc #7{%integer}{%digit.abc}
 @d8.abc #8{%integer}{%digit.abc}
 @d9.abc #9{%integer}{%digit.abc}
-@debugPrintRaw r[{&debug print raw}]$l
-@debugPrintText r[{&debug print text}]$l
-@dec.arity1 v#1-+c
+@debugPrintRaw r[{&debug print raw}]{%block}r$l
+@debugPrintText r[{&debug print text}]{%block}r$l
+@dec\1 v#1-{%integer}r+c
 @div2 r#5{%integer}#1{%integer}{%decimal}r*l
 @roundToFrac {%dup}rw{%div2}{%.add}wl{%alignToFrac}
 @decimal12 #1000000000000{%integer}{%.inv}{%roundToFrac}
 @decimal6 #1000000{%integer}{%.inv}{%roundToFrac}
 @step.delay.p0 vrwrwz'olc
 @delay.p0 [{%step.delay.p0}]{%block}{%.fixfirst}{%.bind}
+@destroy.io "destroy
+~{%literal}{%p}{%command.io}{%elim1}
 @dig1 {%roll2}
 @roll2d {%swapd}
 @dig1d {%roll2d}
@@ -924,15 +930,16 @@
 @discard6 {%hsw}{%drop6}{%hsw}
 @distrib.abc D
 @false.b {%intro1}{%inL}
-@trimBoolean r{%trimBoolean.arity1e}l
+@trimBoolean r{%trimBoolean\1e}l
 @distribInL {%false.b}{%swap}{%distrib}{%trimBoolean}
 @distribInLd {%.rw}{%distribInL}{%.wl}
 @distribInR {%distribInL}{%mirror}
 @distribInRd {%.rw}{%distribInR}{%.wl}
-@div2.arity1 v#5{%integer}#1{%integer}{%decimal}r*c
+@div2\1 v#5{%integer}#1{%integer}{%decimal}r*c
 @div2d rw{%div2}wl
 @divMod.abc Q
-@divMod.arity2 vrwQwlc
+@divMod\2 vrwQwlc
+@div\2 vrw/*c
 @l rrwrzwlll
 @dl {%.rw}{%l}{%.wl}
 @doc.#.abc "e→(N(0)*e); intro number 0
@@ -959,7 +966,7 @@
 ~{%literal}
 @doc..bi "a a (a→b) -- b b
 ~{%literal}
-@doc..bidup "a a [a→b] -- b b; raw 'bidup'
+@doc..bi& "a a [a→b] -- b b; raw 'bi&'
 ~{%literal}
 @doc..bind "x [(x*y)→z] -- [y→z]; bind argument into pair
 ~{%literal}
@@ -974,6 +981,8 @@
 @doc..bsecond "[y→y'] -- [(x*y)→(x*y')]
 ~{%literal}
 @doc..curry "[(x*y)→z] -- [x→[y→z]]; curry pair argument
+~{%literal}
+@doc..div "N(a) N(b) -- N(a/b)
 ~{%literal}
 @doc..divMod "N(a) N(b) -- N(r) N(q) where a=q*b+r and r in (b,0] or [0,b)
 ~{%literal}
@@ -1012,6 +1021,8 @@
 @doc..inL "a→(a+0); primitive inL
 ~{%literal}
 @doc..inR "a→(0+a); primitive inR
+~{%literal}
+@doc..inv "N(a) -- N(1/a); a must be non-zero
 ~{%literal}
 @doc..left "(a + b) [a→a'] -- (a' + b); apply block on left condition
 ~{%literal}
@@ -1063,7 +1074,7 @@
 ~{%literal}
 @doc..tri "a a a (a→b) -- b b b
 ~{%literal}
-@doc..tridup "a a a [a→b] -- b b b; raw 'tridup'
+@doc..tri& "a a a [a→b] -- b b b; raw 'tri&'
 ~{%literal}
 @doc..wl "(s*(a*e))→((a*s)*e); simpler version of 'put' if we don't need environment other than stack
 ~{%literal}
@@ -1091,25 +1102,20 @@
 ~{%literal}
 @doc.ABC16toN16 "convert an ABC base16 character to an integer in 0..15
 ~{%literal}
-@doc.BinaryData "Raw binary data can represent sensor inputs, controller outputs, compressed audio or visual information, cipher texts, cryptographic signatures, and more. Embedding binaries in Awelon Bytecode (ABC) is convenient, e.g. allowing partial evaluation and secure distribution through ABC's resource model. Awelon project favors a simple strategy for efficient storage and transmission of embedded binary data:
+@doc.BinaryData "Raw binary data can represent sensor inputs, controller outputs, compressed audio or visual information, cipher texts, cryptographic signatures, and more. Embedding binaries in Awelon Bytecode (ABC) is convenient, e.g. allowing partial evaluation and secure distribution through ABC's resource model. Awelon project uses a simple strategy for efficient storage and transmission of embedded binary data:
  
-        "bdfghjkmnpqstxyzbdfghjkmnpqstxyzbdfghjkmnpqstxyzbdfghjkmnpqstxyz
-         bdfghjkmnpqstxyzbdfghjkmnpqstxyzbdfghjkmnpqstxyzbdfghjkmnpqstxyz
-         bdfghjkmnpqstxyzbdfghjkmnpqstxyzbdfghjkmnpqstxyzbdfghjkmnpqstxyz
-         bdfghjkmnpqstxyzbdfghjkmnpqstxyzbdfghjkmnpqstxyzbdfghjkmnpqstxyz
-        ~
+ 1. encode binary data in a base16 alphabet
+ 2. special compression pass for base16 data
  
- That is, we encode binaries in a base16 alphabet as exactly 32 bytes (64 characters) per line of text. This pattern may be recognized by a specialized compression pass for streaming and storage of bytecode. The compression and embedding overhead becomes negligible for larger binaries. The compression scheme suggested here is to leverage a byte, such as 0xF8, that does not naturally appear in UTF-8 (and hence does not appear in ABC):
+ The compression format is very simple: header byte 0xF8, length byte L (0..253), followed by L+3 bytes of data. This will be decompressed into (L+3)*2 base16 characters. If the symbol 0xF8 appeared normally, we could escape that as 0xF8 0xFE. However, 0xF8 won't ever be encountered if compressing UTF-8 or ABC. This results in 0.8% overhead for compressing large embedded binaries, and breaks even with base64 encodings at just 6 bytes. The base16 compression is followed by a more conventional compression, but the total worst-case expansion will be under 2.4% for large binaries.
  
-        0xF8 (LineCount-1) binaryContent
+ The base16 alphabet for ABC is not the standard `0-9a-f`. Instead we use:
  
- This would encode up to 256 lines of 32 bytes, or 8kB, following the header, implying the final `\n` character such that the text wrapper is just `"binary~`. In context of text, the total embedding overhead is 3 bytes per 8kB (including the preceding `"` or SP for each chunk) plus one `~` to terminate the text. So the overhead is less than 0.4% for 1kB chunks, and less than 0.04% for 32kB chunks (which is near the maximum I'd recommend). 
+     bdfghjkmnpqstxyz            i.e. `a-z` minus `aeiou` and `vrwlc`
  
- For binaries embedded in tokens (e.g. cryptographic keys, secure hashes for resource identities, etc.) we might similarly use `0xF9 (32 binary bytes)` to compress binary content. The overhead is under 3%, which is at least better than we could expect from base32 or base64 encodings. And chunks of 32 bytes (256 bits) is a reasonable block size for a lot of keys and secure hashes.
+ This alphabet avoids interference with other Awelon bytecodes or natural language text. Any large string of ABC's base16 characters is most likely intended for binary processing. There is also very little risk of spelling offensive words. The compression pass is case sensitive; lower case only.
  
- The base16 alphabet favored here is `bdfghjkmnpqstxyz`, or a-z minus `aeiou` vowels and `vrwlc` data plumbing. This alphabet avoids spelling anything meaningful (e.g. no 'deadbeef' or 'cafebabe') and remains visually distinct from normal English text and Awelon Bytecode. Favoring 64 characters per line is also aimed at preserving ABC's property of being moderately legible.
- 
- Compression of binary data is external to ABC semantics. This strictly impacts storage or streaming in contexts where the pass is recognized and enabled. Internally, these are plain old text values. However, it is feasible to accelerate functions oriented around binary processing and conversions, e.g. leveraging ABCD extensions or annotations. In the long term, ABC can achieve competitive performance for binary processing.
+ Note: This encoding only affects storage and bandwidth costs. For processing purposes, ABC must still work with strings or streams of base16 characters. Processing of base16 strings may eventually (in the very long term) be accelerated by a few ABCD functions.
 ~{%literal}
 @doc.BinariesInABC {%doc.BinaryData}
 @doc.BinarySearchTree "This is a simple implementation of a binary search tree. Representation:
@@ -1144,7 +1150,7 @@
  
  In addition, blocks may be constructed by quotation of a value:
  
-         quote   :: x -- [-- x]
+         quote   :: (Quotable x) ⇒ x -- [-- x]
          unquote :: [-- x] -- x
  
  After construction, blocks can be applied in various ways. Developers will mostly use 'apply', which applies a block to the current environment except for the hand. Items in the current hand are hidden. But there are other operations that include (potentially) useful patterns for data hiding and application.
@@ -1347,7 +1353,19 @@
  
  Explicit loops in AO are required to terminate. Due to the halting problem, termination cannot always be proven or disproven statically. However, a non-terminating loop is always a bug, and developers are expected to treat one thusly.
 ~{%literal}
-@doc.Math "Awelon Bytecode (ABC) only knows about arbitrary-width integers. It has a small set of primitive operators (`+*-Q` for add, multiply, negate, divmod) for manipulating integers. This is suitable for basic arithmetic, though explicit modeling is necessary for rationals and floating points and other number types. Also, tacit concatenative languages are weak at expressing mathematical formulae. Dedicated support from DSLs or editable views may greatly simplify math.
+@doc.Math "Awelon Bytecode (ABC) has a built in number type for exact rational numbers, and a small set of primitive operators (`+*-/Q` for add, multiply, negate, reciprocal, divmod) for manipulating these numbers. This is suitable for basic arithmetic. In some cases, a runtime may use inexact number representations, guided by annotation... but exact math is the default.
+ 
+ Awelon Object (AO) language provides convenient representation of numbers - e.g. decimal, hexadecimal, fractional. In addition, it is envisioned (though not yet practiced) that AO should make heavy use of units information - e.g. distinguishing 4 kilograms from 4 litres, i.e. as an alternative to conventional typing disciplines. Units are relatively easy to express in concatenative languages, e.g. the word `kilograms` might take a number off the stack and wrap it with the appropriate unit structure. 
+ 
+ On the assumption that most AO math functions shall support operators, the 'primitive' math operations are named with prefix `.`, as in `.add` and `.mul`. In addition, there is a class of pure math functions that operate on pairs or single values, meant for use with process models and stream processing, which have the form `add\N` and `mul\N`, where N is the arity.
+ 
+ Sadly, concatenative languages are not very nice for expressing sophisticated algebraic formula. The stack shuffling, duplication, and data plumbing can interfere greatly with comprehension compared to a more declarative approach. To address this we can feasibly leverage embedded DSLs and partial evaluation. Compare:
+ 
+         drop dup dup .mul swap .abs rot3 dup .mul swap .sub .add
+         drop [.square] [.abs] bi .neg [.square] dip .add
+         "x y z → y^2 + x^2 - |y|" doTheMath
+ 
+ These three lines essentially express the same behavior (assuming suitable implementations of each word), but the latter is decidedly more declarative and comprehensible. Unfortunately, it's still stuck in a nasty string. Long term, embedded DSLs should be able to leverage [embedded literal objects](http://awelonblue.wordpress.com/2014/07/22/embedded-literal-objects/) to achieve rich, compositional structure with various maths.
 ~{%literal}
 @doc.N16toABC16 "convert an integer in 0..15 to the associated ABC character
 ~{%literal}
@@ -1390,6 +1408,14 @@
  5. opaque; hinders structural optimizations
  
  These concerns should eventually be addressed by subsequent models, such as ElasticProcesses. However, KISS principle applies. Despite these limitations, the simple process model can be useful. The simple process model proposed here will be developed under suffix `.p0`, and may easily coexist with more sophisticated models. More sophisticated models include elastic processes  and [machines](https://dl.dropboxusercontent.com/u/4588997/Machines.pdf). I think it may be useful to model machine composition.
+~{%literal}
+@doc.Quotable "Most values in AO are quotable. 
+ 
+ There are some unusual exceptions. For example, distributed values (e.g. a pair of which one value is computed at the GPU and another on the CPU) are not quotable. All values entering a quote must be observable at a common location and time, which is then inherited by the quotation.
+ 
+ A quotation is simply a block that reproduces a value. This typically will have special support from the implementation, but will be serialized to code when necessary for display or networking.
+ 
+ If a block with affine or relevant properties is quoted, the quote will inherit these properties. 
 ~{%literal}
 @doc.R.abc "(((a+b)+c)*e)→((a+(b+c))*e); associate sum right
 ~{%literal}
@@ -1459,18 +1485,15 @@
 ~{%literal}
 @doc.SpatialIdempotence "Spatial idempotence is an assumption in AO: if a subprogram is computed many times, it must each time return the same result and have no additional side-effects beyond computing it once. This assumption can be enforced through the effects model. However, it is often enforced by affine types to simply prevent expressing of an effect more than once. 
 ~{%literal}
-@doc.StandardEnvironment "AO has many similarities with stack-based programming languages, such as Forth, Factor, and Joy. However, the environment for AO is a value structured primarily of pairs. A stack can be modeled above pairs, but isn't the default. Further, in AO it is necessary to explicitly model the heap and other environmental structures if we want them.
- 
- A viable option is to pair the stack with an extended environment:
+@doc.StandardEnvironment "AO has many similarities with stack-based programming languages, such as Forth, Factor, and Joy. However, the environment for AO is a value structured of pairs, numbers, and blocks of code, similar in nature to Lisp cons cells. Typically, the tacit argument to any word has the form:
  
          (stack * environment)
  
- Here the stack serves the normal role for Forth-like programming. The environment might then contain auxilliary stacks, a modeled filesystem or database, an inventory or user model, and other content. In a Claw view of AO code, texts, blocks, and numbers would be pushed to the stack (e.g. by words `literal`, `block`, and `integer`). This ensures the extended environment remains at a stable location, accessible to other words.
+ The stack here is used in a manner very similar to the Forth stack. Most relevantly, literals (text, numbers, blocks) all are pushed onto the stack.
  
- The shape of the environment is not built into the AO language. Rather, shared conventions and de-facto standards will dominate, with words in the dictionary implicitly favoring a given environment. The Claw view of AO supports namespaces (e.g. via `#foo:`) to support secondary environment models.
+         42 :: (s * e) →  ((Num(42)*s)*e)
  
- I've experimented with multiple environment models, 
- The stack-hand environment is  is convenient for a lot of use cases. It simply introduces one auxilliary stack, the 'hand'.
+ By pushing literals onto the stack, AO ensures the environment has a stable location. The environment then provides a useful place for secondary stacks, inventories, tools, and other values the developer might wish to keep on hand and accessible. The shape of the environment is NOT built into the AO language; rather, it is determined by shared conventions and de-facto standards in the AO dictionary.
  
  At the moment, the most frequently used environment shape just adds one auxillary stack, which I call the "hand". This takes the following form:
  
@@ -1616,13 +1639,13 @@
 ~{%literal}
 @doc.abcBase16Alphabet "alphabet used to encode binary data in ABC in base16, representing digits 0..15
 ~{%literal}
-@doc.abs.arity1 "N(a)→N(|a|)
+@doc.abs\1 "N(a)→N(|a|)
 ~{%literal}
 @doc.add.abc "(N(a)*(N(b)*e))→(N(a+b)*e); add numbers
 ~{%literal}
 @doc.add.stats "stats number -- stats
 ~{%literal}
-@doc.add.arity2 "(N(a)*N(b))→N(a+b)
+@doc.add\2 "(N(a)*N(b))→N(a+b)
 ~{%literal}
 @doc.addend.s "a`S a`S -- a`S; compose streams end-to-end (stream at top of stack runs last)
 ~{%literal}
@@ -1654,6 +1677,34 @@
  The potential utility of ambiguous code is to express a large space of possible programs, and shift the burden to the compiler to pick a suitable program in context. This can feasibly result in robustly adaptable code. But it comes with risks of high overheads and more challenging failure modes.
 ~{%literal}
 @doc.and.b "Bool Bool -- Bool; are both arguments true?
+~{%literal}
+@doc.ao.utility "The `ao` command line executable provides a number of non-interactive utilities (cf. `ao help`). Among these options is to execute an AO command string (e.g. `ao exec "6 7 * 42 assertEQ"`) or to incrementally execute AO or ABC code received via standard input. For the interactive form, use `aoi`.
+ 
+ The program starts in the AO standard environment. The effects model is under development, but the current design aims to progress with Awelon project: the toplevel provides a few instantaneous actions, but mostly is used to install or update reactive demand programming behaviors in a manner similar to live programming (albeit, not entirely 'live'; the actual install is an imperative action). 
+ 
+ Some effects available through the powerblock:
+ 
+     obtain random numbers (cryptographic entropy)
+     read and write files
+     read environment variables 
+     unsafely duplicate or destroy any value
+ 
+ For specifics, see words with suffix `.io`.
+ 
+ Under consideration:
+ 
+     introspection of blocks
+     confine evaluation to trap errors
+     working with state resources (snapshots, resets, etc.)
+     logical clocks and temporal values
+     obtaining some useful 'child' powers
+ 
+ Additionally, the `ao` utility supports various few annotations:
+ 
+     debug output (printing to stderr)
+     compilation of blocks (immediate, traced)     
+ 
+ The default mode for `ao` is interpretation of ABC. However, compilation of blocks will eventually allow effective performance for real applications. Sadly, the compilation model currently leaks memory (the runtime keeps the object code in memory). But it should be sufficient for a lot of relatively static applications, and should work well with staged programming. 
 ~{%literal}
 @doc.ap.abc "([a→a']*(a*e))→(a'*e); apply
 ~{%literal}
@@ -1760,7 +1811,7 @@
         [p] keep q
  
 ~{%literal}
-@doc.bidup "apply a single block to two different inputs
+@doc.bi& "apply a single block to two different inputs
 ~{%literal}
 @doc.bi* "apply 2 blocks each to 1 respective input
 ~{%literal}
@@ -1817,6 +1868,8 @@
 ~{%literal}
 @doc.block.abc "A block is simply a finite sequence of ABC. A literal block may be represented in ABC using square brackets like so: `[vrwlc]`. This constructs a first-class function: [vrwlc] :: e → [(a*b)→(b*a)] * e
 ~{%literal}
+@doc.blockToText.io "block -- text; (io, asynch); serialize ABC block to text
+~{%literal}
 @doc.break.l "a`L [pred(a--PseudoBool)] -- a(rem)`L a`L; split prefix for which predicate does not hold
 ~{%literal}
 @doc.breakP.l "a`L [a--(b+a)] -- a`L b`L; split longest sequence of `b` results (on left)
@@ -1843,6 +1896,8 @@
 @doc.cmd.test "msg -- result; (io) call powerblock in standard location
 ~{%literal}
 @doc.color.rbt "e'RBT -- e'RBT color; copy color of red-black tree
+~{%literal}
+@doc.command.io "invoke linear powerblock with (command*arg) message on stack
 ~{%literal}
 @doc.comp.abc "([x→y]*([y→z]*e))→([x→z]*e); compose blocks/functions
 ~{%literal}
@@ -1939,6 +1994,8 @@
 ~{%literal}
 @doc.delay.p0 "a -- [a ↣ a]; delays input one step; initial output provided
 ~{%literal}
+@doc.destroy.io "a -- ; (io) destroy will drop any input, including relevant blocks (unsafe)
+~{%literal}
 @doc.digN "The digN combinators are perhaps a better name for roll, since it more clearly connotates that we're dragging some value upwards from the depths of the stack. digN will correspond to roll(N-1); we're accessing the Nth element under the top of the stack.
  
          dig3 :: d c b a -- c b a d
@@ -1951,18 +2008,20 @@
 ~{%literal}
 @doc.distrib "(a + b) c -- ((c*a) + (c*b))
 ~{%literal}
-@doc.abc:distrib "(a*((b+c)*e)→(((a*b)+(a*c))*e); distribute
+@doc.distrib.abc "(a*((b+c)*e)→(((a*b)+(a*c))*e); distribute
 ~{%literal}
 @doc.distribInL "a -- (a + a); in left; as `inL` but preserves x's type info in right
 ~{%literal}
 @doc.distribInR "b -- (b + b); in right; as `inR` but preserves x's type info in left
 ~{%literal}
-@doc.abc:divMod "(N(divisor)*(N(dividend)*e))→(N(remainder)*(N(quotient)*e)) ;
+@doc.divMod.abc "(N(divisor)*(N(dividend)*e))→(N(remainder)*(N(quotient)*e)) ;
    such that: quotient * divisor + remainder = dividend
               quotient is integral
               remainder/divisor is a proper fraction (in [0,1)).
 ~{%literal}
-@doc.divMod.arity2 "(N(a)*N(b))→(N(q)*N(r)); a = qb+r; q integral, r between 0 and b
+@doc.divMod\2 "(N(a)*N(b))→(N(q)*N(r)); a = qb+r; q integral, r between 0 and b
+~{%literal}
+@doc.div\2 "(N(a)*N(b))→N(a/b)
 ~{%literal}
 @doc.dpcar "Apply a function to an element deep in a data structure, hiding the rest of the data structure. In this case, the 'dp' corresponds to the `dip` function, which usually hides one item on the stack; we're instead hiding the structure surrounding the target. Ad-hoc results may be returned through the environment.
  
@@ -1974,7 +2033,7 @@
 ~{%literal}
 @doc.drop "(Droppable x) ⇒ x -- 
 ~{%literal}
-@doc.abc:drop "(a*e)→e; drop; requires droppable a
+@doc.drop.abc "(a*e)→e; drop; requires droppable a
 ~{%literal}
 @doc.drop.l "a`L N -- a`L; drop first N elements of list (or result in empty list, if N >= length)
 ~{%literal}
@@ -1995,6 +2054,8 @@
 @doc.dupd "(Copyable x) ⇒ x y -- x x y
 ~{%literal}
 @doc.dupfst "(x*y) -- (x*y) x; see also 'car' (family of similar functions)
+~{%literal}
+@doc.duplicate.io "a -- a a; (io) duplicate will copy any input, including affine blocks (unsafe)
 ~{%literal}
 @doc.dupsnd "(x*y) -- (x*y) y; see also 'cdr' (family of similar functions)
 ~{%literal}
@@ -2061,7 +2122,7 @@
 ~{%literal}
 @doc.exitrb.z.rbt "e'Z.RBT -- e'RBT; exit a zipper while rebalancing
 ~{%literal}
-@doc.abc:factor "(((a*b)+(c*d))*e)→((a+c)*((b+d)*e)); partial factor
+@doc.factor.abc "(((a*b)+(c*d))*e)→((a+c)*((b+d)*e)); partial factor
 ~{%literal}
 @doc.factorial.fixpoint "mostly this is a test for fixpoint :)
 ~{%literal}
@@ -2127,7 +2188,7 @@
 ~{%literal}
 @doc.fromList.s "a`L -- a`S; treat a list as a stream
 ~{%literal}
-@doc.fromList.arity1.s "a`L → a`S; stream to list (without environment)
+@doc.fromList\1.s "a`L → a`S; stream to list (without environment)
 ~{%literal}
 @doc.fromNode.rbt "(elem*(Color*(Tree*Tree))) -- elem'RBT
 ~{%literal}
@@ -2146,14 +2207,16 @@
 @doc.toList.s "a`S -- a`L; extract a list from a finite stream
 ~{%literal}
 @doc.fromStream.l {%doc.toList.s}
-@doc.toList.arity1.s "a`S → a`L; list to stream (without environment)
+@doc.toList\1.s "a`S → a`L; list to stream (without environment)
 ~{%literal}
-@doc.fromStream.arity1.l {%doc.toList.arity1.s}
+@doc.fromStream\1.l {%doc.toList\1.s}
 @doc.fst "(x*y) -- x
 ~{%literal}
 @doc.fullFactor "((a+b)+(a'+d)) -- (b+d) a
 ~{%literal}
 @doc.fullSwapEnv "E(dest) -- E(origin); swap current & reified environments (note: user model is also swapped).
+~{%literal}
+@doc.getOSEnv.io "text -- text; (io) read an OS environment variable
 ~{%literal}
 @doc.grow.gt.n2.insertKV.t23 "T1 kv1 (T2*(kv2*T3)) -- N3
 ~{%literal}
@@ -2165,7 +2228,7 @@
 ~{%literal}
 @doc.grow.ltk2.n3.insertKV.t23 "t0 kv0 (kv2*t3) (t1*(kv1*t2)) -- N2; split middle
 ~{%literal}
-@doc.abc:gt "(x₁*(x₂*e))→(((x₂*x₁)+(x₁*x₂))*e); compare (greater than)
+@doc.gt.abc "(x₁*(x₂*e))→(((x₂*x₁)+(x₁*x₂))*e); compare (greater than)
  
  Not all values are comparable. Just enough is comparable to compare texts: numbers with numbers, sums with sums, products with products and unit with unit. Taking left as false and right as true, comparisons are transitive and irreflexive.
 ~{%literal}
@@ -2261,6 +2324,10 @@
 ~{%literal}
 @doc.intro1 " -- Unit
 ~{%literal}
+@doc.inv.abc "(N(a)*e)→(N(1/a)*e); multiplicative inverse (requires non-zero)
+~{%literal}
+@doc.inv\1 "N(a)→N(1/a)
+~{%literal}
 @doc.invocations.abc "ABC can call out to the environment by using special curly brace operators of the form `{foo}`. This will invoke the environment with token 'foo' and the tacit value. ABC cannot forge the token, i.e. no primitive ABC operators permit moving from "foo" as text to `{foo}` as an operator. 
  
  It is recommended that implementations for open systems favor cryptographically secure text - i.e. encrypted or signed text (via HMAC or PKI). Consequently, the text between the curly braces is often called "capability text". When wrapped in a block like `[{foo}]`, these invocations become first-class, transferrable and cryptographically securable capabilities.
@@ -2283,7 +2350,7 @@
 ~{%literal}
 @doc.l "(x*(y*z)) -- ((x*y)*z)
 ~{%literal}
-@doc.abc:l "(a*(b*c))→((a*b)*c); associate left
+@doc.l.abc "(a*(b*c))→((a*b)*c); associate left
 ~{%literal}
 @doc.l_ "((a*(b*c))*e)→(((a*b)*c)*e); ~ `[%l]$`
 ~{%literal}
@@ -2326,6 +2393,8 @@
  
  See also: `prefix.compile!`, `prefix.secret!`, `doc.BinariesInABC`
 ~{%literal}
+@doc.listDirectory.io "dirname -- list-of-names; (io,asynch)
+~{%literal}
 @doc.lookupKV.AATree "Copy an element from the AA tree, after looking it up by key.
  
          (k*v)`AATree k [(k*k)→Ord] -- (k*v)`AATree ((k*v)+1)
@@ -2341,7 +2410,7 @@
 ~{%literal}
 @doc.merge "(a + a') -- a; a and a' must be future compatible
 ~{%literal}
-@doc.abc:merge "((a+a')*e → (a*e); merge
+@doc.merge.abc "((a+a')*e → (a*e); merge
  
  In this case, a and a' must be "future compatible." This doesn't imply the exact same type, and typecheckers may need to track type a and a' together for some steps before fully merging them.
 ~{%literal}
@@ -2359,17 +2428,17 @@
 ~{%literal}
 @doc.mkCompareUnits "-- [1`Compare]; trivial, always equal
 ~{%literal}
-@doc.abc:mul "(N(a)*(N(b)*e))→(N(a*b)*e); multiply numbers
+@doc.mul.abc "(N(a)*(N(b)*e))→(N(a*b)*e); multiply numbers
 ~{%literal}
-@doc.mul.arity2 "(N(a)*N(b))→N(a*b)
+@doc.mul\2 "(N(a)*N(b))→N(a*b)
 ~{%literal}
 @doc.n.stdgen.r "seed -- n`PRG; the number generator underlying stdgen.r
 ~{%literal}
 @doc.nand.b "Bool Bool -- Bool; is at least one argument false?
 ~{%literal}
-@doc.abc:neg "(N(a)*e)→(N(-a)*e); additive inverse
+@doc.neg.abc "(N(a)*e)→(N(-a)*e); additive inverse
 ~{%literal}
-@doc.neg.arity1 "N(a)→N(0-a)
+@doc.neg\1 "N(a)→N(0-a)
 ~{%literal}
 @doc.neq "a b -- (EQ(b*a) + (LT(a*b) + GT(b*a))); for numbers a,b
 ~{%literal}
@@ -2420,7 +2489,7 @@
 ~{%literal}
 @doc.null.l "a`L -- a`L Bool; test whether a list is empty without modifying it
 ~{%literal}
-@doc.numbers.abc "ABC only supports integers. Eleven of ABC's basic bytecodes are oriented around representing integers in a reasonably legible format:
+@doc.numbers.abc "ABC slightly favors legibility over parsimony. One aspect of this regards how numbers are represented, using decimal digits instead of binary. ABC uses eleven basic number operators:
  
      # :: e → N(0) * e  (constructs a new number)
      0 :: N(x) * e → N(10x + 0) * e
@@ -2429,7 +2498,7 @@
      ...
      9 :: N(x) * e → N(10x + 9) * e
  
- Thus `#42` constructs the integer value 42. Other than integers, numbers must be modeled explicitly, e.g. rationals (a numerator and denominator) or scientific notation (a mantissa and exponent).
+ This design enables natural numbers to be expressed legibly, as in `#42` constructing the number 42. Richer numbers must be represented using operations on natural numbers, e.g. 2/3 as `#2#3/*`. Large scientific numbers (e.g. 10^100) can be expensive to express in AO... but should at least compress well.
 ~{%literal}
 @doc.octetStreamToBitStream "octet`S -- bool`S (bigendian bit orientation)
 ~{%literal}
@@ -2446,6 +2515,12 @@
 @doc.paintItBlack.rbt "e'RBT -- e'RBT; red node to black node
 ~{%literal}
 @doc.paintItRed.rbt "e'RBT -- e'RBT; black node to red node (no effect on leaf)
+~{%literal}
+@doc.paragraph.abc "Paragraphs in ABC are an informal concept for stream processing of ABC. The ABC stream is broken (heuristically) into reasonably sized chunks called paragraphs. The stream processor will favor executing a whole number of paragraphs at a time.  Expressing a paragraph is trivial: LF LF (10 10) in the ABC stream. The formal meaning is just identity.
+ 
+ Using paragraphs offers many advantages for performance, maintenance, and predictable partial failure. The environment can often be kept in a 'clean' condition between paragraphs, suitable for rendering, and eliminating some bulky intermediate constructs that would otherwise be kept in memory. Typechecking can often occur at paragraph boundaries, and side-effects can often be delayed such that paragraphs represent atomic failure boundaries.
+ 
+ In practice, if paragraphs are too large there may be issues with buffering. I think most ABC stream readers should be expected to readily support paragraphs of 32 kB, with the failure mode to process fractions of a paragraph. I imagine (without empirical evidence) that most paragraphs will be well under 4 kB.
 ~{%literal}
 @doc.partialFactor "((a*b)+(c*d)) -- (b + d) (a + c)
 ~{%literal}
@@ -2546,17 +2621,19 @@
 ~{%literal}
 @doc.putd "put below first item on stack
 ~{%literal}
-@doc.quot.arity2 "(N(a)*N(b))→N(q); just quotient from divMod.arity2
+@doc.quot\2 "(N(a)*N(b))→N(q); just quotient from divMod\2
 ~{%literal}
-@doc.quote "x -- [--x]
+@doc.quote "(Quotable x) ⇒ x -- [--x]
 ~{%literal}
-@doc.abc:quote "(a*e)→([s→(a*s)]*e); quote non-distributed value
+@doc.quote.abc "(a*e)→([s→(a*s)]*e); quote non-distributed value
 ~{%literal}
 @doc.r "((x*y)*z) -- (x*(y*z))
 ~{%literal}
-@doc.abc:r "((a*b)*c)→(a*(b*c)); associate right
+@doc.r.abc "((a*b)*c)→(a*(b*c)); associate right
 ~{%literal}
 @doc.r_ "(((a*b)*c)*e)→((a*(b*c))*e); ~ `[%r]$`
+~{%literal}
+@doc.randomBytes.io "count -- (list of octets); (io) secure random source
 ~{%literal}
 @doc.rawCompareNumbers "(Num*Num)→Ord
 ~{%literal}
@@ -2564,15 +2641,21 @@
 ~{%literal}
 @doc.rawCompareToCompareOnStack "[(k*k)→Ord] -- [k k -- Ord]
 ~{%literal}
+@doc.readABCFile.io "filename -- (1(err) + block); (io,asynch)
+~{%literal}
+@doc.readBinaryFile.io "filename -- (1(err) + octets); (io,asynch)
+~{%literal}
+@doc.readTextFile.io "filename -- (1(err) + text); (io,asynch)
+~{%literal}
 @doc.reifyHand "hand becomes single object in fresh hand
 ~{%literal}
 @doc.reifyStack "(s*e)→((s*Unit)*e) : stack becomes object on fresh stack
 ~{%literal}
-@doc.abc:relevant "([x→y]*e)→([x→y]k*e); adds relevance (no drop) attribute to block
+@doc.rel.abc "([x→y]*e)→([x→y]k*e); adds relevance (no drop) attribute to block
 ~{%literal}
 @doc.relevant "mark block on stack as relevant (not Droppable)
 ~{%literal}
-@doc.rem.arity2 "(N(a)*N(b))→N(r); just remainder from divMod.arity2
+@doc.rem\2 "(N(a)*N(b))→N(r); just remainder from divMod\2
 ~{%literal}
 @doc.remove.l "a`L a -- a`L; removes values equal by simple comparison
 ~{%literal}
@@ -2741,7 +2824,7 @@
 ~{%literal}
 @doc.splitReverseN.l "a`L N -- a(minus first N)`L a(first N reversed)`L N(remaining; 0 if fully used)
 ~{%literal}
-@doc.square.arity1 "N(a)→N(a^2)
+@doc.square\1 "N(a)→N(a^2)
 ~{%literal}
 @doc.stackHand.env "Basic environment consisting of just stack and hand.
  
@@ -2819,9 +2902,11 @@
  
  Note: at this point, all the normal fixpoint functions have been upgraded to static transport overhead variations. But I'm keeping this around to help document my reasoning.
 ~{%literal}
-@doc.sub.arity2 "(N(a)*N(b))→N(a-b)
+@doc.sub\2 "(N(a)*N(b))→N(a-b)
 ~{%literal}
 @doc.suffix.AATree {%doc.AATree}
+@doc.suffix.abc "A word for each of the ABC codes.
+~{%literal}
 @doc.suffix.b {%doc.Boolean}
 @doc.suffix.bst {%doc.BinarySearchTree}
 @doc.suffix.m {%doc.DataMaps}
@@ -2884,9 +2969,11 @@
 ~{%literal}
 @doc.textBitsToList "textBits -- (1+1)`L; textBits is of form "01100001" (no other characters)
 ~{%literal}
+@doc.textToBlock.io "text -- (1+block); (io, asynch); parse text as ABC block
+~{%literal}
 @doc.toBoolean "(a+b) -- Bool; (droppable a, droppable b)
 ~{%literal}
-@doc.toBoolean.arity1e "(a+b)*e → (1+1)*e; droppable a, droppable b
+@doc.toBoolean\1e "(a+b)*e → (1+1)*e; droppable a, droppable b
 ~{%literal}
 @doc.toList.AATree "elem`AATree -- elem`List; access ordered list of elements
 ~{%literal}
@@ -2900,7 +2987,7 @@
 ~{%literal}
 @doc.toOrd "(eq+(lt+gt)) -- (1+(1+1)); droppable eq,lt,gt
 ~{%literal}
-@doc.toOrd.arity1 "(eq+(lt+gt))→(1+(1+1))
+@doc.toOrd\1 "(eq+(lt+gt))→(1+(1+1))
 ~{%literal}
 @doc.toStream.AATree "e`AATree -- e`Stream; stream data elements left to right
 ~{%literal}
@@ -2915,7 +3002,7 @@
 ~{%literal}
 @doc.toStreamR.bst "x`BST -- x`S; stream elements from right to left
 ~{%literal}
-@doc.toStream.arity1.l {%doc.fromList.arity1.s}
+@doc.toStream\1.l {%doc.fromList\1.s}
 @doc.tree.insertKV.bst "(k*v) (k*v)`BST [insertKV] [k→Ord] -- (k*v)`BST ((k*v)+1)
 ~{%literal}
 @doc.tree.insertKV.t23 "Documenting implementation details here... because this is relatively complex compared to most data structures.
@@ -2927,7 +3014,7 @@
 ~{%literal}
 @doc.tri "[p] [q] [r] tri = [p] keep [q] keep r; apply 3 blocks to same 1 arg
 ~{%literal}
-@doc.tridup "apply a single block to three different inputs
+@doc.tri& "apply a single block to three different inputs
 ~{%literal}
 @doc.tri* "apply 3 blocks each to 1 respective input
 ~{%literal}
@@ -2944,6 +3031,18 @@
 @doc.tri3* "apply 3 blocks each to 3 respective inputs
 ~{%literal}
 @doc.trimBoolean "(x*1 + y*1) -- (x+y); may be useful after distrib
+~{%literal}
+@doc.tryAp.io "a [a→b] -- ((E*a)+b); (io) attempt to apply, but isolate failure
+ 
+ Failures primarily include failed assertions and type errors. On failure, a sealed error message E is included with the original argument, and will typically be logged as well. The error message is intended for humans, and can only be unsealed by the powerblock.
+ 
+ The ability to isolate failure is considered a protected capability - in part for security reasons, but in larger part to simplify reasoning about static safety and partial failure of subprograms. By controlling this capability, a parent program can control which subprograms are allowed to partially fail and keep running. Developers are discouraged from using `try` except in special cases, such as when running runtime-generated untrusted code.
+ 
+ Developers can access the 'try' capability separately from applying it, by use of 'tryCap.io'.
+~{%literal}
+@doc.tryCap.io " -- [([a→b]*a)→((E*a)+b)]; (io) obtain capability to confine error
+~{%literal}
+@doc.tryWrap.io "[a→b]--[a→((E*a)+b)]; (io) modify a function to trap error
 ~{%literal}
 @doc.tuck "(Copyable y) ⇒ x y -- y x y
 ~{%literal}
@@ -2973,7 +3072,7 @@
 ~{%literal}
 @doc.unzip.l "(a*b)`L -- a`L b`L
 ~{%literal}
-@doc.abc:v "a→(a*1); intro unit right
+@doc.v.abc "a→(a*1); intro unit right
 ~{%literal}
 @doc.v_ "(a*e)→((a*1)*e); ~ `[%v]$`
 ~{%literal}
@@ -2981,7 +3080,7 @@
 ~{%literal}
 @doc.w "(x*y) -- (y*x)
 ~{%literal}
-@doc.abc:w "(a*(b*c))→(b*(a*c)); swap first
+@doc.w.abc "(a*(b*c))→(b*(a*c)); swap first
 ~{%literal}
 @doc.w_ "((a*(b*c))*e)→((b*(a*c))*e); ~ `[%w]$`
 ~{%literal}
@@ -3041,11 +3140,17 @@
 ~{%literal}
 @doc.wrapfn "[x→y] [w→x] [y→z] -- [w→z]; wrap a function
 ~{%literal}
+@doc.writeABCFile.io "block filename -- (1(err) + 1(ok)); (io,asynch)
+~{%literal}
+@doc.writeBinaryFile.io "octets filename -- (1(err) + 1(ok)); (io,asynch)
+~{%literal}
+@doc.writeTextFile.io "text filename -- (1(err) + 1(ok)); (io,asynch)
+~{%literal}
 @doc.x "(x*y) -- y x
 ~{%literal}
 @doc.xor.b "Bool Bool -- Bool; are the arguments distinct?
 ~{%literal}
-@doc.abc:z "(a*(b*(c*d)))→(a*(c*(b*d))); swap second
+@doc.z.abc "(a*(b*(c*d)))→(a*(c*(b*d))); swap second
 ~{%literal}
 @doc.z_ "((a*(b*(c*d)))*e)→((a*(c*(b*d)))*e); ~ `[%z]$`
 ~{%literal}
@@ -3204,6 +3309,7 @@
 @dpcdr {%dx}{%dip}{%p}
 @r rrrwzlwll
 @dr {%.rw}{%r}{%.wl}
+@drop.abc %
 @split.l {%splitReverse.l}{%reverse.l}
 @drop.l {%split.l}{%drop}
 @drop7 {%drop4}{%drop3}
@@ -3217,6 +3323,8 @@
 @dup7.alt {%.rw}{%dup6.alt}{%.wl}{%dup}{%unroll7d}
 @dup8 {%pw}{%pw}{%pw}{%pw}{%pw}{%pw}{%pw}{%dup}{%dwx}{%dwx}{%dwx}{%dwx}{%dwx}{%dwx}{%dwx}{%wx}{%wx}{%wx}{%wx}{%wx}{%wx}{%wx}
 @dupdd {%.rw}{%dupd}{%.wl}
+@duplicate.io "duplicate
+~{%literal}{%p}{%command.io}{%wx}
 @dupsnd {%wx}{%dup}{%dpw}
 @dw {%.rw}{%w}{%.wl}
 @wc rrwrwzwlwll
@@ -3248,7 +3356,7 @@
 @emptyNumMap.m {%mkCompareNums}{%empty.m}
 @mkCompareTexts [{%compareTexts}]{%block}{%compareOnStackToRawCompare}
 @emptyTextMap.m {%mkCompareTexts}{%empty.m}
-@enumFrom.s [v^#1+wlVc]{%block}{%fromState.s}
+@enumFrom.s [v^#1{%integer}r+wlVc]{%block}{%fromState.s}
 @enum.s #1{%integer}{%enumFrom.s}
 @enumFromUntil {%dupd}{%swap}{%.sub}{%rot}[{%keep}{%inc}]{%block}{%bind}{%swap}{%repeat}{%drop}
 @enumFromTo {%inc}{%enumFromUntil}
@@ -3282,9 +3390,9 @@
 @relevant rkl
 @eqv.commutative.affine&relevant [{%affine}{%relevant}]{%block}[{%relevant}{%affine}]{%block}
 @eqv.commutative.and.b [{%and.b}]{%block}[{%swap}{%and.b}]{%block}
-@or.b {%distrib}r[c]?RVRW[v%]?WLCl
+@or.b {%distrib}r[c]{%block}r?RVRW[v%]{%block}r?WLCl
 @eqv.commutative.or.b [{%or.b}]{%block}[{%swap}{%or.b}]{%block}
-@xor.b {%distrib}r[c]?VRW[c]?LCRWZLVR[vMc]?W[vMc]?WLCl
+@xor.b {%distrib}r[c]{%block}r?VRW[c]{%block}r?LCRWZLVR[vMc]{%block}r?W[vMc]{%block}r?WLCl
 @eqv.commutative.xor.b [{%xor.b}]{%block}[{%swap}{%xor.b}]{%block}
 @eqv.deMorgans.1 [{%and.b}{%not.b}]{%block}[{%not.b}{%swap}{%not.b}{%swap}{%or.b}]{%block}
 @eqv.deMorgans.2 [{%or.b}{%not.b}]{%block}[{%not.b}{%swap}{%not.b}{%swap}{%and.b}]{%block}
@@ -3371,7 +3479,7 @@
 @eqv.id.putTake [{%put}{%take}]{%block}[]{%block}
 @eqv.id.pwxswap [{%p}{%w}{%x}{%swap}]{%block}[]{%block}
 @eqv.id.px [{%p}{%x}]{%block}[]{%block}
-@quote r'[l]wol
+@quote r'[l]{%block}rwol
 @unquote {%apply0to1}
 @eqv.id.quoteUnquote [{%quote}{%unquote}]{%block}[]{%block}
 @reifyStack {%intro1}rwl
@@ -3430,15 +3538,15 @@
 @eqv.idempotent.relevant [{%relevant}{%relevant}]{%block}[{%relevant}]{%block}
 @eqv.idempotent.toBoolean [{%toBoolean}]{%block}[{%toBoolean}{%toBoolean}]{%block}
 @eqv.inline.c [{%c$}]{%block}[{%c_}]{%block}
-@l$ [l]$
+@l$ [l]{%block}r$
 @eqv.inline.l [{%l$}]{%block}[{%l_}]{%block}
-@r$ [r]$
+@r$ [r]{%block}r$
 @eqv.inline.r [{%r$}]{%block}[{%r_}]{%block}
-@v$ [v]$
+@v$ [v]{%block}r$
 @eqv.inline.v [{%v$}]{%block}[{%v_}]{%block}
-@w$ [w]$
+@w$ [w]{%block}r$
 @eqv.inline.w [{%w$}]{%block}[{%w_}]{%block}
-@z$ [z]$
+@z$ [z]{%block}r$
 @eqv.inline.z [{%z$}]{%block}[{%z_}]{%block}
 @eqv.inlineTwice.compInline [{%compose}{%inline}]{%block}[{%swap}{%dip}{%inline}]{%block}
 @eqv.inner.c_ [r{%c_}l]{%block}[{%c__}]{%block}
@@ -3532,6 +3640,7 @@
 @error.test "error
 ~{%literal}{%p}{%cmd.test}{%drop}
 @exitrb.z.rbt {%exit.z.rbt}
+@factor.abc F
 @step.factorial.fixpoint {%take}#2{%integer}{%lt}[{%snd}{%dup}{%dec}{%put}{%apply}{%.mul}]{%block}[{%fst}{%discard}]{%block}{%if}
 @factorial.fixpoint {%assertNatural}[{%step.factorial.fixpoint}]{%block}{%fixpoint}{%apply}
 @false {%false.b}
@@ -3564,8 +3673,8 @@
 @step.first.p0 wz$rz'o
 @first.p0 [{%step.first.p0}]{%block}{%.fixfirst}{%.bind}
 @fixpoint#v1 [{%dup}{%bind}]{%block}{%composel}{%dup}{%bind}
-@fixpoint#v2 r[^'ol]o^'ol
-@fixpoint#v3 r'[^'ow^'zozlwvr$c]^'owol
+@fixpoint#v2 r[^'ol]{%block}ro^'ol
+@fixpoint#v3 r'[^'ow^'zozlwvr$c]{%block}r^'owol
 @t.fmap.AATree {%take}[{%put}{%inline}{%inL}]{%block}[{%discard}{%inR}]{%block}{%if}
 @rt.fmap.AATree {%take}[{%put}{%inline}{%inL}]{%block}[{%put}{%t.fmap.AATree}{%inR}]{%block}{%if}
 @n.fmap.AATree {%take2}{%wx}{%x}{%paste}{%t.fmap.AATree}{%swap}{%put}{%rt.fmap.AATree}{%pw}{%swap}{%put}{%.apply}{%p}
@@ -3588,20 +3697,23 @@
 @forCount.l {%assertNatural}{%unrot}[{%step.forCount.l}]{%block}{%bind}{%fixpoint}{%inline}{%swap}
 @foreach.l {%each.l}
 @found.indexOf.l #1{%integer}{%unrot}{%swap}[{%cons.l}{%incd}]{%block}{%foreach.l}{%swap}{%inL}
-@fromList.arity1.s vv{%fromList.s}cc
+@fromList\1.s vv{%fromList.s}cc
 @fromN2d.t23 {%.rw}{%fromN2.t23}{%.wl}
-@pwWrap.fromStateSplitNext.r r[{%preApply}]o[{%pw}{%postApply}]wol
+@pwWrap.fromStateSplitNext.r r[{%preApply}]{%block}ro[{%pw}{%postApply}]{%block}rwol
 @wrapNext.fromStateSplitNext.r {%pwWrap.fromStateSplitNext.r}
 @wrapSplit.fromStateSplitNext.r {%pwWrap.fromStateSplitNext.r}
 @fromStateSplitNext.r {%wrapNext.fromStateSplitNext.r}rw{%wrapSplit.fromStateSplitNext.r}wl{%.fromStateSplitNext.r}
-@toList.arity1.s vv{%toList.s}cc
-@fromStream.arity1.l {%toList.arity1.s}
+@toList\1.s vv{%toList.s}cc
+@fromStream\1.l {%toList\1.s}
 @fullSwapEnv rvrwlcl
+@getOSEnv.io "getOSEnv
+~{%literal}{%p}{%command.io}
 @grow.gt.n2.insertKV.t23 {%pw}{%pw}
 @grow.gtk2.n3.insertKV.t23 {%fromN2.t23}{%pw}{%dpw}{%dpw}{%fromN2d.t23}{%pw}
 @grow.lt.n2.insertKV.t23 {%l}{%x}{%dp}{%p}{%r}
 @grow.ltk1.n3.insertKV.t23 {%fromN2.t23}{%swap}{%wx}{%fromN2.t23}{%pw}{%pw}
 @grow.ltk2.n3.insertKV.t23 {%l}{%x}{%dp}{%swap}{%fromN2.t23}{%dwx}{%pw}{%dpw}{%dpw}{%fromN2d.t23}{%pw}
+@gt.abc >
 @gt.n2.insertKV.t23 {%wx}{%wx}{%hap}[{%pw}{%pw}{%fromN2.t23}]{%block}[{%grow.gt.n2.insertKV.t23}{%fromN3.t23}]{%block}{%if}
 @gt1 {%.gt1}
 @gtb {%.gtb}
@@ -3622,7 +3734,7 @@
 @hdwx {%hsw}{%dwx}{%hsw}
 @hdx {%hsw}{%dx}{%hsw}
 @hfix#v1 {%put}[{%take}]{%block}{%composel}{%fixpoint}{%take}
-@hfix#v2 {%put}r[^'ol{%take}]o^'ol{%take}
+@hfix#v2 {%put}r[^'ol{%take}]{%block}ro^'ol{%take}
 @hl {%hsw}{%l}{%hsw}
 @hnip {%hsw}{%nip}{%hsw}
 @hnip2 {%hsw}{%nip2}{%hsw}
@@ -3703,9 +3815,9 @@
 @inRRRLR {%inRRLR}{%inR}
 @inRRRRL {%inRRRL}{%inR}
 @inRRRRR {%inRRRR}{%inR}
-@inc.arity1 v#1+c
+@inc\1 v#1{%integer}r+c
 @lift.p0 {%.bsecond}{%.fixfirst}
-@inc.p0 [{%inc.arity1}]{%block}{%lift.p0}
+@inc.p0 [{%inc\1}]{%block}{%lift.p0}
 @notFound.indexOf.l {%swap}{%reverseAppend.l}{%intro1}{%inR}
 @indexOf.l {%wrapObserver.b}{%breakRevP.l}{%swap}[{%inL}{%found.indexOf.l}]{%block}[{%inR}{%notFound.indexOf.l}]{%block}{%if}
 @unseal.m r{.m}l
@@ -3749,6 +3861,8 @@
 @insertKV.t23 {%bindK.insertKV.t23}{%take2nd}[{%tree.insertKV.t23}]{%block}{%bind}{%fixpoint}{%inline}{%repairRoot.insertKV.t23}{%put}
 @insertK_.m {%insertK.m}{%drop}
 @insert_.m {%insert.m}{%drop}
+@inv.abc /
+@inv\1 v/c
 @juggle4 {%hsw}{%roll4}{%hsw}
 @juggle5 {%hsw}{%roll5}{%hsw}
 @juggle6 {%hsw}{%roll6}{%hsw}
@@ -3758,21 +3872,25 @@
 @keep5 {%.rw}{%dup5}{%pw}{%pw}{%pw}{%pw}{%.wl}{%dip}{%wx}{%wx}{%wx}{%wx}
 @keep7 {%.rw}{%dup7}{%pw}{%pw}{%pw}{%pw}{%pw}{%pw}{%.wl}{%dip}{%wx}{%wx}{%wx}{%wx}{%wx}{%wx}
 @keep8 {%.rw}{%dup8}{%pw}{%pw}{%pw}{%pw}{%pw}{%pw}{%pw}{%.wl}{%dip}{%wx}{%wx}{%wx}{%wx}{%wx}{%wx}{%wx}
+@l.abc l
 @lastElem.zipRem.s {%empty.s}{%dup}{%pw}{%pw}{%inL}
 @lazy r{&lazy}l
 @leaf.removeK.t23 {%fromLeaf.t23}{%inL}{%intro1}{%inR}{%discard2}
 @leaf.removeKV.bst {%discard2}{%inL}{%seal.bst}{%intro1}{%inR}
 @leaf.toStreamL.bst {%elim1}{%discard}{%empty.s}
 @leaf.toStreamR.bst {%elim1}{%discard}{%empty.s}
-@step.left.p0 vrwrD[vr$c]?FMz'olc
+@step.left.p0 vrwrD[vr$c]{%block}r?FMz'olc
 @left.p0 [{%step.left.p0}]{%block}{%.fixfirst}{%.bind}
 @left.removeKV.bst {%wx}{%x}{%hap}{%dp}{%dpw}
 @toS.lefts.s [{%singleton.s}]{%block}[{%drop}{%empty.s}]{%block}{%if}
 @lefts.s [{%toS.lefts.s}]{%block}{%map.s}{%flatten.s}
+@listDirectory.io "listDirectory
+~{%literal}{%p}{%command.io}
 @lt1 {%.lt1}
 @lte1 {%.lte1}
 @lteb {%.lteb}
 @map.p0 {%applyWrap}{%lift.p0}
+@merge.abc M
 @merged {%.rw}{%merge}{%.wl}
 @mkCompareLists [{%compareLists}]{%block}{%bind}{%compareOnStackToRawCompare}
 @mkCompareProds [{%compareProds}]{%block}{%bind2}{%compareOnStackToRawCompare}
@@ -3780,8 +3898,9 @@
 @mkCompareSums [{%compareSums}]{%block}{%bind2}{%compareOnStackToRawCompare}
 @mkCompareUnits [{%compareUnits}]{%block}
 @mkSt.stdgen.r {%assertNatural}#2147483562{%integer}{%.divMod}#2147483398{%integer}{%.rem}{%incd}{%inc}{%pw}
-@mul2.arity1 v#2*c
-@mul.arity2 vr*c
+@mul.abc *
+@mul2\1 v#2{%integer}r*c
+@mul\2 vr*c
 @n*.swapL.t23 {%x}{%hap}{%dp}[{%wcadr}]{%block}[]{%block}{%if}{%inR}
 @n.paintItRed.rbt {%red.rbt}{%setcadr!}
 @t.size.AATree {%take}[{%put}{%inline}{%inLd}]{%block}[{%discard}{%inR}#{%integer}]{%block}{%if}
@@ -3809,7 +3928,7 @@
 @n3.swapL.t23 {%n*.swapL.t23}
 @nand.b {%and.b}{%not.b}
 @neg.abc -
-@neg.arity1 v-c
+@neg\1 v-c
 @neq.old {%gt}[vr>c]{%block}{%.left}rRl
 @new.stats #{%integer}#{%integer}#{%integer}{%pw}{%pw}{%seal.stats}
 @next.r {%false.b}{%.applyd}{%x}
@@ -3840,12 +3959,12 @@
 @node.toStreamR.bst {%wx}{%wx}{%paste}{%.bind}{%unrot}{%put}{%.bind}{%swap}{%cons.s}{%addend.s}
 @wrapKeyObserver.b {%quote}[{%dupfst}{%swap}]{%block}{%composel}[{%dip}{%distrib}[c]{%block}{%.left}[c]{%block}{%.right}]{%block}{%compose}
 @partitionByKey.l {%wrapKeyObserver.b}{%partitionWith.l}
-@nonEmpty.sortByKey.l {%x}{%dupfst}{%swapd}{%put}{%bind}{%partitionByKey.l}{%swap}{%put}{%bidup}{%rot}{%cons.l}{%append.l}
+@nonEmpty.sortByKey.l {%x}{%dupfst}{%swapd}{%put}{%bind}{%partitionByKey.l}{%swap}{%put}{%bi&}{%rot}{%cons.l}{%append.l}
 @step.nubBy.l {%rot}[{%action.nubBy.l}]{%block}[{%nip2}{%inR}]{%block}{%if}
 @nubBy.l [{%step.nubBy.l}]{%block}{%bind}{%fixpoint}{%apply}
 @true.b {%intro1}{%inR}
 @null.l {%false.b}{%true.b}{%condSwap}{%drop}
-@pushBit.wordToBitList r#2Q#>l{%toBoolean}rzwrzwlVlwl
+@pushBit.wordToBitList r#2{%integer}rQ#{%integer}r>l{%toBoolean}rzwrzwlVlwl
 @octetToBitList {%assertOctet}{%empty.l}{%swap}{%pushBit.wordToBitList}{%pushBit.wordToBitList}{%pushBit.wordToBitList}{%pushBit.wordToBitList}{%pushBit.wordToBitList}{%pushBit.wordToBitList}{%pushBit.wordToBitList}{%pushBit.wordToBitList}{%drop}
 @octetStreamToBitStream [{%octetToBitList}{%fromList.s}]{%block}{%map.s}{%flatten.s}
 @over2 {%roll2}{%dup}{%unroll2d}
@@ -3888,10 +4007,22 @@
 @put6 {%put5}{%put}
 @put7 {%put6}{%put}
 @putback.s {%cons.s}
-@quot.arity2 vrwQ%c
+@quot\2 vrwQ%c
+@quote.abc '
+@r.abc r
 @r.size.AATree [{%n.size.AATree}]{%block}{%fixpoint}{%t.size.AATree}
+@randomBytes.io "randomBytes
+~{%literal}{%p}{%command.io}
+@rand8.io #1{%integer}{%randomBytes.io}{%assert}{%wx}{%drop}
 @rawCompareToCompareOnStack [{%dpw}{%.apply}]{%block}{%bind}
-@rem.arity2 vrwQw%c
+@readTextFile.io "readTextFile
+~{%literal}{%p}{%command.io}
+@textToBlock.io {%drop}{%false.b}
+@readABCFile.io {%readTextFile.io}[{%inL}]{%block}[{%textToBlock.io}]{%block}{%if}
+@readBinaryFile.io "readBinaryFile
+~{%literal}{%p}{%command.io}
+@rel.abc k
+@rem\2 vrwQw%c
 @tree.removeKV.bst {%take2}{%unseal.bst}[{%leaf.removeKV.bst}]{%block}[{%node.removeKV.bst}]{%block}{%if}
 @removeKV.bst {%.bind}[{%tree.removeKV.bst}]{%block}{%bind}{%fixpoint}{%inline}
 @remove.m {%unseald.m}{%dwx}{%swap}{%copy}[{%removeKV.bst}]{%block}{%apply3to2}{%putd}{%dpw}{%seald.m}
@@ -3917,7 +4048,7 @@
 @tryCount.repeatUntil {%over4}#{%integer}{%gt}[{%drop4}]{%block}[{%tryCond.repeatUntil}]{%block}{%if_}
 @repeatUntil {%assertNatural}{%unrot}[{%tryCount.repeatUntil}]{%block}{%bind2}{%fixpoint}{%inline}
 @repeatWhile {%swap}[{%not}]{%block}{%compose}{%swap}{%repeatUntil}
-@step.right.p0 vrwrDVRW[vr$c]?WLCFMz'olc
+@step.right.p0 vrwrDVRW[vr$c]{%block}r?WLCFMz'olc
 @right.p0 [{%step.right.p0}]{%block}{%.fixfirst}{%.bind}
 @rights.s [{%toS.rights.s}]{%block}{%map.s}{%flatten.s}
 @rn.take.s {%inner.take.s}{%swapd}
@@ -4003,7 +4134,7 @@
 @sortByKey.l [{%step.sortByKey.l}]{%block}{%bind}{%fixpoint}{%apply}
 @split.r {%true.b}{%.applyd}{%x}
 @split.wordGenToBoolGen.r {%take}{%x}{%split.r}{%take}{%p}{%put}{%put}#{%integer}{%pw}{%pw}
-@square.arity1 v^*c
+@square\1 v^*c
 @static r{&static}l
 @wordGenToBoolGen.r {%assertNatural+}{%copy}#{%integer}{%pw}{%pw}{%paste}[{%split.wordGenToBoolGen.r}]{%block}{%bind}{%put}[{%next.wordGenToBoolGen.r}]{%block}{%bind}{%fromStateSplitNext.r}
 @stdgen.r {%n.stdgen.r}#23{%integer}{%wordGenToBoolGen.r}
@@ -4013,11 +4144,11 @@
 @stepLeft.z.rbt {%x}{%unseal.rbt}[{%fromLeaf.rbt}{%p}]{%block}[{%node.stepLeft.z.rbt}]{%block}{%if}
 @stepRight.z.rbt {%x}{%unseal.rbt}[{%fromLeaf.rbt}{%p}]{%block}[{%node.stepRight.z.rbt}]{%block}{%if}
 @stepUp.z.rbt {%x}{%take}[{%x}{%step.exit.z.rbt}]{%block}[{%inR}]{%block}{%if}{%put}{%p}
-@sto.fixpoint#v1 r'[^'ow^'zozlwvr$c]^'owol
+@sto.fixpoint#v1 r'[^'ow^'zozlwvr$c]{%block}r^'owol
 @sto.fixpoint {%sto.fixpoint#v1}
 @sto.fixpoint#v0 [{%dupd}{%bind}{%swap}{%inline}]{%block}{%fixpoint#v2}{%bind}
-@sto.fixpoint#v2 r'[[^'ow^'zozlwvr$c]^'ow^'zozlwvr$c]wol
-@sub.arity2 vrw-+c
+@sto.fixpoint#v2 r'[[^'ow^'zozlwvr$c]{%block}r^'ow^'zozlwvr$c]{%block}rwol
+@sub\2 vrw-+c
 @sumsq.stats {%unseal.stats}{%wx}{%wx}{%copy}{%pw}{%pw}{%seal.stats}{%put}
 @swap2 {%p}{%dp}{%swap}{%dx}{%x}
 @swap3 {%p}{%p}{%dp}{%dp}{%swap}{%dx}{%dx}{%x}{%x}
@@ -4025,8 +4156,8 @@
 @swapHands rwzwl
 @tree.swapL.t23 {%unseal.t23}[{%inL}{%discard}{%put}{%inL}]{%block}[{%node.swapL.t23}{%inRd}]{%block}{%if}{%seald.t23}
 @swapL.t23 {%take}[{%tree.swapL.t23}]{%block}{%take}{%hfix}{%hap}
-@t.toStream.AATree D[{%n.toStream.AATree}{%.app1}]?VRW[%{%.inR}]?WLCMc
-@t.toStreamR.AATree D[{%n.toStreamR.AATree}{%.app1}]?VRW[%{%.inR}]?WLCMc
+@t.toStream.AATree D[{%n.toStream.AATree}{%.app1}]{%block}r?VRW[%{%.inR}]{%block}r?WLCMc
+@t.toStreamR.AATree D[{%n.toStreamR.AATree}{%.app1}]{%block}r?VRW[%{%.inR}]{%block}r?WLCMc
 @take.l {%split.l}{%dropd}
 @take1.s {%intro1}{%.applyd}[{%x}{%inL}]{%block}[{%.rw}{%empty.s}{%.wl}{%inR}]{%block}{%if}
 @take1st {%take}
@@ -4034,21 +4165,21 @@
 @take4th {%roll}{%take}
 @undo.takeExact.s {%swap}[{%cons.s}]{%block}{%each.l}{%empty.l}{%swap}
 @takeExact.s {%empty.l}{%unrot}[{%cons.l}]{%block}{%swap}{%forCount.s}#{%integer}{%gt}[{%undo.takeExact.s}]{%block}{%when_}{%swap}{%reverse.l}
-@test..bfirst {%intro1}{%intro1}#7{%integer}{%p}{%p}[#6*]{%block}{%.bfirst}{%.apply}{%x}{%x}#42{%integer}{%assertEQ}{%drop2}{%elim1}{%elim1}
-@test..bi #5{%integer}#7{%integer}[{%mul2.arity1}]{%block}{%.bi}#14{%integer}{%assertEQ1.n}#10{%integer}{%assertEQ1d.n}
-@test..bidup #3{%integer}#4{%integer}[{%inc.arity1}]{%block}{%.bidup}#4{%integer}{%assertEQ1d.n}#5{%integer}{%assertEQ1.n}
-@test..bleft.inL {%intro1}#7{%integer}{%p}{%inL}[#6*]{%block}{%.bleft}{%.apply}{%not}{%assert}{%x}#42{%integer}{%assertEQ}{%drop2}{%elim1}
-@test..bleft.inR {%intro1}#7{%integer}{%p}{%inR}[#6*]{%block}{%.bleft}{%.apply}{%assert}{%x}#7{%integer}{%assertEQ}{%drop2}{%elim1}
-@test..bright.inL {%intro1}#7{%integer}{%p}{%inL}[#6*]{%block}{%.bright}{%.apply}{%not}{%assert}{%x}#7{%integer}{%assertEQ}{%drop2}{%elim1}
-@test..bright.inR {%intro1}#7{%integer}{%p}{%inR}[#6*]{%block}{%.bright}{%.apply}{%assert}{%x}#42{%integer}{%assertEQ}{%drop2}{%elim1}
-@test..bsecond {%intro1}{%intro1}#7{%integer}{%p}{%pw}[#6*]{%block}{%.bsecond}{%.apply}{%wx}{%x}#42{%integer}{%assertEQ}{%drop2}{%elim1}{%elim1}
-@test..tri #5{%integer}#6{%integer}#7{%integer}[{%mul2.arity1}]{%block}{%.tri}#14{%integer}{%assertEQ1.n}#12{%integer}{%assertEQ1d.n}#10{%integer}{%assertEQ1dd.n}
-@test..tridup #2{%integer}#3{%integer}#4{%integer}[{%mul2.arity1}]{%block}{%.tridup}#4{%integer}{%assertEQ1dd.n}#6{%integer}{%assertEQ1d.n}#8{%integer}{%assertEQ1.n}
-@test.abs.arity1 #3-{%integer}[{%abs.arity1}]{%block}{%.apply}#3{%integer}{%assertEQ1}
-@test.add.arity2 #6{%integer}#7{%integer}{%pw}[{%add.arity2}]{%block}{%.apply}#13{%integer}{%assertEQ}
+@test..bfirst {%intro1}{%intro1}#7{%integer}{%p}{%p}[#6{%integer}r*]{%block}{%.bfirst}{%.apply}{%x}{%x}#42{%integer}{%assertEQ}{%drop2}{%elim1}{%elim1}
+@test..bi #5{%integer}#7{%integer}[{%mul2\1}]{%block}{%.bi}#14{%integer}{%assertEQ1.n}#10{%integer}{%assertEQ1d.n}
+@test..bi& #3{%integer}#4{%integer}[{%inc\1}]{%block}{%.bi&}#4{%integer}{%assertEQ1d.n}#5{%integer}{%assertEQ1.n}
+@test..bleft.inL {%intro1}#7{%integer}{%p}{%inL}[#6{%integer}r*]{%block}{%.bleft}{%.apply}{%not}{%assert}{%x}#42{%integer}{%assertEQ}{%drop2}{%elim1}
+@test..bleft.inR {%intro1}#7{%integer}{%p}{%inR}[#6{%integer}r*]{%block}{%.bleft}{%.apply}{%assert}{%x}#7{%integer}{%assertEQ}{%drop2}{%elim1}
+@test..bright.inL {%intro1}#7{%integer}{%p}{%inL}[#6{%integer}r*]{%block}{%.bright}{%.apply}{%not}{%assert}{%x}#7{%integer}{%assertEQ}{%drop2}{%elim1}
+@test..bright.inR {%intro1}#7{%integer}{%p}{%inR}[#6{%integer}r*]{%block}{%.bright}{%.apply}{%assert}{%x}#42{%integer}{%assertEQ}{%drop2}{%elim1}
+@test..bsecond {%intro1}{%intro1}#7{%integer}{%p}{%pw}[#6{%integer}r*]{%block}{%.bsecond}{%.apply}{%wx}{%x}#42{%integer}{%assertEQ}{%drop2}{%elim1}{%elim1}
+@test..tri #5{%integer}#6{%integer}#7{%integer}[{%mul2\1}]{%block}{%.tri}#14{%integer}{%assertEQ1.n}#12{%integer}{%assertEQ1d.n}#10{%integer}{%assertEQ1dd.n}
+@test..tri& #2{%integer}#3{%integer}#4{%integer}[{%mul2\1}]{%block}{%.tri&}#4{%integer}{%assertEQ1dd.n}#6{%integer}{%assertEQ1d.n}#8{%integer}{%assertEQ1.n}
+@test.abs\1 #3-{%integer}[{%abs\1}]{%block}{%.apply}#3{%integer}{%assertEQ1}
+@test.add\2 #6{%integer}#7{%integer}{%pw}[{%add\2}]{%block}{%.apply}#13{%integer}{%assertEQ}
 @test.addend.s "hello,
 ~{%literal}" world!
-~{%literal}[{%fromList.s}]{%block}{%bidup}{%addend.s}{%toList.s}"hello, world!
+~{%literal}[{%fromList.s}]{%block}{%bi&}{%addend.s}{%toList.s}"hello, world!
 ~{%literal}{%assertTextEQ1}
 @test.addend.s#empty {%empty.s}{%empty.s}{%addend.s}{%intro1}{%.applyd}{%assertInR}{%elim1}
 @test.alignToFrac #1{%integer}#3{%integer}{%ratio}#1{%integer}#2{%integer}{%decimal}{%alignToFrac}#33{%integer}#2{%integer}{%decimal}{%assertEQ1.n}#2{%integer}#3{%integer}{%ratio}#1{%integer}#2{%integer}{%decimal}{%alignToFrac}#66{%integer}#2{%integer}{%decimal}{%assertEQ1.n}#227{%integer}#10{%integer}{%alignToFrac}#220{%integer}{%assertEQ1.n}
@@ -4060,7 +4191,7 @@
 @test.apply4to2 #2{%integer}#3{%integer}#4{%integer}#5{%integer}[{%.add}{%unrot}{%.add}]{%block}{%apply4to2}#5{%integer}{%assertEQ1.n}{%swap}#9{%integer}{%assertEQ1.n}
 @test.apply4to2d [{%.add}{%.mul}{%.add}#42{%integer}]{%block}#2{%integer}#3{%integer}#4{%integer}#5{%integer}{%apply4to2d}#42{%integer}{%assertEQ1.n}#29{%integer}{%assertEQ1d.n}
 @test.bi #6{%integer}[#5{%integer}{%.add}]{%block}[#7{%integer}{%.mul}]{%block}{%bi}#42{%integer}{%assertEQ1}{%swap}#11{%integer}{%assertEQ1}{%swap}
-@test.bidup #4{%integer}#7{%integer}[#6{%integer}{%*}]{%block}{%bidup}#42{%integer}{%assertEQ1}{%swap}#24{%integer}{%assertEQ1}{%swap}
+@test.bi& #4{%integer}#7{%integer}[#6{%integer}{%*}]{%block}{%bi&}#42{%integer}{%assertEQ1}{%swap}#24{%integer}{%assertEQ1}{%swap}
 @test.bi2 #6{%integer}#7{%integer}[{%.add}]{%block}[{%.mul}]{%block}{%bi2}#42{%integer}{%assertEQ1}{%swap}#13{%integer}{%assertEQ1}{%swap}
 @test.bitStreamToOctetStream "pack my box with five dozen liquor jugs
 ~{%literal}{%dup}{%fromList.s}{%octetStreamToBitStream}{%bitStreamToOctetStream}{%fromStream.l}{%assertTextEQ1}
@@ -4072,7 +4203,7 @@
 ~{%literal}{%assertTextEQ1}{%swap}"hello world!
 ~{%literal}{%assertTextEQ1}{%swap}
 @test.count.p0 #{%integer}#11{%integer}{%countFrom.p0}[{%step.p0}]{%block}#7{%integer}{%repeat}#17{%integer}{%assertEQ1d.n}
-@test.div.arity2 #42{%integer}#6{%integer}{%pw}[{%div.arity2}]{%block}{%.apply}#7{%integer}{%assertEQ1}
+@test.div\2 #42{%integer}#6{%integer}{%pw}[{%div\2}]{%block}{%.apply}#7{%integer}{%assertEQ1}
 @test.drop.l "hello world!
 ~{%literal}#6{%integer}{%drop.l}"world!
 ~{%literal}{%assertTextEQ1}
@@ -4105,7 +4236,7 @@
 ~{%literal}{%cons.l}[{%fromList.s}]{%block}{%map.l}{%fromList.s}{%flatten.s}{%toList.s}"hello, world!
 ~{%literal}{%assertTextEQ1}
 @test.fmap.s "hello
-~{%literal}{%fromList.s}#4{%integer}[{%add.arity2}]{%block}{%.bind}{%fmap.s}{%toList.s}"lipps
+~{%literal}{%fromList.s}#4{%integer}[{%add\2}]{%block}{%.bind}{%fmap.s}{%toList.s}"lipps
 ~{%literal}{%assertEQ1}
 @test.forCount.l#stopOnCount {%empty.l}"hello world
 ~{%literal}[{%cons.l}]{%block}#5{%integer}{%forCount.l}#{%integer}{%assertEQ1.n}{%drop}" world
@@ -4136,7 +4267,7 @@
 @test.ifd #3{%integer}{%false.b}[{%inc}]{%block}[{%mul2}]{%block}{%ifd}{%false.b}{%assertEQ1}#4{%integer}{%assertEQ1d.n}#3{%integer}{%true.b}[{%inc}]{%block}[{%mul2}]{%block}{%ifd}{%true.b}{%assertEQ1}#6{%integer}{%assertEQ1d.n}
 @test.ifk #3{%integer}{%inL}[{%inc}]{%block}[{%mul2}]{%block}{%ifk}#3{%integer}{%inL}{%assertEQ1}#4{%integer}{%assertEQ1d.n}#3{%integer}{%inR}[{%inc}]{%block}[{%mul2}]{%block}{%ifk}#3{%integer}{%inR}{%assertEQ1}#6{%integer}{%assertEQ1d.n}
 @test.inc.p0 #11{%integer}{%inc.p0}[{%step.p0}]{%block}#16{%integer}{%repeat}{%swap}#27{%integer}{%assertEQ}
-@test.inv.arity1 #8{%integer}[{%inv.arity1}]{%block}{%.apply}#125{%integer}#3{%integer}{%decimal}{%assertEQ}
+@test.inv\1 #8{%integer}[{%inv\1}]{%block}{%.apply}#125{%integer}#3{%integer}{%decimal}{%assertEQ}
 @test.left.p0#inL #{%integer}{%inL}{%inc.p0}{%left.p0}{%step.p0}{%step.p0}{%step.p0}{%step.p0}{%swap}{%assertInL}#4{%integer}{%assertEQ1.n}
 @test.left.p0#inR #{%integer}{%inR}{%inc.p0}{%left.p0}{%step.p0}{%step.p0}{%step.p0}{%step.p0}{%swap}{%assertInR}#{%integer}{%assertEQ1.n}
 @test.lefts.s "Hello, World!
@@ -4161,8 +4292,8 @@
 @test.math.remainderFrac #10{%integer}#4{%integer}#3{%integer}{%ratio}{%.rem}#2{%integer}#3{%integer}{%ratio}{%assertEQ}
 @test.math.square #7{%integer}{%.square}#49{%integer}{%assertEQ}
 @test.math.sub #13{%integer}#6{%integer}{%.sub}#7{%integer}{%assertEQ}
-@test.mul.arity2 #6{%integer}#7{%integer}{%pw}[{%mul.arity2}]{%block}{%.apply}#42{%integer}{%assertEQ}
-@test.neg.arity1 #7{%integer}[{%neg.arity1}]{%block}{%.apply}#7-{%integer}{%assertEQ}
+@test.mul\2 #6{%integer}#7{%integer}{%pw}[{%mul\2}]{%block}{%.apply}#42{%integer}{%assertEQ}
+@test.neg\1 #7{%integer}[{%neg\1}]{%block}{%.apply}#7-{%integer}{%assertEQ}
 @test.not.b {%false.b}{%not.b}{%true.b}{%assertEQ1}{%true.b}{%not.b}{%false.b}{%assertEQ1}
 @test.nub.l "hello, world!
 ~{%literal}{%nub.l}"helo, wrd!
@@ -4183,9 +4314,9 @@
 @test.partition.l "hello, World!
 ~{%literal}[#106{%integer}{%gt1}]{%block}{%partitionWith.l}"lloorl
 ~{%literal}{%assertTextEQ1}
-@test.quot.arity2 #11{%integer}#3{%integer}{%pw}[{%quot.arity2}]{%block}{%.apply}#3{%integer}{%assertEQ1}#11{%integer}#2{%integer}#3{%integer}{%ratio}{%pw}[{%quot.arity2}]{%block}{%.apply}#16{%integer}{%assertEQ1}#11{%integer}#2-{%integer}#3{%integer}{%ratio}{%pw}[{%quot.arity2}]{%block}{%.apply}#17-{%integer}{%assertEQ1}
+@test.quot\2 #11{%integer}#3{%integer}{%pw}[{%quot\2}]{%block}{%.apply}#3{%integer}{%assertEQ1}#11{%integer}#2{%integer}#3{%integer}{%ratio}{%pw}[{%quot\2}]{%block}{%.apply}#16{%integer}{%assertEQ1}#11{%integer}#2-{%integer}#3{%integer}{%ratio}{%pw}[{%quot\2}]{%block}{%.apply}#17-{%integer}{%assertEQ1}
 @test.quote #7{%integer}{%dup}{%quote}{%unquote}{%assertEQ1}
-@test.rem.arity2 #11{%integer}#3{%integer}{%pw}[{%rem.arity2}]{%block}{%.apply}#2{%integer}{%assertEQ1}#11{%integer}#2{%integer}#3{%integer}{%ratio}{%pw}[{%rem.arity2}]{%block}{%.apply}#1{%integer}#3{%integer}{%ratio}{%assertEQ1}#11{%integer}#2-{%integer}#3{%integer}{%ratio}{%pw}[{%rem.arity2}]{%block}{%.apply}#1-{%integer}#3{%integer}{%ratio}{%assertEQ1}
+@test.rem\2 #11{%integer}#3{%integer}{%pw}[{%rem\2}]{%block}{%.apply}#2{%integer}{%assertEQ1}#11{%integer}#2{%integer}#3{%integer}{%ratio}{%pw}[{%rem\2}]{%block}{%.apply}#1{%integer}#3{%integer}{%ratio}{%assertEQ1}#11{%integer}#2-{%integer}#3{%integer}{%ratio}{%pw}[{%rem\2}]{%block}{%.apply}#1-{%integer}#3{%integer}{%ratio}{%assertEQ1}
 @test.remove.l "hello world
 ~{%literal}#108{%integer}{%remove.l}"heo word
 ~{%literal}{%assertTextEQ1}
@@ -4228,9 +4359,9 @@
 @test.span.l.full "hello, world!
 ~{%literal}[{%drop}{%true.b}]{%block}{%span.l}{%empty.l}{%assertTextEQ1d}"hello, world!
 ~{%literal}{%assertTextEQ1}
-@test.square.arity1 #9{%integer}[{%square.arity1}]{%block}{%.apply}#81{%integer}{%assertEQ1}
+@test.square\1 #9{%integer}[{%square\1}]{%block}{%.apply}#81{%integer}{%assertEQ1}
 @test.stats {%new.stats}[{%add.stats}]{%block}#1{%integer}#10{%integer}{%enumFromTo}{%count.stats}#10{%integer}{%assertEQ1}{%drop}{%sum.stats}#55{%integer}{%assertEQ1}{%drop}{%sumsq.stats}#385{%integer}{%assertEQ1}{%drop}
-@test.sub.arity2 #13{%integer}#6{%integer}{%pw}[{%sub.arity2}]{%block}{%.apply}#7{%integer}{%assertEQ1}
+@test.sub\2 #13{%integer}#6{%integer}{%pw}[{%sub\2}]{%block}{%.apply}#7{%integer}{%assertEQ1}
 @test.swap3 #1{%integer}#2{%integer}#3{%integer}#4{%integer}#5{%integer}#6{%integer}{%swap3}#3{%integer}{%assertEQ1}{%drop}#2{%integer}{%assertEQ1}{%drop}#1{%integer}{%assertEQ1}{%drop}#6{%integer}{%assertEQ1}{%drop}#5{%integer}{%assertEQ1}{%drop}#4{%integer}{%assertEQ1}{%drop}
 @test.take.l "hello world!
 ~{%literal}#5{%integer}{%take.l}"hello
@@ -4290,7 +4421,7 @@
 @testing.t23 {%pangram#1}{%textToTestTree.t23}
 @textBitsToList [{%chr:0}{%gtb}]{%block}{%map.l}
 @textBitsToWord #{%integer}{%swap}[{%chr:0}{%gt}{%pushBit.bitListToWord}]{%block}{%each.l}
-@toBoolean.arity1 v{%toBoolean.arity1e}c
+@toBoolean\1 v{%toBoolean\1e}c
 @toStreamR.AATree [{%t.toStreamR.AATree}]{%block}{%.fixfirst}{%.bind}
 @toList.AATree {%toStreamR.AATree}{%toListR.s}
 @tree.toListL.bst {%unseal.bst}[{%elim1}{%discard}]{%block}[{%node.toListL.bst}]{%block}{%if}
@@ -4306,13 +4437,17 @@
 @toStreamOfPrng.r {%true.b}{%constant.s}{%swap}{%pmap.s}
 @tree.toStreamR.bst {%take}{%unseal.bst}[{%leaf.toStreamR.bst}]{%block}[{%node.toStreamR.bst}]{%block}{%if}
 @toStreamR.bst [vvr{%tree.toStreamR.bst}{%postApply}{%.app1}]{%block}{%.fixfirst}{%.bind}
-@toStream.arity1.l {%fromList.arity1.s}
+@toStream\1.l {%fromList\1.s}
 @tri [{%keep}]{%block}{%dip2}{%bi}
-@tridup {%dup}{%dup}{%tri*}
+@tri& {%dup}{%dup}{%tri*}
 @tri3 [{%keep3}]{%block}{%dip2}{%bi3}
 @tri3* [{%dip6}]{%block}{%dip2}{%bi3*}
 @tri3& {%dup}{%dup}{%tri3*}
 @true {%true.b}
+@tryCap.io {%intro1}"newTryCap
+~{%literal}{%p}{%command.io}
+@tryAp.io {%p}{%tryCap.io}{%.apply}
+@tryWrap.io {%tryCap.io}{%.bind}
 @unit {%intro1}
 @unless [{%drop}]{%block}{%if}
 @unlessd []{%block}{%ifd}
@@ -4322,8 +4457,10 @@
 @unseald.rbt {%.rw}{%unseal.rbt}{%.wl}
 @unseald.t23 {%.rw}{%unseal.t23}{%.wl}
 @unwrapS.stackHand.env vrwlclcwllcc
+@v.abc v
 @varianceNZ.stats {%unseal.stats}{%copy}{%seal.stats}{%put}{%x}{%take}{%x}{%.square}{%paste}{%.div}{%.sub}{%put}{%.div}
 @variance.stats {%count.stats}#{%integer}{%gt}[#{%integer}]{%block}[{%varianceNZ.stats}]{%block}{%if_}
+@w.abc w
 @warn.test "warn
 ~{%literal}{%p}{%cmd.test}{%drop}
 @when [{%drop}]{%block}{%swap}{%if}
@@ -4332,149 +4469,16 @@
 @while1 {%over}{%dip2}{%while}
 @wordStreamToBitStream [{%wordToBitList}{%fromList.s}]{%block}{%bind}{%map.s}{%flatten.s}
 @wrapS.stackHand.env vvrrwvrvrwlc
+@writeTextFile.io {%p}"writeTextFile
+~{%literal}{%p}{%command.io}
+@writeABCFile.io {%take}{%blockToText.io}{%put}{%writeTextFile.io}
+@writeBinaryFile.io {%p}"writeBinaryFile
+~{%literal}{%p}{%command.io}
 @x.pushBit.wordToBitList #2{%integer}{%.divMod}{%take}#{%integer}{%.gtb}{%cons.l}{%put}
+@z.abc z
 @zip.s {%pw}[{%next.zip.s}]{%block}{%fromStateE.s}
 @zipRem.s {%pw}[{%next.zipRem.s}]{%block}{%fromStateE.s}
 @zwrap.AATree {%empty.l}{%pw}
 @~ {%.neg}
 @÷ {%.div}
 @− {%.sub}
-@wikilon.css "body {
-  background: linear-gradient(#2e3436, #171A1B);
-  background-attachment: fixed;
-  color: #ecf0eb;
- }
- h1,h2,h3,h4,h5,h6,th {
-  color: #d3d7cf;
- }
- a {
-  color: #97c4f0;
-  text-decoration: none;
- }
- a:hover, a:focus {
-  text-decoration: underline;
- }
- strong, b {
-  color: #d3d7cf;
-  font-weight: bold;
- }
- a.refDictWord, .dictWord {
-  color: #efd0a7;
- }
- a.refDictWordPrefix, .dictWordPrefix {
-  color: #c17d11;
- }
- textarea {
-  color: #ecf0eb;
-  background-color: #2e3436;
-  padding: 3px;
-  overflow: auto;
-  resize: both;
-  border: 1px solid #888a85;
- }
- input[type="text"] {
-  color: #ecf0eb;
-  background-color: #2e3436;
-  padding: 3px;
-  border: 1px solid #888a85;
- }
- input[name="quota"] {
-  text-align: right;
-  color: #888a85;
- }
- input[name="editOrigin"] {
-  color: #ce5c00;
- }
- input[type="submit"] {
-  background-color: #888a85;
-  color: #ecf0eb;
-  font-weight: bold;
-  text-shadow: 0px 0px 2px black;
-  padding: 1px;
- }
- pre {
-  color: #ecf0eb;
-  background-color: #2e3436;
-  padding: 3px;
-  border: 1px solid #888a85;
-  max-width: 640px;
-  min-height: 16px;
-  white-space: pre-wrap;
- }
- body.docs {
-  margin: 0 auto;
-  width: 640px;
- }
- div.docs {
-  width: 640px;
- }
- span.parseError {
-  background-color: #820000;
- }
- span.diffHead {
-  background-color: #2a5703;
- }
- span.diffEdit {
-  background-color: #371740;
- }
- span.diffOrig {
- }
- span.diffConflict {
-  background-color: #8c3700;
- }
- span.diffConflictSep {
-  color: #f57900;
-  font-weight: bolder;
- }
- span.versionHash {
-  color: #8f5902;
-  font-size: x-small;
-  font-family: "Lucida Console", Monaco, monospace;
- }
- .todo {
-  color: #555753;
- }
-~
-@abc:v v
-@abc:r r
-@abc:w w
-@abc:l l
-@abc:c c
-@abc:z z
-@abc:V V
-@abc:R R
-@abc:W W
-@abc:L L
-@abc:C C
-@abc:Z Z
-@abc:copy ^
-@abc:drop %
-@abc:newZero #
-@abc:d0 0
-@abc:d1 1
-@abc:d2 2
-@abc:d3 3
-@abc:d4 4
-@abc:d5 5
-@abc:d6 6
-@abc:d7 7
-@abc:d8 8
-@abc:d9 9
-@abc:add +
-@abc:neg -
-@abc:mul *
-@abc:divMod Q
-@abc:gt >
-@abc:apply $
-@abc:affine f
-@abc:relevant k
-@abc:compose o
-@abc:quote '
-@abc:distrib D
-@abc:merge M
-@abc:factor F
-@abc:assert K
-@abc:condAp ?
-@abc:SP  
-@abc:LF 
-
