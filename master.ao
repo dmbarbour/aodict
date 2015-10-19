@@ -39,8 +39,8 @@
 @onElem.addend.s rw'ovrwrwz'owlVc
 @onFini.addend.s r%vr$c
 @step.addend.s lwvvrwlcw$wD[{%onElem.addend.s}]?VRW[{%onFini.addend.s}]?WLCMc
-@.firstfixfirst#v2 '[^'ow^'zowvr$c]^'owo
-@.firstfixfirst {%.firstfixfirst#v2}
+@.firstfixfirst.v2 '[^'ow^'zowvr$c]^'owo
+@.firstfixfirst {%.firstfixfirst.v2}
 @.addend.s [{%step.addend.s}]{%.firstfixfirst}w'ow'o
 @.app1 vvr$c
 @.app1e vvrrz$lc
@@ -81,7 +81,7 @@
 @notd {%swap}{%not}{%swap}
 @.right {%notd}{%.left}{%not}
 @.either {%unrot}{%.left}{%swap}{%.right}
-@.firstfixfirst#v1 [^'o]o^'o
+@.firstfixfirst.v1 [^'o]o^'o
 @.fixfirst r{%.firstfixfirst}l
 @onElem.flatten.s wvrwrw'o{%.addend.s}vr$c
 @.inR vVVRWLCc
@@ -127,10 +127,10 @@
 @.tridup {%dup}{%.rw}{%.apply}{%rot}{%.wl}{%dup}{%.rw}{%.apply}{%rot}{%.wl}{%.apply}{%rot}
 @ll.compareSums {%pw}{%.wl}{%.apply}{%.wl}{%drop}
 @rl.compareSums {%drop2}{%.wl}{%drop}{%.wl}{%drop}{%intro1}{%inR}{%inR}
-@?l.compareSums {%.rw}[{%.wl}{%ll.compareSums}]{%block}[{%.wl}{%rl.compareSums}]{%block}{%if}
+@inl.compareSums {%.rw}[{%.wl}{%ll.compareSums}]{%block}[{%.wl}{%rl.compareSums}]{%block}{%if}
 @lr.compareSums {%drop2}{%.wl}{%drop}{%.wl}{%drop}{%intro1}{%inL}{%inR}
 @rr.compareSums {%pw}{%.wl}{%drop}{%.wl}{%.apply}
-@?r.compareSums {%.rw}[{%.wl}{%lr.compareSums}]{%block}[{%.wl}{%rr.compareSums}]{%block}{%if}
+@inr.compareSums {%.rw}[{%.wl}{%lr.compareSums}]{%block}[{%.wl}{%rr.compareSums}]{%block}{%if}
 @EQ {%intro1}{%inL}
 @inRR {%inR}{%inR}
 @GT {%intro1}{%inRR}
@@ -274,8 +274,8 @@
 @bindKVCmp.AATree {%dx}{%dupd}{%.bind}{%dp}
 @node.insertKV.AATree {%dx}{%dx}{%dup}{%.apply}{%dp}{%dp}{&TODO}
 @taked {%swap}{%take}
-@hfix#v3 {%put}r[l{%take}]ol{%.fixfirst}{%take}
-@hfix {%hfix#v3}
+@hfix.v3 {%put}r[l{%take}]ol{%.fixfirst}{%take}
+@hfix {%hfix.v3}
 @hap {%put}{%inline}
 @empty.AATree {%intro1}{%inR}
 @singleton.AATree {%empty.AATree}{%empty.AATree}{%inR}{%pw}{%pw}{%inL}
@@ -500,8 +500,8 @@
 @assertEQ.n {%eq}{%assert}{%x}
 @assertEQ1.n {%assertEQ.n}{%drop}
 @n.assertBalanced.AATree {%take}{%wx}{%wx}{%paste}{%rt.assertBalanced.AATree}{%rot}{%put}{%t.assertBalanced.AATree}{%swapd}{%assertEQ1.n}{%take}{%p}{%pw}{%put}
-@fixpoint#v4 {%.prebind_l}{%.fixfirst}
-@fixpoint {%fixpoint#v4}
+@fixpoint.v4 {%.prebind_l}{%.fixfirst}
+@fixpoint {%fixpoint.v4}
 @r.assertBalanced.AATree [{%n.assertBalanced.AATree}]{%block}{%fixpoint}{%t.assertBalanced.AATree}{%drop}
 @assertBalanced.AATree [{%r.assertBalanced.AATree}]{%block}{%apply1to1}
 @unseal.rbt r{.rbt}l
@@ -620,12 +620,12 @@
 @keep2 {%.rw}{%dup2}{%pw}{%.wl}{%dip}{%wx}
 @bi2 [{%keep2}]{%block}{%dip}{%inline}
 @bi2* [{%dip2}]{%block}{%dip}{%inline}
-@bi2& {%dup}{%bi2*}
+@bi2dup {%dup}{%bi2*}
 @dup3 {%pw}{%pw}{%dup}{%dwx}{%dwx}{%wx}{%wx}
 @keep3 {%.rw}{%dup3}{%pw}{%pw}{%.wl}{%dip}{%wx}{%wx}
 @bi3 [{%keep3}]{%block}{%dip}{%inline}
 @bi3* [{%dip3}]{%block}{%dip}{%inline}
-@bi3& {%dup}{%bi3*}
+@bi3dup {%dup}{%bi3*}
 @bicons.unzipReverseAppend.l {%wx}{%swapd}{%cons.l}{%unrot}{%cons.l}{%swap}
 @bind2 {%bind}{%bind}
 @bind2nd [{%swap}]{%block}{%composel}{%bind}
@@ -812,7 +812,7 @@
 @compareNumbers {%pw}[{%rawCompareNumbers}]{%block}{%.apply}
 @compareOnStackToRawCompare [{%wx}]{%block}{%composel}{%applyWrap}
 @compareProds {%.rw}{%.rw}{%dx}{%x}{%swapd}{%pw}{%dpw}{%.wl}{%.apply}[{%drop}{%.wl}{%.apply}]{%block}[{%inR}{%.wl}{%drop}{%dropd}]{%block}{%if}
-@compareSums {%.rw}{%.rw}[{%?l.compareSums}]{%block}[{%?r.compareSums}]{%block}{%if}
+@compareSums {%.rw}{%.rw}[{%inl.compareSums}]{%block}[{%inr.compareSums}]{%block}{%if}
 @toOrd r{%e.toOrd}l
 @compareTexts [{%rawCompareNumbers}]{%block}{%compareLists}{%toOrd}
 @compareUnits c{%.inL}
@@ -872,8 +872,6 @@
 @d7.abc #7{%integer}{%digit.abc}
 @d8.abc #8{%integer}{%digit.abc}
 @d9.abc #9{%integer}{%digit.abc}
-@debugPrintRaw r[{&debug print raw}]$l
-@debugPrintText r[{&debug print text}]$l
 @dec.arity1 v#1-+c
 @div2 r#5{%integer}#1{%integer}{%decimal}r*l
 @roundToFrac {%dup}rw{%div2}{%.add}wl{%alignToFrac}
@@ -935,7 +933,7 @@
 @divMod.arity2 vrwQwlc
 @l rrwrzwlll
 @dl {%.rw}{%l}{%.wl}
-@doc.#.abc "e→(N(0)*e); intro number 0
+@doc.abc:newZero "e→(N(0)*e); intro number 0
 ~{%literal}
 @doc..abs "N(a) -- N(|a|)
 ~{%literal}
@@ -1771,13 +1769,13 @@
      [p] keep2 q
  
 ~{%literal}
-@doc.bi2& "apply a single block to two pairs of inputs
+@doc.bi2dup "apply a single block to two pairs of inputs
 ~{%literal}
 @doc.bi2* "apply 2 blocks each to 2 respective inputs
 ~{%literal}
 @doc.bi3 "apply two blocks each to same three arguments
 ~{%literal}
-@doc.bi3& "apply a single block to two triples of inputs
+@doc.bi3dup "apply a single block to two triples of inputs
 ~{%literal}
 @doc.bi3* "apply 2 blocks each to 3 respective inputs
 ~{%literal}
@@ -1867,7 +1865,7 @@
          {&compile} :: (block*e)→(block*e) 
          compile    :: block -- block (on AO stack)
  
- Static compilation is also useful, of course. Dynamic compilation can translate to static compilation via partial evaluation, or static per-word compilation may be available; see `doc.prefix.compile!` for more.
+ Static compilation is also useful, of course. Dynamic compilation can translate to static compilation via partial evaluation, and in some contexts words might automatically be compiled.
 ~{%literal}
 @doc.compose "[x→y] [y→z] -- [x→z]; compose functions
 ~{%literal}
@@ -1928,10 +1926,6 @@
 @doc.d8.abc "(N(x)*e)→(N(10x+8)*e); digit
 ~{%literal}
 @doc.d9.abc "(N(x)*e)→(N(10x+9)*e); digit
-~{%literal}
-@doc.debugPrintRaw "annotation to print top value from stack to stderr
-~{%literal}
-@doc.debugPrintText "annotation to print top text on stack to stderr (as text)
 ~{%literal}
 @doc.decimal12 "round number to decimal with twelve places past decimal point
 ~{%literal}
@@ -2196,16 +2190,6 @@
 @doc.ifd "..a (L+R) [..a -- ..b]   [..a -- ..b]   -- ..b (L+R); see @doc.if
 ~{%literal}
 @doc.ifk "..a (L+R) [..a L -- ..b] [..a R -- ..b] -- ..b (L+R); see @doc.if
-~{%literal}
-@doc.import.ao "default root import for `ao` executable. See @doc.ao.utility .
-~{%literal}
-@doc.import.bits "functions for working with bits and bytes and fixed-width words
-~{%literal}
-@doc.import.compiledWords "contains compilation directives; see `doc.prefix.compile!`
-~{%literal}
-@doc.import.random "pseudo random number generators
-~{%literal}
-@doc.import.std "viable starting point for AO dictionaries
 ~{%literal}
 @doc.inL "a -- (a + 0); wrap 'a' in failure, mark false, on the left
 ~{%literal}
@@ -2472,63 +2456,6 @@
 @doc.postApply "((a*1)*(1*1))→a; unwrap result from `apply` environment
 ~{%literal}
 @doc.preApply "a→((a*1)*(1*1)); wrap argument in `apply` environment
-~{%literal}
-@doc.prefix.bench. "benchmarks; not part of the usual test suite
- 
- note: these may cause trouble for partial evaluators (but they're also a nice validation that partial evaluators don't do too much work)
-~{%literal}
-@doc.prefix.compile! "If you define word `compile!foo` this can act as a directive that the AO system should separately compile the word `foo`. The definition of `compile!foo` should be left empty, at least for now. The `compile!` word may later provide opportunity for optimization directives.
- 
- This directive leverages ABC's separate compilation and linking model. An ABC subprogram may be saved and given a unique identifier. ABC uses its effects system to load and logically inline the subprogram - e.g. `{#resourceId}`. The `compile!foo` directive tells an AO compiler to replace the word with the equivalent resource identifier and save the bytecode at an appropriate location for linking. This doesn't require compilation, but provides an excellent opportunity for it. 
- 
- The actual encoding of ABC resources is more sophisticated than plain bytecode, including compression and encryption steps. Relevant pseudocode:
- 
-         makeResource(bytecode):
-             hashBC = secureHashBC(bytecode)
-             cipherText = encrypt(hashBC,compress(bytecode))
-             hashCT = secureHashCT(cipherText)
-             store(hashCT,cipherText)
-             resourceId = encode(append(hashCT,hashBC))
-             return {#resourceId}
- 
- The current proposal is that secureHashBC is SHA3-384 taking the last 256 bits, and secureHashCT is SHA3-384 taking the first 128 bits. (That is, SHA3-384 is used twice, keeping independent parts for 384 bits in the end.) The encryption will likely be AES-CTR (with a zero IV). Compression is still under development, but includes a specialized compression pass for embedded binary data.
- 
- The idea is that we should be able to distribute application resources through distrusted servers (cloud servers, content distribution networks, etc.), and also that we should be able to eliminate duplicates and maximize reuse via caching. There is a remaining vulnerability to 'confirmation' attacks, but developers can address this by indicating sensitive words with a `secret!foo` directive.
- 
- See also: `doc.prefix.secret!` `doc.BinariesInABC`
-~{%literal}
-@doc.prefix.doc. "AO does not have 'comments' in the usual sense. Instead, a word that starts with `doc.` can document some aspect of a dictionary - e.g. a word, project, or convention. This makes documentation a first-class, computable value, though most of the time it will simply be some text.
- 
- In some cases, developers will be tempted to inject remarks directly into a word. This is doable (just `"this is a comment" drop` would do) but discouraged. Instead, consider refactoring the definition into words that can be documented independently, or that have self-explanatory names.
- 
- At the moment, documentation lacks a clear convention or format, just a pseudo-markdown. Most likely, this will be addressed when we start processing documentation into HTML pages or similar.
-~{%literal}
-@doc.prefix.eqv. "There are many cases where two different expressions should be equivalent. Explicitly asserting so is useful! Not only may equivalencies serve as documentation, but they also can support automatic tests, and provide hints or tests for optimizers and refactoring tools. So prefix 'eqv' provides a generic way to suggest that two subprograms should be equivalent.
- 
- The type of any 'eqv.foo' word should be:
- 
-         ( -- [a→b] [a→b]). 
- 
- That is, developers should simply add two blocks to the current stack (in no particular order) which should have equivalent behavior modulo typeful identity. Use of the 'eqv' prefix enables external tools to systematically discover, document, and validate these assertions. Further, they may later prove useful to optimizers and code rewriting.
-~{%literal}
-@doc.prefix.secret! "ABC's separate compilation and linking model uses [convergent encryption](http://en.wikipedia.org/wiki/Convergent_encryption), which is vulnerable to a class of 'confirmation' attacks, i.e. whereby an attacker might determine a ten digit bank account number by systematically encrypting all ten billion combinations and finding which is stored on the server. Confirmation attacks only work against low-entropy data, but a great deal of privacy-sensitive information is low entropy.
- 
- To resist confirmation attacks, we can mix in a 'convergence secret', e.g. some high entropy text, with the ABC resource. If we add a 192-bit secret, the cost of a confirmation attack would increase by a factor of roughly 2^192. For compression, a 192-bit convergence secret might be encoded in ABC's base 16 as:
- 
-     "bpgzmjkydmfyfdhdhptzmnbpdjkndjnsgdjyzpxbsypshqfk
-     ~{&secret}%
- 
- A convergence secret should be deterministic, stable across compiles, and cryptographically secure. A simple HMAC of an external secret together with the protected code would work well enough. The `secret!` prefix acts as a directive to the AO compiler. If the word `secret!foo` is defined, then a convergence secret should be generated for when including code for `foo` in a resource. The directives may be used in other ways, too, such as constraining exports.
- 
- In practice, most AO code will not be secret. But it might come up occasionally if using an AO dictionary more like an operating system or personal environment than a programming language.
- 
- See also: `doc.BinariesInABC`
-~{%literal}
-@doc.prefix.test. "Automated testing is an effective means to maintain software quality, avoid regressions, and achieve confidence in code. Test driven design can keep designs well grounded and incremental.  
- 
- In AO, automatic testing is expressed simply by using the prefix 'test.' in the definitions of words. Test words can be systematically executed in a standard environment with a confined powerblock. A test can fail due to type errors, assertion failures, taking too much time or space, or emitting an error message effectfully through the powerblock.
- 
- Testing has limits. You cannot prove, through testing, that bugs are absent. AO developers are encouraged also to leverage symbolic analysis, which is also expressed in a relatively dynamic manner in AO (e.g. use of the 'eqv.' or 'id.' prefixes).
 ~{%literal}
 @doc.pushEnv "a E(stack) -- E(a*stack); push element into reified environment.
 ~{%literal}
@@ -2933,13 +2860,13 @@
 ~{%literal}
 @doc.tri2 "apply 3 blocks to the same 2 args
 ~{%literal}
-@doc.tri2& "apply a single block to three pairs of inputs
+@doc.tri2dup "apply a single block to three pairs of inputs
 ~{%literal}
 @doc.tri2* "apply 3 blocks each to 2 respective inputs
 ~{%literal}
 @doc.tri3 "apply 3 blocks each to the same 3 args
 ~{%literal}
-@doc.tri3& "apply a single block to three triples of inputs
+@doc.tri3dup "apply a single block to three triples of inputs
 ~{%literal}
 @doc.tri3* "apply 3 blocks each to 3 respective inputs
 ~{%literal}
@@ -3265,12 +3192,12 @@
 @eqk1.n3.insertKV.t23 {%discard2}{%put}{%wcadr}{%inL}{%take}{%fromN3.t23}{%inL}
 @eqk2.n3.insertKV.t23 {%discard}{%put}{%wcadr}{%inL}{%take}{%pw}{%pw}{%fromN3.t23}{%inL}
 @eqv.WZW.ZWZ [ZWZ]{%block}[WZW]{%block}
-@eqv.addendEmpty.s#1 [{%empty.s}{%addend.s}]{%block}[]{%block}
-@eqv.addendEmpty.s#2 [{%empty.s}{%swap}{%addend.s}]{%block}[]{%block}
+@eqv.addendEmpty.s.v1 [{%empty.s}{%addend.s}]{%block}[]{%block}
+@eqv.addendEmpty.s.v2 [{%empty.s}{%swap}{%addend.s}]{%block}[]{%block}
 @eqv.appTwice.compApp [{%compose}{%apply}]{%block}[{%unrot}{%apply}{%swap}{%apply}]{%block}
 @eqv.apply [{%apply}]{%block}[{%apply.alt}]{%block}
 @eqv.apply1.intro1Appd [{%.apply1}]{%block}[{%intro1}{%.applyd}]{%block}
-@eqv.bindKVCmp.AATree#1 [{%bindKVCmp.AATree}]{%block}[{%.rw}{%x}{%dup}{%dp}{%.wl}{%.bind}]{%block}
+@eqv.bindKVCmp.AATree [{%bindKVCmp.AATree}]{%block}[{%.rw}{%x}{%dup}{%dp}{%.wl}{%.bind}]{%block}
 @toListR.s {%empty.l}{%swap}[{%cons.l}]{%block}{%foreach.s}
 @toList.s {%toListR.s}{%reverse.l}
 @fromStream.l {%toList.s}
@@ -3280,7 +3207,7 @@
 @eqv.cca [{%.both}]{%block}[{%swap}{%take2}{%pw}{%put2}{%.both}{%pw}]{%block}
 @eqv.cca+ [{%.either}]{%block}[{%swap}{%take2}{%not}{%put2}{%.either}{%not}]{%block}
 @relevant rkl
-@eqv.commutative.affine&relevant [{%affine}{%relevant}]{%block}[{%relevant}{%affine}]{%block}
+@eqv.commutative.affine.relevant [{%affine}{%relevant}]{%block}[{%relevant}{%affine}]{%block}
 @eqv.commutative.and.b [{%and.b}]{%block}[{%swap}{%and.b}]{%block}
 @or.b {%distrib}r[c]?RVRW[v%]?WLCl
 @eqv.commutative.or.b [{%or.b}]{%block}[{%swap}{%or.b}]{%block}
@@ -3288,9 +3215,9 @@
 @eqv.commutative.xor.b [{%xor.b}]{%block}[{%swap}{%xor.b}]{%block}
 @eqv.deMorgans.1 [{%and.b}{%not.b}]{%block}[{%not.b}{%swap}{%not.b}{%swap}{%or.b}]{%block}
 @eqv.deMorgans.2 [{%or.b}{%not.b}]{%block}[{%not.b}{%swap}{%not.b}{%swap}{%and.b}]{%block}
-@eqv.decimal6#12.6 [{%decimal6}]{%block}[{%decimal12}{%decimal6}]{%block}
-@eqv.decimal6#6 [{%decimal6}]{%block}[{%decimal6}{%decimal6}]{%block}
-@eqv.decimal6#6.12 [{%decimal6}]{%block}[{%decimal6}{%decimal12}]{%block}
+@eqv.decimal6.12.6 [{%decimal6}]{%block}[{%decimal12}{%decimal6}]{%block}
+@eqv.decimal6.6 [{%decimal6}]{%block}[{%decimal6}{%decimal6}]{%block}
+@eqv.decimal6.6.12 [{%decimal6}]{%block}[{%decimal6}{%decimal12}]{%block}
 @eqv.dropReverse.l [{%drop}]{%block}[{%reverse.l}{%drop}]{%block}
 @eqv.dup2 [{%dup2}]{%block}[{%dup2.alt}]{%block}
 @eqv.dup3 [{%dup3}]{%block}[{%dup3.alt}]{%block}
@@ -3302,12 +3229,12 @@
 @eqv.fst.wxdrop [{%fst}]{%block}[{%wx}{%drop}]{%block}
 @hdrop {%hsw}{%drop}{%hsw}
 @eqv.hdrop.discard [{%hdrop}]{%block}[{%put}{%drop}]{%block}
-@eqv.id.%cv [cv]{%block}[]{%block}
-@eqv.id.%lr [lr]{%block}[]{%block}
-@eqv.id.%rl [rl]{%block}[]{%block}
-@eqv.id.%vc [vc]{%block}[]{%block}
-@eqv.id.%ww [ww]{%block}[]{%block}
-@eqv.id.%zz [zz]{%block}[]{%block}
+@eqv.id.cv [cv]{%block}[]{%block}
+@eqv.id.lr [lr]{%block}[]{%block}
+@eqv.id.rl [rl]{%block}[]{%block}
+@eqv.id.vc [vc]{%block}[]{%block}
+@eqv.id.ww [ww]{%block}[]{%block}
+@eqv.id.zz [zz]{%block}[]{%block}
 @eqv.id..assertUnit [{%.assertUnit}]{%block}[]{%block}
 @eqv.id..lw³ [l{%.swap}l{%.swap}l{%.swap}]{%block}[]{%block}
 @eqv.id..rw³ [r{%.swap}r{%.swap}r{%.swap}]{%block}[]{%block}
@@ -3493,15 +3420,15 @@
 @hswap {%hsw}{%swap}{%hsw}
 @eqv.takeHswapPut.putSwapTake [{%take}{%hswap}{%put}]{%block}[{%put}{%swap}{%take}]{%block}
 @eqv.takeSwapPut.swapd [{%take}{%swap}{%put}]{%block}[{%swapd}]{%block}
-@eqv.tuck#1 [{%tuck}]{%block}[{%dup}{%unrot}]{%block}
-@eqv.tuck#2 [{%tuck}]{%block}[{%swap}{%over}]{%block}
+@eqv.tuck.1 [{%tuck}]{%block}[{%dup}{%unrot}]{%block}
+@eqv.tuck.2 [{%tuck}]{%block}[{%swap}{%over}]{%block}
 @vrwlc__ {%v__}{%r__}{%w__}{%l__}{%c__}
 @eqv.vrwlc__.rrwll [rrwll]{%block}[{%vrwlc__}]{%block}
 @vrwlc___ {%v___}{%r___}{%w___}{%l___}{%c___}
 @eqv.vrwlc___.rrrwlll [rrrwlll]{%block}[{%vrwlc___}]{%block}
 @eqv.wc.lxwpr [{%wc}]{%block}[{%l}{%x}{%w}{%p}{%r}]{%block}
 @eqv.wzw.zwz [zwz]{%block}[wzw]{%block}
-@eqv.zc.wx^3_swapd_pw^3 [{%zc}]{%block}[{%wx}{%wx}{%wx}{%swapd}{%pw}{%pw}{%pw}]{%block}
+@eqv.zc.wx³_swapd_pw³ [{%zc}]{%block}[{%wx}{%wx}{%wx}{%swapd}{%pw}{%pw}{%pw}]{%block}
 @eqv.zc.wxwcpw [{%zc}]{%block}[{%wx}{%wc}{%pw}]{%block}
 @wrap.z.rbt {%empty.l}{%pw}
 @wrapd.z.rbt {%.rw}{%wrap.z.rbt}{%.wl}
@@ -3563,9 +3490,9 @@
 @findKV.bst {%.bind}[{%take2}{%tree.findKV.bst}]{%block}{%bind}{%fixpoint}{%inline}
 @step.first.p0 wz$rz'o
 @first.p0 [{%step.first.p0}]{%block}{%.fixfirst}{%.bind}
-@fixpoint#v1 [{%dup}{%bind}]{%block}{%composel}{%dup}{%bind}
-@fixpoint#v2 r[^'ol]o^'ol
-@fixpoint#v3 r'[^'ow^'zozlwvr$c]^'owol
+@fixpoint.v1 [{%dup}{%bind}]{%block}{%composel}{%dup}{%bind}
+@fixpoint.v2 r[^'ol]o^'ol
+@fixpoint.v3 r'[^'ow^'zozlwvr$c]^'owol
 @t.fmap.AATree {%take}[{%put}{%inline}{%inL}]{%block}[{%discard}{%inR}]{%block}{%if}
 @rt.fmap.AATree {%take}[{%put}{%inline}{%inL}]{%block}[{%put}{%t.fmap.AATree}{%inR}]{%block}{%if}
 @n.fmap.AATree {%take2}{%wx}{%x}{%paste}{%t.fmap.AATree}{%swap}{%put}{%rt.fmap.AATree}{%pw}{%swap}{%put}{%.apply}{%p}
@@ -3621,8 +3548,8 @@
 @hdw {%hsw}{%dw}{%hsw}
 @hdwx {%hsw}{%dwx}{%hsw}
 @hdx {%hsw}{%dx}{%hsw}
-@hfix#v1 {%put}[{%take}]{%block}{%composel}{%fixpoint}{%take}
-@hfix#v2 {%put}r[^'ol{%take}]o^'ol{%take}
+@hfix.v1 {%put}[{%take}]{%block}{%composel}{%fixpoint}{%take}
+@hfix.v2 {%put}r[^'ol{%take}]o^'ol{%take}
 @hl {%hsw}{%l}{%hsw}
 @hnip {%hsw}{%nip}{%hsw}
 @hnip2 {%hsw}{%nip2}{%hsw}
@@ -3856,9 +3783,9 @@
 @over7 {%roll7}{%dup}{%unroll7d}
 @r.paintItRed.rbt [{%inL}]{%block}[{%n.paintItRed.rbt}{%inR}]{%block}{%if}
 @paintItRed.rbt {%unseal.rbt}{%r.paintItRed.rbt}{%seal.rbt}
-@pangram#1 "pack my box with five dozen liquor jugs
+@pangram.1 "pack my box with five dozen liquor jugs
 ~{%literal}
-@pangram#2 "a quick brown fox jumped over the lazy dog
+@pangram.2 "a quick brown fox jumped over the lazy dog
 ~{%literal}
 @partialFactor rFll{%x}
 @partition.l {%partitionReverse.l}{%reverse.l}{%swap}{%reverse.l}{%swap}
@@ -3923,7 +3850,7 @@
 @rn.take.s {%inner.take.s}{%swapd}
 @run8 {%run7}{%run}
 @scan.l [{%map.l}]{%block}{%apply3to2}
-@seal r{:}l
+@seal r{:_}l
 @seald.t23 {%.rw}{%seal.t23}{%.wl}
 @step.second.p0 vrwrwrwzw$rwzwlwz'olc
 @second.p0 [{%step.second.p0}]{%block}{%.fixfirst}{%.bind}
@@ -4013,10 +3940,10 @@
 @stepLeft.z.rbt {%x}{%unseal.rbt}[{%fromLeaf.rbt}{%p}]{%block}[{%node.stepLeft.z.rbt}]{%block}{%if}
 @stepRight.z.rbt {%x}{%unseal.rbt}[{%fromLeaf.rbt}{%p}]{%block}[{%node.stepRight.z.rbt}]{%block}{%if}
 @stepUp.z.rbt {%x}{%take}[{%x}{%step.exit.z.rbt}]{%block}[{%inR}]{%block}{%if}{%put}{%p}
-@sto.fixpoint#v1 r'[^'ow^'zozlwvr$c]^'owol
-@sto.fixpoint {%sto.fixpoint#v1}
-@sto.fixpoint#v0 [{%dupd}{%bind}{%swap}{%inline}]{%block}{%fixpoint#v2}{%bind}
-@sto.fixpoint#v2 r'[[^'ow^'zozlwvr$c]^'ow^'zozlwvr$c]wol
+@sto.fixpoint.v1 r'[^'ow^'zozlwvr$c]^'owol
+@sto.fixpoint {%sto.fixpoint.v1}
+@sto.fixpoint.v0 [{%dupd}{%bind}{%swap}{%inline}]{%block}{%fixpoint.v2}{%bind}
+@sto.fixpoint.v2 r'[[^'ow^'zozlwvr$c]^'ow^'zozlwvr$c]wol
 @sub.arity2 vrw-+c
 @sumsq.stats {%unseal.stats}{%wx}{%wx}{%copy}{%pw}{%pw}{%seal.stats}{%put}
 @swap2 {%p}{%dp}{%swap}{%dx}{%x}
@@ -4050,7 +3977,7 @@
 ~{%literal}" world!
 ~{%literal}[{%fromList.s}]{%block}{%bidup}{%addend.s}{%toList.s}"hello, world!
 ~{%literal}{%assertTextEQ1}
-@test.addend.s#empty {%empty.s}{%empty.s}{%addend.s}{%intro1}{%.applyd}{%assertInR}{%elim1}
+@test.addend.s.empty {%empty.s}{%empty.s}{%addend.s}{%intro1}{%.applyd}{%assertInR}{%elim1}
 @test.alignToFrac #1{%integer}#3{%integer}{%ratio}#1{%integer}#2{%integer}{%decimal}{%alignToFrac}#33{%integer}#2{%integer}{%decimal}{%assertEQ1.n}#2{%integer}#3{%integer}{%ratio}#1{%integer}#2{%integer}{%decimal}{%alignToFrac}#66{%integer}#2{%integer}{%decimal}{%assertEQ1.n}#227{%integer}#10{%integer}{%alignToFrac}#220{%integer}{%assertEQ1.n}
 @test.and.b {%false.b}{%false.b}{%and.b}{%false.b}{%assertEQ1}{%false.b}{%true.b}{%and.b}{%false.b}{%assertEQ1}{%true.b}{%true.b}{%and.b}{%true.b}{%assertEQ1}{%true.b}{%false.b}{%and.b}{%false.b}{%assertEQ1}
 @test.append.l "hello, 
@@ -4107,23 +4034,23 @@
 @test.fmap.s "hello
 ~{%literal}{%fromList.s}#4{%integer}[{%add.arity2}]{%block}{%.bind}{%fmap.s}{%toList.s}"lipps
 ~{%literal}{%assertEQ1}
-@test.forCount.l#stopOnCount {%empty.l}"hello world
+@test.forCount.l.stopOnCount {%empty.l}"hello world
 ~{%literal}[{%cons.l}]{%block}#5{%integer}{%forCount.l}#{%integer}{%assertEQ1.n}{%drop}" world
 ~{%literal}{%assertEQ1}"olleh
 ~{%literal}{%assertEQ1d}
-@test.forCount.l#stopOnEmpty {%empty.l}"hello world
+@test.forCount.l.stopOnEmpty {%empty.l}"hello world
 ~{%literal}[{%cons.l}]{%block}#15{%integer}{%forCount.l}#4{%integer}{%assertEQ1.n}{%drop}{%assertInR}{%elim1}"dlrow olleh
 ~{%literal}{%assertEQ1}
-@test.forCount.s#stopOnCount {%empty.l}"hello world
+@test.forCount.s.stopOnCount {%empty.l}"hello world
 ~{%literal}{%fromList.s}[{%cons.l}]{%block}#4{%integer}{%forCount.s}#{%integer}{%assertEQ1.n}"o world
 ~{%literal}{%fromList.s}{%assertEQ1d}"lleh
 ~{%literal}{%assertEQ1dd}
-@test.forCount.s#stopOnElem {%empty.l}"hello world
+@test.forCount.s.stopOnElem {%empty.l}"hello world
 ~{%literal}{%fromList.s}[{%cons.l}]{%block}#15{%integer}{%forCount.s}#4{%integer}{%assertEQ1.n}{%empty.s}{%assertEQ1d}"dlrow olleh
 ~{%literal}{%assertEQ1dd}
 @test.foreach.s "hello, world!
 ~{%literal}{%fromList.s}#{%integer}[{%.add}]{%block}{%swapd}{%foreach.s}#1193{%integer}{%assertEQ1.n}
-@test.fromStateSplitNext.r#next #{%integer}[{%dup}]{%block}[{%inc}{%dup}]{%block}{%fromStateSplitNext.r}{%next.r}{%next.r}{%next.r}{%next.r}#4{%integer}{%assertEQ1d.n}
+@test.fromStateSplitNext.r.next #{%integer}[{%dup}]{%block}[{%inc}{%dup}]{%block}{%fromStateSplitNext.r}{%next.r}{%next.r}{%next.r}{%next.r}#4{%integer}{%assertEQ1d.n}
 @test.gratuitousDeepShuffle #5{%integer}#6{%integer}{%pw}{%dup}{%vrwlc__}{%w}{%assertEQ1}
 @test.gratuitousDeeperShuffle #4{%integer}#5{%integer}#6{%integer}{%pw}{%p}{%dup}{%vrwlc___}{%x}{%w}{%p}{%assertEQ1}
 @test.gt #12{%integer}#11{%integer}{%.gt}{%assert}
@@ -4137,8 +4064,8 @@
 @test.ifk #3{%integer}{%inL}[{%inc}]{%block}[{%mul2}]{%block}{%ifk}#3{%integer}{%inL}{%assertEQ1}#4{%integer}{%assertEQ1d.n}#3{%integer}{%inR}[{%inc}]{%block}[{%mul2}]{%block}{%ifk}#3{%integer}{%inR}{%assertEQ1}#6{%integer}{%assertEQ1d.n}
 @test.inc.p0 #11{%integer}{%inc.p0}[{%step.p0}]{%block}#16{%integer}{%repeat}{%swap}#27{%integer}{%assertEQ}
 @test.inv.arity1 #8{%integer}[{%inv.arity1}]{%block}{%.apply}#125{%integer}#3{%integer}{%decimal}{%assertEQ}
-@test.left.p0#inL #{%integer}{%inL}{%inc.p0}{%left.p0}{%step.p0}{%step.p0}{%step.p0}{%step.p0}{%swap}{%assertInL}#4{%integer}{%assertEQ1.n}
-@test.left.p0#inR #{%integer}{%inR}{%inc.p0}{%left.p0}{%step.p0}{%step.p0}{%step.p0}{%step.p0}{%swap}{%assertInR}#{%integer}{%assertEQ1.n}
+@test.left.p0.inL #{%integer}{%inL}{%inc.p0}{%left.p0}{%step.p0}{%step.p0}{%step.p0}{%step.p0}{%swap}{%assertInL}#4{%integer}{%assertEQ1.n}
+@test.left.p0.inR #{%integer}{%inR}{%inc.p0}{%left.p0}{%step.p0}{%step.p0}{%step.p0}{%step.p0}{%swap}{%assertInR}#{%integer}{%assertEQ1.n}
 @test.lefts.s "Hello, World!
 ~{%literal}{%fromList.s}[#108{%integer}{%.lt1}]{%block}{%map.s}{%lefts.s}{%toList.s}"lloorl
 ~{%literal}{%assertTextEQ1}
@@ -4167,7 +4094,7 @@
 @test.nub.l "hello, world!
 ~{%literal}{%nub.l}"helo, wrd!
 ~{%literal}{%assertTextEQ1}
-@test.nubAndSort.l#pangram "pack my box with five dozen liquor jugs
+@test.nubAndSort.l.pangram "pack my box with five dozen liquor jugs
 ~{%literal}{%nub.l}[{%ltb}]{%block}{%sortBy.l}" abcdefghijklmnopqrstuvwxyz
 ~{%literal}{%assertTextEQ1}
 @test.nubBy.l "hello, world!
@@ -4199,8 +4126,8 @@
 ~{%literal}",olleh
 ~{%literal}{%reverseAppend.l}"hello, World!
 ~{%literal}{%assertTextEQ1}
-@test.right.p0#inL #{%integer}{%inL}{%inc.p0}{%right.p0}{%step.p0}{%step.p0}{%step.p0}{%step.p0}{%swap}{%assertInL}#{%integer}{%assertEQ1.n}
-@test.right.p0#inR #{%integer}{%inR}{%inc.p0}{%right.p0}{%step.p0}{%step.p0}{%step.p0}{%step.p0}{%swap}{%assertInR}#4{%integer}{%assertEQ1.n}
+@test.right.p0.inL #{%integer}{%inL}{%inc.p0}{%right.p0}{%step.p0}{%step.p0}{%step.p0}{%step.p0}{%swap}{%assertInL}#{%integer}{%assertEQ1.n}
+@test.right.p0.inR #{%integer}{%inR}{%inc.p0}{%right.p0}{%step.p0}{%step.p0}{%step.p0}{%step.p0}{%swap}{%assertInR}#4{%integer}{%assertEQ1.n}
 @test.rights.s "Hello, World!
 ~{%literal}{%fromList.s}[#108{%integer}{%.lt1}]{%block}{%map.s}{%rights.s}{%toList.s}"He, Wd!
 ~{%literal}{%assertTextEQ1}
@@ -4244,8 +4171,8 @@
 @tri2 [{%keep2}]{%block}{%dip2}{%bi2}
 @test.tri2 #6{%integer}#7{%integer}[{%.add}]{%block}[{%.mul}]{%block}[{%.square}{%swap}{%.square}{%.add}]{%block}{%tri2}#85{%integer}{%assertEQ1}{%unrot}#42{%integer}{%assertEQ1}{%unrot}#13{%integer}{%assertEQ1}{%unrot}
 @tri2* [{%dip4}]{%block}{%dip2}{%bi2*}
-@tri2& {%dup}{%dup}{%tri2*}
-@test.tri2& #1{%integer}#2{%integer}#3{%integer}#4{%integer}#5{%integer}#6{%integer}[{%*}]{%block}{%tri2&}#30{%integer}{%assertEQ1}{%unrot}#12{%integer}{%assertEQ1}{%unrot}#2{%integer}{%assertEQ1}{%unrot}
+@tri2dup {%dup}{%dup}{%tri2*}
+@test.tri2dup #1{%integer}#2{%integer}#3{%integer}#4{%integer}#5{%integer}#6{%integer}[{%*}]{%block}{%tri2dup}#30{%integer}{%assertEQ1}{%unrot}#12{%integer}{%assertEQ1}{%unrot}#2{%integer}{%assertEQ1}{%unrot}
 @test.tri2* #6{%integer}#7{%integer}#8{%integer}#9{%integer}#10{%integer}#11{%integer}[{%.mul}]{%block}[{%.add}]{%block}[{%.div}]{%block}{%tri2*}#10{%integer}#11{%integer}{%ratio}{%assertEQ1}{%unrot}#17{%integer}{%assertEQ1}{%unrot}#42{%integer}{%assertEQ1}{%unrot}
 @test.unroll7 #1{%integer}#2{%integer}#3{%integer}#4{%integer}#5{%integer}#6{%integer}#7{%integer}{%unroll7}#6{%integer}{%assertEQ1}{%drop6}#7{%integer}{%assertEQ1}{%drop}
 @until [{%step.until}]{%block}{%bind2}{%fixpoint}{%inline}
@@ -4283,11 +4210,11 @@
 ~{%literal}{%assertTextEQ1}{%swap}"abcdef
 ~{%literal}{%assertTextEQ1}{%swap}
 @test.zip2 #5{%integer}#6{%integer}{%pw}#7{%integer}#8{%integer}{%pw}{%zip2}#7{%integer}#5{%integer}{%pw}{%assertEQ1}
-@testing.bst {%pangram#1}{%dup}{%reverse.l}{%zip.l}{%empty.bst}{%swap}[{%mkCompareNums}{%insertKV.bst}{%drop}]{%block}{%each.l}
+@testing.bst {%pangram.1}{%dup}{%reverse.l}{%zip.l}{%empty.bst}{%swap}[{%mkCompareNums}{%insertKV.bst}{%drop}]{%block}{%each.l}
 @textToTestTree.rbt {%dup}{%reverse.l}{%zip.l}{%empty.rbt}{%swap}[{%mkCompareNums}{%insertKV.rbt}{%drop}]{%block}{%each.l}
-@testing.rbt {%pangram#1}{%textToTestTree.rbt}
+@testing.rbt {%pangram.1}{%textToTestTree.rbt}
 @textToTestTree.t23 {%dup}{%reverse.l}{%zip.l}{%empty.t23}{%swap}[{%mkCompareNums}{%insertKV.t23}{%drop}]{%block}{%each.l}
-@testing.t23 {%pangram#1}{%textToTestTree.t23}
+@testing.t23 {%pangram.1}{%textToTestTree.t23}
 @textBitsToList [{%chr:0}{%gtb}]{%block}{%map.l}
 @textBitsToWord #{%integer}{%swap}[{%chr:0}{%gt}{%pushBit.bitListToWord}]{%block}{%each.l}
 @toBoolean.arity1 v{%toBoolean.arity1e}c
@@ -4311,13 +4238,13 @@
 @tridup {%dup}{%dup}{%tri*}
 @tri3 [{%keep3}]{%block}{%dip2}{%bi3}
 @tri3* [{%dip6}]{%block}{%dip2}{%bi3*}
-@tri3& {%dup}{%dup}{%tri3*}
+@tri3dup {%dup}{%dup}{%tri3*}
 @true {%true.b}
 @unit {%intro1}
 @unless [{%drop}]{%block}{%if}
 @unlessd []{%block}{%ifd}
 @unlessk [{%drop}]{%block}{%ifk}
-@unseal r{.}l
+@unseal r{._}l
 @unseald.bst {%.rw}{%unseal.bst}{%.wl}
 @unseald.rbt {%.rw}{%unseal.rbt}{%.wl}
 @unseald.t23 {%.rw}{%unseal.t23}{%.wl}
